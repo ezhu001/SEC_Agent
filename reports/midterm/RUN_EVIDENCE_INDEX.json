@@ -1,0 +1,1465 @@
+{
+  "generated_at_utc": "2026-11-04T03:42:22.297504+00:00",
+  "method": "Read existing canonical artifacts/runs/*/audit.json only. No model calls or pipeline reruns. Partial means no terminal status was recorded. Recovery-only files are outside this count.",
+  "warning": "Development corpus inventory, not a benchmark. Arithmetic consistency does not validate selected financial evidence.",
+  "canonical_audits": 35,
+  "status_counts": {
+    "SUCCESS": 17,
+    "ERROR": 7,
+    "PARTIAL": 6,
+    "INSUFFICIENT_EVIDENCE": 3,
+    "NEEDS_INPUT": 2
+  },
+  "retained_test_suite": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "1",
+    "tests": "94",
+    "time": "62.401",
+    "timestamp": "2026-11-03T21:44:44.122532-05:00",
+    "hostname": "DESKTOP-7RBUGUK"
+  },
+  "report_referenced_runs": [
+    "1b1768087c0746e3bf0af27e789a2bc3",
+    "298b78c4cf744e8eb4f4a433bec7ff70",
+    "2d857819637144499d6d9605bea8c16f",
+    "497a3288f8ed4360b7be5f19614892ab",
+    "4d7e1c2a169549c7b31b066dafbcc57e",
+    "541d08775b1a445a8736c590139d2943",
+    "5b2352b4c00f4a029527ba69c59402a7",
+    "629c1bdcadf84f22a356012c8322fcd9",
+    "69874559c69042078b898023f9add070",
+    "790c0c9b65a1482eb40b4766e8f67eb7",
+    "7dd50cdc8aff4b46a3b5cecb34d1014a",
+    "a32bd002553b4af681b9c1e5efad8074",
+    "af6e7e48712b4c9db8321210981b31ec",
+    "b7940c1c5b8141cc948bd22a412350f7",
+    "c07bdbccda3f4d6db34fd628d53022f4",
+    "d10426e0394c4c168ded12e0827a34c9",
+    "d1f6416a0cda4b5e83e163461308fd1b",
+    "e43840da7d934774a7f90198e097fd29",
+    "eb7d2bc97a614c6e892dc33af1d88ab5",
+    "ed7be92f030e473fa9e4b16f17c2bf59"
+  ],
+  "missing_report_run_references": [],
+  "runs": [
+    {
+      "run_id": "1b1768087c0746e3bf0af27e789a2bc3",
+      "audit_path": "artifacts/runs/1b1768087c0746e3bf0af27e789a2bc3/audit.json",
+      "recorded_status": "SUCCESS",
+      "question": "How did total revenue change from FY2024 to FY2025",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": "revenue_growth",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {
+        "revenue": "8388f868eb3e3d1d:t22_r006"
+      },
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 144.1064456999884,
+      "qwen_enabled": "UNRECORDED",
+      "calculation": {
+        "formula_id": "revenue_growth",
+        "formula": "(new revenue - old revenue) / old revenue * 100",
+        "value": 6.425511782832739,
+        "unit": "percent",
+        "direction": 1,
+        "inputs": {
+          "revenue": {
+            "FY2025": 416161000000.0,
+            "FY2024": 391035000000.0
+          }
+        },
+        "intermediates": {}
+      },
+      "errors": [],
+      "arithmetic_consistency": {
+        "recomputed_value": 6.425511782832739,
+        "matches_recorded": true,
+        "scope": "Independent arithmetic from stored calculator inputs only; not evidence or financial-ground-truth validation."
+      }
+    },
+    {
+      "run_id": "298b78c4cf744e8eb4f4a433bec7ff70",
+      "audit_path": "artifacts/runs/298b78c4cf744e8eb4f4a433bec7ff70/audit.json",
+      "recorded_status": "ERROR",
+      "question": "",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": "rd_intensity",
+      "required_periods": [
+        "FY2025"
+      ],
+      "accepted_evidence": {},
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 49.03316489997087,
+      "qwen_enabled": true,
+      "calculation": null,
+      "errors": [
+        {
+          "node": "verify",
+          "type": "VerifierContractError",
+          "message": "Evidence field does not support the claimed check"
+        }
+      ]
+    },
+    {
+      "run_id": "2d857819637144499d6d9605bea8c16f",
+      "audit_path": "artifacts/runs/2d857819637144499d6d9605bea8c16f/audit.json",
+      "recorded_status": "SUCCESS",
+      "question": "How did inventory grow from FY2025 to FY2026?",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": "inventory_growth",
+      "required_periods": [
+        "FY2026",
+        "FY2025"
+      ],
+      "accepted_evidence": {
+        "inventory": "8388f868eb3e3d1d:t24_r008"
+      },
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 54.44661310000811,
+      "qwen_enabled": true,
+      "calculation": {
+        "formula_id": "inventory_growth",
+        "formula": "(new inventory - old inventory) / old inventory * 100",
+        "value": 154.302203567681,
+        "unit": "percent",
+        "direction": 1,
+        "inputs": {
+          "inventory": {
+            "FY2026": 14541000000.0,
+            "FY2025": 5718000000.0
+          }
+        },
+        "intermediates": {},
+        "comparison": {
+          "new_period": "FY2026",
+          "old_period": "FY2025",
+          "new_value": 14541000000.0,
+          "old_value": 5718000000.0,
+          "absolute_change": 8823000000.0,
+          "relative_change_percent": 154.302203567681,
+          "period_value_unit": "monetary units (currency unspecified)",
+          "absolute_change_unit": "monetary units (currency unspecified)",
+          "direction": "increase"
+        }
+      },
+      "errors": [],
+      "arithmetic_consistency": {
+        "recomputed_value": 154.302203567681,
+        "matches_recorded": true,
+        "scope": "Independent arithmetic from stored calculator inputs only; not evidence or financial-ground-truth validation."
+      }
+    },
+    {
+      "run_id": "497a3288f8ed4360b7be5f19614892ab",
+      "audit_path": "artifacts/runs/497a3288f8ed4360b7be5f19614892ab/audit.json",
+      "recorded_status": "ERROR",
+      "question": "",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": "rd_intensity",
+      "required_periods": [
+        "FY2025"
+      ],
+      "accepted_evidence": {},
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 81.40355530002853,
+      "qwen_enabled": true,
+      "calculation": null,
+      "errors": [
+        {
+          "node": "verify",
+          "type": "VerifierContractError",
+          "message": "Return exactly one structured check result with source evidence for every open check, and none for resolved checks"
+        }
+      ]
+    },
+    {
+      "run_id": "4d7e1c2a169549c7b31b066dafbcc57e",
+      "audit_path": "artifacts/runs/4d7e1c2a169549c7b31b066dafbcc57e/audit.json",
+      "recorded_status": "PARTIAL",
+      "question": "How does current ratio change from FY2024 to FY2025?",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": "current_ratio_change",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {},
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 1,
+      "total_seconds": null,
+      "qwen_enabled": "UNRECORDED",
+      "calculation": null,
+      "errors": []
+    },
+    {
+      "run_id": "5321a8ee75e844308e9234673cdafeee",
+      "audit_path": "artifacts/runs/5321a8ee75e844308e9234673cdafeee/audit.json",
+      "recorded_status": "SUCCESS",
+      "question": "How did total revenue change from FY2024 to FY2025",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": "revenue_growth",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {
+        "revenue": "8388f868eb3e3d1d:t22_r006"
+      },
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 135.6502284000162,
+      "qwen_enabled": "UNRECORDED",
+      "calculation": {
+        "formula_id": "revenue_growth",
+        "formula": "(new revenue - old revenue) / old revenue * 100",
+        "value": 6.425511782832739,
+        "unit": "percent",
+        "direction": 1,
+        "inputs": {
+          "revenue": {
+            "FY2025": 416161000000.0,
+            "FY2024": 391035000000.0
+          }
+        },
+        "intermediates": {}
+      },
+      "errors": [],
+      "arithmetic_consistency": {
+        "recomputed_value": 6.425511782832739,
+        "matches_recorded": true,
+        "scope": "Independent arithmetic from stored calculator inputs only; not evidence or financial-ground-truth validation."
+      }
+    },
+    {
+      "run_id": "541d08775b1a445a8736c590139d2943",
+      "audit_path": "artifacts/runs/541d08775b1a445a8736c590139d2943/audit.json",
+      "recorded_status": "SUCCESS",
+      "question": "",
+      "source_hash": "0d6673a251259608161b0c78ba987ce6a794b333d2ddf4ac1cddf32ee43cdcf7",
+      "source_metadata": {
+        "entity": "Tesla, Inc.",
+        "fiscal_year": "2025",
+        "period_end": "2025-12-31",
+        "form": "10-K",
+        "cik": "0001318605"
+      },
+      "formula_id": "current_ratio_change",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {
+        "current_assets": "0d6673a251259608:t21_r009",
+        "current_liabilities": "0d6673a251259608:t21_r026"
+      },
+      "decoder_calls": 6,
+      "corrections": 2,
+      "expansions": 0,
+      "total_seconds": 277.58516509999754,
+      "qwen_enabled": true,
+      "calculation": {
+        "formula_id": "current_ratio_change",
+        "formula": "new current ratio - old current ratio",
+        "value": 0.1394944962775444,
+        "unit": "ratio units",
+        "direction": 1,
+        "inputs": {
+          "current_assets": {
+            "FY2025": 68642000000.0,
+            "FY2024": 58360000000.0
+          },
+          "current_liabilities": {
+            "FY2025": 31714000000.0,
+            "FY2024": 28821000000.0
+          }
+        },
+        "intermediates": {
+          "FY2025": 2.1644068865485275,
+          "FY2024": 2.024912390270983
+        },
+        "comparison": {
+          "new_period": "FY2025",
+          "old_period": "FY2024",
+          "new_value": 2.1644068865485275,
+          "old_value": 2.024912390270983,
+          "absolute_change": 0.1394944962775444,
+          "relative_change_percent": 6.888915142589286,
+          "relative_change_note": null,
+          "period_value_unit": "ratio units",
+          "absolute_change_unit": "ratio units",
+          "direction": "increase"
+        }
+      },
+      "errors": [],
+      "arithmetic_consistency": {
+        "recomputed_value": 0.1394944962775444,
+        "matches_recorded": true,
+        "scope": "Independent arithmetic from stored calculator inputs only; not evidence or financial-ground-truth validation."
+      }
+    },
+    {
+      "run_id": "551f004abd2a4394a0c41d332fa819eb",
+      "audit_path": "artifacts/runs/551f004abd2a4394a0c41d332fa819eb/audit.json",
+      "recorded_status": "INSUFFICIENT_EVIDENCE",
+      "question": "How did total net sales change from FY2024 to FY2025?",
+      "source_hash": "42329771bd20bedb5dba147211268401df95ffa371dca4d65e68a4f5bea5615b",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "fiscal_year": "2025",
+        "form": "10-K",
+        "cik": "0000320193"
+      },
+      "formula_id": "revenue_growth",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {},
+      "decoder_calls": 6,
+      "corrections": 2,
+      "expansions": 0,
+      "total_seconds": 250.57760379998945,
+      "qwen_enabled": "UNRECORDED",
+      "calculation": null,
+      "errors": []
+    },
+    {
+      "run_id": "5b2352b4c00f4a029527ba69c59402a7",
+      "audit_path": "artifacts/runs/5b2352b4c00f4a029527ba69c59402a7/audit.json",
+      "recorded_status": "SUCCESS",
+      "question": "",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": "rd_intensity",
+      "required_periods": [
+        "FY2024"
+      ],
+      "accepted_evidence": {
+        "research_and_development": "8388f868eb3e3d1d:t22_r015",
+        "revenue": "8388f868eb3e3d1d:t22_r006"
+      },
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 93.74079800001346,
+      "qwen_enabled": true,
+      "calculation": {
+        "formula_id": "rd_intensity",
+        "formula": "research and development / revenue * 100",
+        "value": 8.022299794136075,
+        "unit": "percent",
+        "direction": 1,
+        "inputs": {
+          "research_and_development": {
+            "FY2024": 31370000000.0
+          },
+          "revenue": {
+            "FY2024": 391035000000.0
+          }
+        },
+        "intermediates": {
+          "FY2024": 8.022299794136075
+        },
+        "comparison": {}
+      },
+      "errors": [],
+      "arithmetic_consistency": {
+        "recomputed_value": 8.022299794136075,
+        "matches_recorded": true,
+        "scope": "Independent arithmetic from stored calculator inputs only; not evidence or financial-ground-truth validation."
+      }
+    },
+    {
+      "run_id": "5e85735c120440bcb18442552eedf72f",
+      "audit_path": "artifacts/runs/5e85735c120440bcb18442552eedf72f/audit.json",
+      "recorded_status": "SUCCESS",
+      "question": "How did total revenue change from FY2024 to FY2025?",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": "revenue_growth",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {
+        "revenue": "8388f868eb3e3d1d:t22_r006"
+      },
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 130.14805710001383,
+      "qwen_enabled": "UNRECORDED",
+      "calculation": {
+        "formula_id": "revenue_growth",
+        "formula": "(new revenue - old revenue) / old revenue * 100",
+        "value": 6.425511782832739,
+        "unit": "percent",
+        "direction": 1,
+        "inputs": {
+          "revenue": {
+            "FY2025": 416161000000.0,
+            "FY2024": 391035000000.0
+          }
+        },
+        "intermediates": {}
+      },
+      "errors": [],
+      "arithmetic_consistency": {
+        "recomputed_value": 6.425511782832739,
+        "matches_recorded": true,
+        "scope": "Independent arithmetic from stored calculator inputs only; not evidence or financial-ground-truth validation."
+      }
+    },
+    {
+      "run_id": "629c1bdcadf84f22a356012c8322fcd9",
+      "audit_path": "artifacts/runs/629c1bdcadf84f22a356012c8322fcd9/audit.json",
+      "recorded_status": "SUCCESS",
+      "question": "",
+      "source_hash": "42329771bd20bedb5dba147211268401df95ffa371dca4d65e68a4f5bea5615b",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "fiscal_year": "2025",
+        "period_end": "2025-09-27",
+        "form": "10-K",
+        "cik": "0000320193"
+      },
+      "formula_id": "current_ratio_change",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {
+        "current_assets": "42329771bd20bedb:t24_r010",
+        "current_liabilities": "42329771bd20bedb:t24_r026"
+      },
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 116.1401686000172,
+      "qwen_enabled": "UNRECORDED",
+      "calculation": {
+        "formula_id": "current_ratio_change",
+        "formula": "new current ratio - old current ratio",
+        "value": 0.025980345684583517,
+        "unit": "ratio units",
+        "direction": 1,
+        "inputs": {
+          "current_assets": {
+            "FY2025": 147957000000.0,
+            "FY2024": 152987000000.0
+          },
+          "current_liabilities": {
+            "FY2025": 165631000000.0,
+            "FY2024": 176392000000.0
+          }
+        },
+        "intermediates": {
+          "FY2025": 0.8932929222186667,
+          "FY2024": 0.8673125765340832
+        },
+        "comparison": {
+          "new_period": "FY2025",
+          "old_period": "FY2024",
+          "new_value": 0.8932929222186667,
+          "old_value": 0.8673125765340832,
+          "absolute_change": 0.025980345684583517,
+          "relative_change_percent": 2.9954997065077786,
+          "relative_change_note": null,
+          "direction": "increase"
+        }
+      },
+      "errors": [],
+      "arithmetic_consistency": {
+        "recomputed_value": 0.025980345684583517,
+        "matches_recorded": true,
+        "scope": "Independent arithmetic from stored calculator inputs only; not evidence or financial-ground-truth validation."
+      }
+    },
+    {
+      "run_id": "69874559c69042078b898023f9add070",
+      "audit_path": "artifacts/runs/69874559c69042078b898023f9add070/audit.json",
+      "recorded_status": "SUCCESS",
+      "question": "",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": "gross_margin_change",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {
+        "gross_profit": "8388f868eb3e3d1d:t22_r012",
+        "revenue": "8388f868eb3e3d1d:t22_r006"
+      },
+      "decoder_calls": 0,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 8.350721499999054,
+      "qwen_enabled": false,
+      "calculation": {
+        "formula_id": "gross_margin_change",
+        "formula": "new gross margin - old gross margin",
+        "value": 0.6988142919265172,
+        "unit": "percentage points",
+        "direction": 1,
+        "inputs": {
+          "gross_profit": {
+            "FY2025": 195201000000.0,
+            "FY2024": 180683000000.0
+          },
+          "revenue": {
+            "FY2025": 416161000000.0,
+            "FY2024": 391035000000.0
+          }
+        },
+        "intermediates": {
+          "FY2025": 46.90516410716045,
+          "FY2024": 46.206349815233935
+        },
+        "comparison": {
+          "new_period": "FY2025",
+          "old_period": "FY2024",
+          "new_value": 46.90516410716045,
+          "old_value": 46.206349815233935,
+          "absolute_change": 0.6988142919265172,
+          "relative_change_percent": 1.512377183484255,
+          "relative_change_note": null,
+          "period_value_unit": "percent",
+          "absolute_change_unit": "percentage points",
+          "direction": "increase"
+        }
+      },
+      "errors": [],
+      "arithmetic_consistency": {
+        "recomputed_value": 0.6988142919265172,
+        "matches_recorded": true,
+        "scope": "Independent arithmetic from stored calculator inputs only; not evidence or financial-ground-truth validation."
+      }
+    },
+    {
+      "run_id": "6b70854ac9f74e089a0dc3c321c89d41",
+      "audit_path": "artifacts/runs/6b70854ac9f74e089a0dc3c321c89d41/audit.json",
+      "recorded_status": "NEEDS_INPUT",
+      "question": "",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": null,
+      "required_periods": null,
+      "accepted_evidence": {},
+      "decoder_calls": 0,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 0.7081723000155762,
+      "qwen_enabled": true,
+      "calculation": null,
+      "errors": []
+    },
+    {
+      "run_id": "790c0c9b65a1482eb40b4766e8f67eb7",
+      "audit_path": "artifacts/runs/790c0c9b65a1482eb40b4766e8f67eb7/audit.json",
+      "recorded_status": "PARTIAL",
+      "question": "How did total revenue change from FY2024 to FY2025?",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": "revenue_growth",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {
+        "revenue": "8388f868eb3e3d1d:t22_r006"
+      },
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": null,
+      "qwen_enabled": "UNRECORDED",
+      "calculation": null,
+      "errors": []
+    },
+    {
+      "run_id": "7dd50cdc8aff4b46a3b5cecb34d1014a",
+      "audit_path": "artifacts/runs/7dd50cdc8aff4b46a3b5cecb34d1014a/audit.json",
+      "recorded_status": "SUCCESS",
+      "question": "",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": "gross_margin_change",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {
+        "gross_profit": "8388f868eb3e3d1d:t22_r012",
+        "revenue": "8388f868eb3e3d1d:t22_r006"
+      },
+      "decoder_calls": 1,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 105.38294129999122,
+      "qwen_enabled": true,
+      "calculation": {
+        "formula_id": "gross_margin_change",
+        "formula": "new gross margin - old gross margin",
+        "value": 0.6988142919265172,
+        "unit": "percentage points",
+        "direction": 1,
+        "inputs": {
+          "gross_profit": {
+            "FY2025": 195201000000.0,
+            "FY2024": 180683000000.0
+          },
+          "revenue": {
+            "FY2025": 416161000000.0,
+            "FY2024": 391035000000.0
+          }
+        },
+        "intermediates": {
+          "FY2025": 46.90516410716045,
+          "FY2024": 46.206349815233935
+        },
+        "comparison": {
+          "new_period": "FY2025",
+          "old_period": "FY2024",
+          "new_value": 46.90516410716045,
+          "old_value": 46.206349815233935,
+          "absolute_change": 0.6988142919265172,
+          "relative_change_percent": 1.512377183484255,
+          "relative_change_note": null,
+          "period_value_unit": "percent",
+          "absolute_change_unit": "percentage points",
+          "direction": "increase"
+        }
+      },
+      "errors": [],
+      "arithmetic_consistency": {
+        "recomputed_value": 0.6988142919265172,
+        "matches_recorded": true,
+        "scope": "Independent arithmetic from stored calculator inputs only; not evidence or financial-ground-truth validation."
+      }
+    },
+    {
+      "run_id": "82e965fc50874ce18a3eac16e0681574",
+      "audit_path": "artifacts/runs/82e965fc50874ce18a3eac16e0681574/audit.json",
+      "recorded_status": "SUCCESS",
+      "question": "",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": "gross_margin_change",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {
+        "gross_profit": "8388f868eb3e3d1d:t22_r012",
+        "revenue": "8388f868eb3e3d1d:t22_r006"
+      },
+      "decoder_calls": 1,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 22.105708500021137,
+      "qwen_enabled": true,
+      "calculation": {
+        "formula_id": "gross_margin_change",
+        "formula": "new gross margin - old gross margin",
+        "value": 0.6988142919265172,
+        "unit": "percentage points",
+        "direction": 1,
+        "inputs": {
+          "gross_profit": {
+            "FY2025": 195201000000.0,
+            "FY2024": 180683000000.0
+          },
+          "revenue": {
+            "FY2025": 416161000000.0,
+            "FY2024": 391035000000.0
+          }
+        },
+        "intermediates": {
+          "FY2025": 46.90516410716045,
+          "FY2024": 46.206349815233935
+        },
+        "comparison": {
+          "new_period": "FY2025",
+          "old_period": "FY2024",
+          "new_value": 46.90516410716045,
+          "old_value": 46.206349815233935,
+          "absolute_change": 0.6988142919265172,
+          "relative_change_percent": 1.512377183484255,
+          "relative_change_note": null,
+          "period_value_unit": "percent",
+          "absolute_change_unit": "percentage points",
+          "direction": "increase"
+        }
+      },
+      "errors": [],
+      "arithmetic_consistency": {
+        "recomputed_value": 0.6988142919265172,
+        "matches_recorded": true,
+        "scope": "Independent arithmetic from stored calculator inputs only; not evidence or financial-ground-truth validation."
+      }
+    },
+    {
+      "run_id": "835b5ba025e94b8db0c7f52bf82b0d76",
+      "audit_path": "artifacts/runs/835b5ba025e94b8db0c7f52bf82b0d76/audit.json",
+      "recorded_status": "ERROR",
+      "question": "How did total net sales change from FY2024 to FY2025?",
+      "source_hash": "42329771bd20bedb5dba147211268401df95ffa371dca4d65e68a4f5bea5615b",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "fiscal_year": "2025",
+        "form": "10-K",
+        "cik": "0000320193"
+      },
+      "formula_id": null,
+      "required_periods": null,
+      "accepted_evidence": {},
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 57.154206199978944,
+      "qwen_enabled": "UNRECORDED",
+      "calculation": null,
+      "errors": [
+        {
+          "node": "plan_task",
+          "type": "DecoderError",
+          "message": "planner call failed: 1 validation error for TaskPlan\n  Value error, Use explicit FYyyyy periods [type=value_error, input_value={'status': 'READY', 'form...entity = 'Apple Inc.'\"}}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error"
+        }
+      ]
+    },
+    {
+      "run_id": "8bb0f1f43ab646d8a472759db1ce3e97",
+      "audit_path": "artifacts/runs/8bb0f1f43ab646d8a472759db1ce3e97/audit.json",
+      "recorded_status": "PARTIAL",
+      "question": "How did inventory grow from FY2025 to FY2026?",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": "inventory_growth",
+      "required_periods": [
+        "FY2026",
+        "FY2025"
+      ],
+      "accepted_evidence": {},
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": null,
+      "qwen_enabled": "UNRECORDED",
+      "calculation": null,
+      "errors": []
+    },
+    {
+      "run_id": "979637cc029f479ca5e7efa8ecc7663a",
+      "audit_path": "artifacts/runs/979637cc029f479ca5e7efa8ecc7663a/audit.json",
+      "recorded_status": "SUCCESS",
+      "question": "How did total revenue change from FY2024 to FY2025?",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": "revenue_growth",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {
+        "revenue": "8388f868eb3e3d1d:t22_r006"
+      },
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 131.2813152000308,
+      "qwen_enabled": "UNRECORDED",
+      "calculation": {
+        "formula_id": "revenue_growth",
+        "formula": "(new revenue - old revenue) / old revenue * 100",
+        "value": 6.425511782832739,
+        "unit": "percent",
+        "direction": 1,
+        "inputs": {
+          "revenue": {
+            "FY2025": 416161000000.0,
+            "FY2024": 391035000000.0
+          }
+        },
+        "intermediates": {}
+      },
+      "errors": [],
+      "arithmetic_consistency": {
+        "recomputed_value": 6.425511782832739,
+        "matches_recorded": true,
+        "scope": "Independent arithmetic from stored calculator inputs only; not evidence or financial-ground-truth validation."
+      }
+    },
+    {
+      "run_id": "9a2ead3356c1475d8556472135ba0e73",
+      "audit_path": "artifacts/runs/9a2ead3356c1475d8556472135ba0e73/audit.json",
+      "recorded_status": "ERROR",
+      "question": "Calculate the Research and Development Intensity growth from 2024 to 2025.",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": null,
+      "required_periods": null,
+      "accepted_evidence": {},
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 32.46451150003122,
+      "qwen_enabled": true,
+      "calculation": null,
+      "errors": [
+        {
+          "node": "plan_task",
+          "type": "DecoderError",
+          "message": "planner call failed: 1 validation error for TaskPlan\n  Value error, Unregistered formula [type=value_error, input_value={'status': 'READY', 'form... revenue'}, 'notes': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error"
+        }
+      ]
+    },
+    {
+      "run_id": "a32bd002553b4af681b9c1e5efad8074",
+      "audit_path": "artifacts/runs/a32bd002553b4af681b9c1e5efad8074/audit.json",
+      "recorded_status": "INSUFFICIENT_EVIDENCE",
+      "question": "How did inventory grow from FY2025 to FY2026?",
+      "source_hash": "0d6673a251259608161b0c78ba987ce6a794b333d2ddf4ac1cddf32ee43cdcf7",
+      "source_metadata": {
+        "entity": "Tesla, Inc.",
+        "fiscal_year": "2025",
+        "period_end": "2025-12-31",
+        "form": "10-K",
+        "cik": "0001318605"
+      },
+      "formula_id": "inventory_growth",
+      "required_periods": [
+        "FY2026",
+        "FY2025"
+      ],
+      "accepted_evidence": {},
+      "decoder_calls": 1,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 24.601265700010117,
+      "qwen_enabled": true,
+      "calculation": null,
+      "errors": []
+    },
+    {
+      "run_id": "a937b323d17248b8bee4b69a45a7e420",
+      "audit_path": "artifacts/runs/a937b323d17248b8bee4b69a45a7e420/audit.json",
+      "recorded_status": "PARTIAL",
+      "question": "How did total revenue change from FY2024 to FY2025",
+      "source_hash": "6f2514b17c6edaebde4fd85a6cc4b0bcc1e0084f5ff2eeb3e07b9613179863d8",
+      "source_metadata": {
+        "cik": "0000320193",
+        "entity": "Apple Inc.",
+        "accession": "0000320193-26-000026",
+        "form": "10-K",
+        "selection": "latest available 10-K",
+        "fiscal_year": "2026",
+        "period_end": "2026-09-26"
+      },
+      "formula_id": "revenue_growth",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {
+        "revenue": "6f2514b17c6edaeb:t22_r006"
+      },
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": null,
+      "qwen_enabled": "UNRECORDED",
+      "calculation": null,
+      "errors": []
+    },
+    {
+      "run_id": "af6e7e48712b4c9db8321210981b31ec",
+      "audit_path": "artifacts/runs/af6e7e48712b4c9db8321210981b31ec/audit.json",
+      "recorded_status": "SUCCESS",
+      "question": "How did inventory grow from FY2024 to FY2025?",
+      "source_hash": "0d6673a251259608161b0c78ba987ce6a794b333d2ddf4ac1cddf32ee43cdcf7",
+      "source_metadata": {
+        "entity": "Tesla, Inc.",
+        "fiscal_year": "2025",
+        "period_end": "2025-12-31",
+        "form": "10-K",
+        "cik": "0001318605"
+      },
+      "formula_id": "inventory_growth",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {
+        "inventory": "0d6673a251259608:t21_r007"
+      },
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 55.95525329996599,
+      "qwen_enabled": true,
+      "calculation": {
+        "formula_id": "inventory_growth",
+        "formula": "(new inventory - old inventory) / old inventory * 100",
+        "value": 3.1205791794957145,
+        "unit": "percent",
+        "direction": 1,
+        "inputs": {
+          "inventory": {
+            "FY2025": 12392000000.0,
+            "FY2024": 12017000000.0
+          }
+        },
+        "intermediates": {},
+        "comparison": {
+          "new_period": "FY2025",
+          "old_period": "FY2024",
+          "new_value": 12392000000.0,
+          "old_value": 12017000000.0,
+          "absolute_change": 375000000.0,
+          "relative_change_percent": 3.1205791794957145,
+          "period_value_unit": "USD",
+          "absolute_change_unit": "USD",
+          "direction": "increase"
+        }
+      },
+      "errors": [],
+      "arithmetic_consistency": {
+        "recomputed_value": 3.1205791794957145,
+        "matches_recorded": true,
+        "scope": "Independent arithmetic from stored calculator inputs only; not evidence or financial-ground-truth validation."
+      }
+    },
+    {
+      "run_id": "b7940c1c5b8141cc948bd22a412350f7",
+      "audit_path": "artifacts/runs/b7940c1c5b8141cc948bd22a412350f7/audit.json",
+      "recorded_status": "PARTIAL",
+      "question": "",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": "rd_intensity",
+      "required_periods": [
+        "FY2025"
+      ],
+      "accepted_evidence": {
+        "research_and_development": "8388f868eb3e3d1d:t22_r015"
+      },
+      "decoder_calls": 6,
+      "corrections": 2,
+      "expansions": 1,
+      "total_seconds": null,
+      "qwen_enabled": "UNRECORDED",
+      "calculation": null,
+      "errors": []
+    },
+    {
+      "run_id": "c07bdbccda3f4d6db34fd628d53022f4",
+      "audit_path": "artifacts/runs/c07bdbccda3f4d6db34fd628d53022f4/audit.json",
+      "recorded_status": "PARTIAL",
+      "question": "",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": "gross_margin_change",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {},
+      "decoder_calls": 3,
+      "corrections": 1,
+      "expansions": 1,
+      "total_seconds": null,
+      "qwen_enabled": "UNRECORDED",
+      "calculation": null,
+      "errors": []
+    },
+    {
+      "run_id": "c4aeb5ea48464536b641468d4a523589",
+      "audit_path": "artifacts/runs/c4aeb5ea48464536b641468d4a523589/audit.json",
+      "recorded_status": "SUCCESS",
+      "question": "",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": "rd_intensity",
+      "required_periods": [
+        "FY2025"
+      ],
+      "accepted_evidence": {
+        "research_and_development": "8388f868eb3e3d1d:t22_r015",
+        "revenue": "8388f868eb3e3d1d:t22_r006"
+      },
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 155.99208230001386,
+      "qwen_enabled": true,
+      "calculation": {
+        "formula_id": "rd_intensity",
+        "formula": "research and development / revenue * 100",
+        "value": 8.302075398703867,
+        "unit": "percent",
+        "direction": 1,
+        "inputs": {
+          "research_and_development": {
+            "FY2025": 34550000000.0
+          },
+          "revenue": {
+            "FY2025": 416161000000.0
+          }
+        },
+        "intermediates": {
+          "FY2025": 8.302075398703867
+        },
+        "comparison": {}
+      },
+      "errors": [],
+      "arithmetic_consistency": {
+        "recomputed_value": 8.302075398703867,
+        "matches_recorded": true,
+        "scope": "Independent arithmetic from stored calculator inputs only; not evidence or financial-ground-truth validation."
+      }
+    },
+    {
+      "run_id": "c81b24fb424649e6ad78b9f9280d4348",
+      "audit_path": "artifacts/runs/c81b24fb424649e6ad78b9f9280d4348/audit.json",
+      "recorded_status": "ERROR",
+      "question": "How did total net sales change from FY2024 to FY2025?",
+      "source_hash": "42329771bd20bedb5dba147211268401df95ffa371dca4d65e68a4f5bea5615b",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "fiscal_year": "2025",
+        "period_end": "September 27, 2025",
+        "form": "10-K",
+        "cik": "0000320193"
+      },
+      "formula_id": "revenue_growth",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {},
+      "decoder_calls": 1,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 40.10812310001347,
+      "qwen_enabled": "UNRECORDED",
+      "calculation": null,
+      "errors": [
+        {
+          "node": "build_evidence",
+          "type": "ValueError",
+          "message": "invalid literal for int() with base 10: 'Sept'"
+        }
+      ]
+    },
+    {
+      "run_id": "d10426e0394c4c168ded12e0827a34c9",
+      "audit_path": "artifacts/runs/d10426e0394c4c168ded12e0827a34c9/audit.json",
+      "recorded_status": "SUCCESS",
+      "question": "",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": "rd_intensity",
+      "required_periods": [
+        "FY2025"
+      ],
+      "accepted_evidence": {
+        "research_and_development": "8388f868eb3e3d1d:t22_r015",
+        "revenue": "8388f868eb3e3d1d:t22_r006"
+      },
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 69.49127519998001,
+      "qwen_enabled": true,
+      "calculation": {
+        "formula_id": "rd_intensity",
+        "formula": "research and development / revenue * 100",
+        "value": 8.302075398703867,
+        "unit": "percent",
+        "direction": 1,
+        "inputs": {
+          "research_and_development": {
+            "FY2025": 34550000000.0
+          },
+          "revenue": {
+            "FY2025": 416161000000.0
+          }
+        },
+        "intermediates": {
+          "FY2025": 8.302075398703867
+        },
+        "comparison": {}
+      },
+      "errors": [],
+      "arithmetic_consistency": {
+        "recomputed_value": 8.302075398703867,
+        "matches_recorded": true,
+        "scope": "Independent arithmetic from stored calculator inputs only; not evidence or financial-ground-truth validation."
+      }
+    },
+    {
+      "run_id": "d1f6416a0cda4b5e83e163461308fd1b",
+      "audit_path": "artifacts/runs/d1f6416a0cda4b5e83e163461308fd1b/audit.json",
+      "recorded_status": "INSUFFICIENT_EVIDENCE",
+      "question": "How did total revenue change from FY2024 to FY2025",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {},
+      "formula_id": "revenue_growth",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {},
+      "decoder_calls": 6,
+      "corrections": 2,
+      "expansions": 0,
+      "total_seconds": 199.2097008000128,
+      "qwen_enabled": "UNRECORDED",
+      "calculation": null,
+      "errors": []
+    },
+    {
+      "run_id": "d28c7bebc771493cbf82c852beb16a04",
+      "audit_path": "artifacts/runs/d28c7bebc771493cbf82c852beb16a04/audit.json",
+      "recorded_status": "NEEDS_INPUT",
+      "question": "",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": null,
+      "required_periods": null,
+      "accepted_evidence": {},
+      "decoder_calls": 0,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 0.49499740003375337,
+      "qwen_enabled": true,
+      "calculation": null,
+      "errors": []
+    },
+    {
+      "run_id": "e43840da7d934774a7f90198e097fd29",
+      "audit_path": "artifacts/runs/e43840da7d934774a7f90198e097fd29/audit.json",
+      "recorded_status": "SUCCESS",
+      "question": "",
+      "source_hash": "42329771bd20bedb5dba147211268401df95ffa371dca4d65e68a4f5bea5615b",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "fiscal_year": "2025",
+        "period_end": "2025-09-27",
+        "form": "10-K",
+        "cik": "0000320193"
+      },
+      "formula_id": "revenue_growth",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {
+        "revenue": "42329771bd20bedb:t22_r006"
+      },
+      "decoder_calls": 3,
+      "corrections": 1,
+      "expansions": 1,
+      "total_seconds": 145.1357560000033,
+      "qwen_enabled": true,
+      "calculation": {
+        "formula_id": "revenue_growth",
+        "formula": "(new revenue - old revenue) / old revenue * 100",
+        "value": 6.425511782832739,
+        "unit": "percent",
+        "direction": 1,
+        "inputs": {
+          "revenue": {
+            "FY2025": 416161000000.0,
+            "FY2024": 391035000000.0
+          }
+        },
+        "intermediates": {},
+        "comparison": {
+          "new_period": "FY2025",
+          "old_period": "FY2024",
+          "new_value": 416161000000.0,
+          "old_value": 391035000000.0,
+          "absolute_change": 25126000000.0,
+          "relative_change_percent": 6.425511782832739,
+          "period_value_unit": "USD",
+          "absolute_change_unit": "USD",
+          "direction": "increase"
+        }
+      },
+      "errors": [],
+      "arithmetic_consistency": {
+        "recomputed_value": 6.425511782832739,
+        "matches_recorded": true,
+        "scope": "Independent arithmetic from stored calculator inputs only; not evidence or financial-ground-truth validation."
+      }
+    },
+    {
+      "run_id": "eb7d2bc97a614c6e892dc33af1d88ab5",
+      "audit_path": "artifacts/runs/eb7d2bc97a614c6e892dc33af1d88ab5/audit.json",
+      "recorded_status": "SUCCESS",
+      "question": "How did inventory grow from FY2024 to FY2025?",
+      "source_hash": "42329771bd20bedb5dba147211268401df95ffa371dca4d65e68a4f5bea5615b",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "fiscal_year": "2025",
+        "period_end": "2025-09-27",
+        "form": "10-K",
+        "cik": "0000320193"
+      },
+      "formula_id": "inventory_growth",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {
+        "inventory": "42329771bd20bedb:t24_r008"
+      },
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 57.489322900015395,
+      "qwen_enabled": true,
+      "calculation": {
+        "formula_id": "inventory_growth",
+        "formula": "(new inventory - old inventory) / old inventory * 100",
+        "value": -21.52072467746363,
+        "unit": "percent",
+        "direction": -1,
+        "inputs": {
+          "inventory": {
+            "FY2025": 5718000000.0,
+            "FY2024": 7286000000.0
+          }
+        },
+        "intermediates": {},
+        "comparison": {
+          "new_period": "FY2025",
+          "old_period": "FY2024",
+          "new_value": 5718000000.0,
+          "old_value": 7286000000.0,
+          "absolute_change": -1568000000.0,
+          "relative_change_percent": -21.52072467746363,
+          "period_value_unit": "USD",
+          "absolute_change_unit": "USD",
+          "direction": "decrease"
+        }
+      },
+      "errors": [],
+      "arithmetic_consistency": {
+        "recomputed_value": -21.52072467746363,
+        "matches_recorded": true,
+        "scope": "Independent arithmetic from stored calculator inputs only; not evidence or financial-ground-truth validation."
+      }
+    },
+    {
+      "run_id": "eb841c46f2b64d25a1c30af3b4e8b62b",
+      "audit_path": "artifacts/runs/eb841c46f2b64d25a1c30af3b4e8b62b/audit.json",
+      "recorded_status": "SUCCESS",
+      "question": "",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": "operating_margin_change",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {
+        "operating_income": "8388f868eb3e3d1d:t22_r019",
+        "revenue": "8388f868eb3e3d1d:t22_r006"
+      },
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": 165.1121906999615,
+      "qwen_enabled": true,
+      "calculation": {
+        "formula_id": "operating_margin_change",
+        "formula": "new operating margin - old operating margin",
+        "value": 0.4605768925163183,
+        "unit": "percentage points",
+        "direction": 1,
+        "inputs": {
+          "operating_income": {
+            "FY2025": 133050000000.0,
+            "FY2024": 123216000000.0
+          },
+          "revenue": {
+            "FY2025": 416161000000.0,
+            "FY2024": 391035000000.0
+          }
+        },
+        "intermediates": {
+          "FY2025": 31.970799762591884,
+          "FY2024": 31.510222870075566
+        },
+        "comparison": {
+          "new_period": "FY2025",
+          "old_period": "FY2024",
+          "new_value": 31.970799762591884,
+          "old_value": 31.510222870075566,
+          "absolute_change": 0.4605768925163183,
+          "relative_change_percent": 1.4616744997818347,
+          "relative_change_note": null,
+          "period_value_unit": "percent",
+          "absolute_change_unit": "percentage points",
+          "direction": "increase"
+        }
+      },
+      "errors": [],
+      "arithmetic_consistency": {
+        "recomputed_value": 0.4605768925163183,
+        "matches_recorded": true,
+        "scope": "Independent arithmetic from stored calculator inputs only; not evidence or financial-ground-truth validation."
+      }
+    },
+    {
+      "run_id": "ed7be92f030e473fa9e4b16f17c2bf59",
+      "audit_path": "artifacts/runs/ed7be92f030e473fa9e4b16f17c2bf59/audit.json",
+      "recorded_status": "ERROR",
+      "question": "Calculate the Research and Development Intensity growth from 2024 to 2025.",
+      "source_hash": "8388f868eb3e3d1d610cc1309fb4b9314156e412402bae4d5b10e0c7e7049587",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "form": "10-K"
+      },
+      "formula_id": null,
+      "required_periods": null,
+      "accepted_evidence": {},
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 0,
+      "total_seconds": null,
+      "qwen_enabled": "UNRECORDED",
+      "calculation": null,
+      "errors": [
+        {
+          "node": "plan_task",
+          "type": "DecoderError",
+          "message": "planner call failed: 1 validation error for TaskPlan\n  Value error, Unregistered formula [type=value_error, input_value={'status': 'READY', 'form... revenue'}, 'notes': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error"
+        }
+      ]
+    },
+    {
+      "run_id": "eee039004b6d463a85051b0ccdb8823c",
+      "audit_path": "artifacts/runs/eee039004b6d463a85051b0ccdb8823c/audit.json",
+      "recorded_status": "ERROR",
+      "question": "",
+      "source_hash": "42329771bd20bedb5dba147211268401df95ffa371dca4d65e68a4f5bea5615b",
+      "source_metadata": {
+        "entity": "Apple Inc.",
+        "fiscal_year": "2025",
+        "period_end": "2025-09-27",
+        "form": "10-K",
+        "cik": "0000320193"
+      },
+      "formula_id": "revenue_growth",
+      "required_periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "accepted_evidence": {},
+      "decoder_calls": 2,
+      "corrections": 0,
+      "expansions": 1,
+      "total_seconds": 111.94099009997444,
+      "qwen_enabled": true,
+      "calculation": null,
+      "errors": [
+        {
+          "node": "verify",
+          "type": "DecoderError",
+          "message": "verifier call failed: 1 validation error for BoundedVerification\n  Value error, FAIL/UNCERTAIN requires an allowed check and a source-grounded finding [type=value_error, input_value={'verdict': 'FAIL', 'erro...n.', 'status': 'FAIL'}]}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,331 @@
+{
+  "groups": [
+    {
+      "path": ".uv_cache/archive-v0",
+      "bytes": 6690498397,
+      "files": 36632
+    },
+    {
+      "path": ".venv-check/torch",
+      "bytes": 543469840,
+      "files": 14602
+    },
+    {
+      "path": ".venv/torch",
+      "bytes": 543457285,
+      "files": 14603
+    },
+    {
+      "path": ".venv-check/transformers",
+      "bytes": 110762835,
+      "files": 4454
+    },
+    {
+      "path": ".venv/transformers",
+      "bytes": 110749551,
+      "files": 4454
+    },
+    {
+      "path": ".venv-check/pyarrow",
+      "bytes": 92966471,
+      "files": 857
+    },
+    {
+      "path": ".venv/pyarrow",
+      "bytes": 92965841,
+      "files": 857
+    },
+    {
+      "path": ".venv-check/pandas",
+      "bytes": 75377372,
+      "files": 3020
+    },
+    {
+      "path": ".venv/pandas",
+      "bytes": 75368732,
+      "files": 3020
+    },
+    {
+      "path": ".venv-check/sympy",
+      "bytes": 75160112,
+      "files": 3093
+    },
+    {
+      "path": ".venv/sympy",
+      "bytes": 75150920,
+      "files": 3093
+    },
+    {
+      "path": "artifacts/grounded-verifier-final",
+      "bytes": 57673658,
+      "files": 204
+    },
+    {
+      "path": "artifacts/verifier-contract-final",
+      "bytes": 57590267,
+      "files": 204
+    },
+    {
+      "path": "artifacts/executable-verifier-final",
+      "bytes": 57467143,
+      "files": 204
+    },
+    {
+      "path": "artifacts/verifier-contract-v3",
+      "bytes": 57465724,
+      "files": 204
+    },
+    {
+      "path": "artifacts/bounded-verifier-final",
+      "bytes": 57437502,
+      "files": 204
+    },
+    {
+      "path": "artifacts/gross-qwen-final",
+      "bytes": 52209514,
+      "files": 194
+    },
+    {
+      "path": ".uv_cache/simple-v22",
+      "bytes": 49173552,
+      "files": 188
+    },
+    {
+      "path": "artifacts/check-observation-tests",
+      "bytes": 39260378,
+      "files": 126
+    },
+    {
+      "path": "artifacts/verifier-contract-tests",
+      "bytes": 39214616,
+      "files": 126
+    },
+    {
+      "path": "artifacts/aggregate-observation-tests",
+      "bytes": 39141395,
+      "files": 126
+    },
+    {
+      "path": "artifacts/source-bound-schema-fixed",
+      "bytes": 39120095,
+      "files": 126
+    },
+    {
+      "path": "artifacts/source-bound-schema-tests",
+      "bytes": 38545787,
+      "files": 126
+    },
+    {
+      "path": "artifacts/metric-final",
+      "bytes": 36337132,
+      "files": 167
+    },
+    {
+      "path": ".venv-check/numpy",
+      "bytes": 34636687,
+      "files": 1524
+    },
+    {
+      "path": ".venv/numpy",
+      "bytes": 34633765,
+      "files": 1524
+    },
+    {
+      "path": "artifacts/contract-baseline",
+      "bytes": 34508707,
+      "files": 149
+    },
+    {
+      "path": "artifacts/qwen-mode-tests",
+      "bytes": 34453534,
+      "files": 149
+    },
+    {
+      "path": ".venv/streamlit",
+      "bytes": 34280902,
+      "files": 1252
+    },
+    {
+      "path": ".venv-check/streamlit",
+      "bytes": 34206852,
+      "files": 1251
+    },
+    {
+      "path": ".venv-check/pydeck",
+      "bytes": 23824722,
+      "files": 72
+    },
+    {
+      "path": ".venv/pydeck",
+      "bytes": 23824524,
+      "files": 72
+    },
+    {
+      "path": ".venv-check/share",
+      "bytes": 23685269,
+      "files": 4
+    },
+    {
+      "path": ".venv/share",
+      "bytes": 23685269,
+      "files": 4
+    },
+    {
+      "path": "artifacts/metric-display-final",
+      "bytes": 23493772,
+      "files": 50
+    },
+    {
+      "path": "artifacts/metric-regressions",
+      "bytes": 21536309,
+      "files": 132
+    },
+    {
+      "path": ".venv-check/numpy.libs",
+      "bytes": 20990544,
+      "files": 2
+    },
+    {
+      "path": ".venv/numpy.libs",
+      "bytes": 20990544,
+      "files": 2
+    },
+    {
+      "path": "artifacts/metric-source-audit",
+      "bytes": 18762999,
+      "files": 35
+    },
+    {
+      "path": "artifacts/metric-support-tests",
+      "bytes": 18762354,
+      "files": 35
+    },
+    {
+      "path": ".venv-check/networkx",
+      "bytes": 16470933,
+      "files": 1175
+    },
+    {
+      "path": ".venv/networkx",
+      "bytes": 16467453,
+      "files": 1175
+    },
+    {
+      "path": ".venv-check/PIL",
+      "bytes": 16274572,
+      "files": 211
+    },
+    {
+      "path": ".venv/PIL",
+      "bytes": 16273990,
+      "files": 211
+    },
+    {
+      "path": "artifacts/runtime-final",
+      "bytes": 15885401,
+      "files": 126
+    },
+    {
+      "path": "artifacts/runs",
+      "bytes": 14201733,
+      "files": 70
+    },
+    {
+      "path": "artifacts/revenue-fix-full",
+      "bytes": 13559904,
+      "files": 92
+    },
+    {
+      "path": "artifacts/reliability-tests",
+      "bytes": 13118376,
+      "files": 112
+    },
+    {
+      "path": "artifacts/metric-tests",
+      "bytes": 12847442,
+      "files": 115
+    },
+    {
+      "path": "artifacts/revenue-final-check",
+      "bytes": 12675052,
+      "files": 80
+    },
+    {
+      "path": "artifacts/revenue-fix-tests",
+      "bytes": 10792844,
+      "files": 80
+    },
+    {
+      "path": ".venv-check/altair",
+      "bytes": 9907386,
+      "files": 118
+    },
+    {
+      "path": ".venv/altair",
+      "bytes": 9907056,
+      "files": 118
+    },
+    {
+      "path": ".venv-check/langsmith",
+      "bytes": 9790135,
+      "files": 941
+    },
+    {
+      "path": ".venv/langsmith",
+      "bytes": 9786793,
+      "files": 941
+    },
+    {
+      "path": ".venv-check/lxml",
+      "bytes": 9281233,
+      "files": 201
+    },
+    {
+      "path": ".venv/lxml",
+      "bytes": 9281059,
+      "files": 201
+    },
+    {
+      "path": ".venv-check/pygments",
+      "bytes": 8565547,
+      "files": 686
+    },
+    {
+      "path": ".venv/pygments",
+      "bytes": 8563489,
+      "files": 686
+    },
+    {
+      "path": ".venv-check/tokenizers",
+      "bytes": 7721591,
+      "files": 42
+    },
+    {
+      "path": ".venv/tokenizers",
+      "bytes": 7721495,
+      "files": 42
+    },
+    {
+      "path": "artifacts/filings",
+      "bytes": 7446699,
+      "files": 13
+    },
+    {
+      "path": "artifacts/contract-recovery-check",
+      "bytes": 7129419,
+      "files": 69
+    },
+    {
+      "path": "artifacts/embeddings",
+      "bytes": 6860681,
+      "files": 355
+    },
+    {
+      "path": ".venv-check/pydantic_core",
+      "bytes": 6120338,
+      "files": 8
+    }
+  ],
+  "errors": [],
+  "note": "This grouping uses entry sizes only. See DIRECTORY_SIZE_HARDLINKS.json for full os.stat file-identity checks."
+}

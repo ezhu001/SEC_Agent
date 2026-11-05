@@ -1,0 +1,1765 @@
+{
+  "scope": "Application package, app.py, evaluation, tests, scripts; source-only documentation snapshot",
+  "files": [
+    {
+      "path": "src/financial_filing_agent/__init__.py",
+      "sha256": "5a466672d9963ed89d6ea03a45635bd495c02251f6be2506f1bc24718b095529",
+      "lines": 3,
+      "symbols": []
+    },
+    {
+      "path": "src/financial_filing_agent/agents/__init__.py",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "lines": 1,
+      "symbols": []
+    },
+    {
+      "path": "src/financial_filing_agent/agents/corrector.py",
+      "sha256": "de5230b929f93d153f99339ae759e0704c84816fad1913489bbf6407662da18b",
+      "lines": 16,
+      "symbols": [
+        {
+          "name": "correct",
+          "line": 7,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/agents/planner.py",
+      "sha256": "cac467c9eb640d92e8c9636524e56814897d031dfcba62c252e858b16ed23c6a",
+      "lines": 21,
+      "symbols": [
+        {
+          "name": "plan_task",
+          "line": 8,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/agents/verification_contract.py",
+      "sha256": "c737c8c5497e74f3d3acdcd5f06055d1bd4044649c8ef294e98ea00c897e3705",
+      "lines": 127,
+      "symbols": [
+        {
+          "name": "VerifierContractError",
+          "line": 12,
+          "kind": "class"
+        },
+        {
+          "name": "build_contract",
+          "line": 40,
+          "kind": "function"
+        },
+        {
+          "name": "review_schema",
+          "line": 67,
+          "kind": "function"
+        },
+        {
+          "name": "validate_review",
+          "line": 96,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/agents/verifier.py",
+      "sha256": "34bd4e8a002831c1632c99fc57d9fb86d2205807a370a61668faddc59f80d593",
+      "lines": 27,
+      "symbols": [
+        {
+          "name": "verify",
+          "line": 7,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/cli.py",
+      "sha256": "f902bbe9475261c0d46769e61e2faa65856e5b2890a8922c906e35568aca2b97",
+      "lines": 39,
+      "symbols": [
+        {
+          "name": "main",
+          "line": 9,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/config/__init__.py",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "lines": 1,
+      "symbols": []
+    },
+    {
+      "path": "src/financial_filing_agent/config/financial_concepts.py",
+      "sha256": "37fc1d733681e014d562f19bcc67cc18765616ccc25d179f29e2905f6891c3d8",
+      "lines": 27,
+      "symbols": [
+        {
+          "name": "definition",
+          "line": 15,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/config/formulas.py",
+      "sha256": "362f658ec89e728eb38af52f76b11ee60d04fdddc80d9cd0cb19263763fd884c",
+      "lines": 41,
+      "symbols": [
+        {
+          "name": "Formula",
+          "line": 5,
+          "kind": "class"
+        },
+        {
+          "name": "registered_plan",
+          "line": 25,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/config/prompts.py",
+      "sha256": "cac60480455a9e8e85c36f754698f6e74d2b3d32c13596a66558c2c996c441d3",
+      "lines": 72,
+      "symbols": []
+    },
+    {
+      "path": "src/financial_filing_agent/config/settings.py",
+      "sha256": "f70ec9e29071d3126bfe2cff8e5f1cfb8583f3ab1dcdf3a3590e024cb7db41a6",
+      "lines": 46,
+      "symbols": [
+        {
+          "name": "Settings",
+          "line": 10,
+          "kind": "class"
+        },
+        {
+          "name": "Settings.fingerprint",
+          "line": 41,
+          "kind": "function"
+        },
+        {
+          "name": "Settings.from_file",
+          "line": 45,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/graph/__init__.py",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "lines": 1,
+      "symbols": []
+    },
+    {
+      "path": "src/financial_filing_agent/graph/routing.py",
+      "sha256": "bbdf564403ec87c802cf8f0203b546010deaf401d09e112ce64907be9304d547",
+      "lines": 2,
+      "symbols": [
+        {
+          "name": "route",
+          "line": 1,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/graph/workflow.py",
+      "sha256": "a4b1f7af9a3261dee84b750fad722d4b3e12ddb3be3ad0b23e521c21dddabca4",
+      "lines": 31,
+      "symbols": [
+        {
+          "name": "build_graph",
+          "line": 6,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/models/__init__.py",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "lines": 1,
+      "symbols": []
+    },
+    {
+      "path": "src/financial_filing_agent/models/finbert.py",
+      "sha256": "618f46ec9a63a7e93488e7e0c060eed17624214491552e0972d35832c3024556",
+      "lines": 50,
+      "symbols": [
+        {
+          "name": "FinBERT",
+          "line": 7,
+          "kind": "class"
+        },
+        {
+          "name": "FinBERT.__init__",
+          "line": 8,
+          "kind": "function"
+        },
+        {
+          "name": "FinBERT.encode",
+          "line": 25,
+          "kind": "function"
+        },
+        {
+          "name": "get_finbert",
+          "line": 47,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/models/local_decoder.py",
+      "sha256": "b5c5961ba8e37d932d79400cc0d653cc18ba83998efa9361a4c8148ad8477972",
+      "lines": 79,
+      "symbols": [
+        {
+          "name": "DecoderError",
+          "line": 8,
+          "kind": "class"
+        },
+        {
+          "name": "OllamaDecoder",
+          "line": 12,
+          "kind": "class"
+        },
+        {
+          "name": "OllamaDecoder.__init__",
+          "line": 13,
+          "kind": "function"
+        },
+        {
+          "name": "OllamaDecoder.status",
+          "line": 18,
+          "kind": "function"
+        },
+        {
+          "name": "OllamaDecoder.complete",
+          "line": 41,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/retrieval/__init__.py",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "lines": 1,
+      "symbols": []
+    },
+    {
+      "path": "src/financial_filing_agent/retrieval/finbert_retriever.py",
+      "sha256": "f26ed3ed8ca00dac955c34f1927aedd6f35a5891e2d3e42c810ff9e4d357e5a9",
+      "lines": 29,
+      "symbols": [
+        {
+          "name": "EmbeddingCache",
+          "line": 6,
+          "kind": "class"
+        },
+        {
+          "name": "EmbeddingCache.__init__",
+          "line": 7,
+          "kind": "function"
+        },
+        {
+          "name": "EmbeddingCache.encode_rows",
+          "line": 11,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/retrieval/hybrid_retriever.py",
+      "sha256": "e1bf9c398850ca878b5107ec62d29e330280419c0dc8388acf3cbfd5060e7543",
+      "lines": 48,
+      "symbols": [
+        {
+          "name": "HybridRetriever",
+          "line": 7,
+          "kind": "class"
+        },
+        {
+          "name": "HybridRetriever.__init__",
+          "line": 8,
+          "kind": "function"
+        },
+        {
+          "name": "HybridRetriever.rank",
+          "line": 12,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/retrieval/lexical_retriever.py",
+      "sha256": "cc0d038adab3e06c611ceeca07be7c00d16471eb6f9a46c636aa50b06420d596",
+      "lines": 16,
+      "symbols": [
+        {
+          "name": "lexical_signals",
+          "line": 5,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/retrieval/sufficiency.py",
+      "sha256": "bd029350bb6b2744845776fb0aed0e93441cab38d7be170edd01326734986f50",
+      "lines": 12,
+      "symbols": [
+        {
+          "name": "assess",
+          "line": 1,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/schemas/__init__.py",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "lines": 1,
+      "symbols": []
+    },
+    {
+      "path": "src/financial_filing_agent/schemas/evidence.py",
+      "sha256": "adf5b0ce7435c09800aa8bed59907135ed17c89b648bbcd65e71476939e3fd34",
+      "lines": 43,
+      "symbols": [
+        {
+          "name": "Record",
+          "line": 4,
+          "kind": "class"
+        },
+        {
+          "name": "Fact",
+          "line": 8,
+          "kind": "class"
+        },
+        {
+          "name": "EvidenceRow",
+          "line": 25,
+          "kind": "class"
+        },
+        {
+          "name": "Filing",
+          "line": 39,
+          "kind": "class"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/schemas/results.py",
+      "sha256": "581fd2fcf03670f9eeff0ff9f6d193ded361aef06e285b2c72ede100ac0c5c09",
+      "lines": 84,
+      "symbols": [
+        {
+          "name": "VerificationFinding",
+          "line": 6,
+          "kind": "class"
+        },
+        {
+          "name": "VerificationFinding.grounded_observation",
+          "line": 14,
+          "kind": "function"
+        },
+        {
+          "name": "VerificationCheck",
+          "line": 22,
+          "kind": "class"
+        },
+        {
+          "name": "Verification",
+          "line": 26,
+          "kind": "class"
+        },
+        {
+          "name": "Verification.aggregate_check_observations",
+          "line": 37,
+          "kind": "function"
+        },
+        {
+          "name": "Verification.consistent",
+          "line": 53,
+          "kind": "function"
+        },
+        {
+          "name": "Correction",
+          "line": 63,
+          "kind": "class"
+        },
+        {
+          "name": "Correction.consistent",
+          "line": 70,
+          "kind": "function"
+        },
+        {
+          "name": "Calculation",
+          "line": 76,
+          "kind": "class"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/schemas/state.py",
+      "sha256": "f24b6922b3e3e39853d9a6b3f76b57c5387c5c0dfbf63a7884dd802b1a908216",
+      "lines": 45,
+      "symbols": [
+        {
+          "name": "RunState",
+          "line": 4,
+          "kind": "class"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/schemas/task.py",
+      "sha256": "f1f7b96e47fbb1f2aa98c75fb71286d07c659712d7a1e751fdb9766f29660ec8",
+      "lines": 38,
+      "symbols": [
+        {
+          "name": "TaskPlan",
+          "line": 7,
+          "kind": "class"
+        },
+        {
+          "name": "TaskPlan.allowlisted",
+          "line": 19,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/services/__init__.py",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "lines": 1,
+      "symbols": []
+    },
+    {
+      "path": "src/financial_filing_agent/services/audit.py",
+      "sha256": "a71620e7e4dc06e7169198c859d8974cbf5bfd5b89794cf809108a4eb74f05d9",
+      "lines": 35,
+      "symbols": [
+        {
+          "name": "Audit",
+          "line": 7,
+          "kind": "class"
+        },
+        {
+          "name": "Audit.__init__",
+          "line": 8,
+          "kind": "function"
+        },
+        {
+          "name": "Audit.event",
+          "line": 14,
+          "kind": "function"
+        },
+        {
+          "name": "Audit.save",
+          "line": 18,
+          "kind": "function"
+        },
+        {
+          "name": "Audit.save.payload",
+          "line": 20,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/services/cache.py",
+      "sha256": "8db18b083cd416c17b32fcf2346c47fb1b33e5586ea53c80e7316366b5b99ce9",
+      "lines": 35,
+      "symbols": [
+        {
+          "name": "digest",
+          "line": 9,
+          "kind": "function"
+        },
+        {
+          "name": "atomic_json",
+          "line": 13,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/services/pipeline.py",
+      "sha256": "98f27ff4bdff4e7bc2eeb0cd02f37c3161286798987067263b6fcdf6908bb958",
+      "lines": 474,
+      "symbols": [
+        {
+          "name": "Pipeline",
+          "line": 38,
+          "kind": "class"
+        },
+        {
+          "name": "Pipeline.__init__",
+          "line": 40,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.notify",
+          "line": 49,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.audit_failure",
+          "line": 63,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.rows",
+          "line": 69,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.recover_route",
+          "line": 72,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.validate_request",
+          "line": 77,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.load",
+          "line": 82,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.plan",
+          "line": 88,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.evidence",
+          "line": 100,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.check_inputs",
+          "line": 119,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.retrieve",
+          "line": 144,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.sufficiency",
+          "line": 156,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.expand",
+          "line": 179,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.model_payload",
+          "line": 190,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.decoder_evidence",
+          "line": 204,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.verification",
+          "line": 213,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.guarding",
+          "line": 248,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.correction",
+          "line": 268,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.next_component",
+          "line": 334,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.calculation",
+          "line": 338,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.finish",
+          "line": 358,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.wrapped",
+          "line": 364,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.wrapped.invoke",
+          "line": 365,
+          "kind": "function"
+        },
+        {
+          "name": "Pipeline.run",
+          "line": 392,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/services/progress.py",
+      "sha256": "a6e51beae7eea7294e1f3e6bdc59b5b72b685b0a1564d0156d05c325347914c2",
+      "lines": 50,
+      "symbols": [
+        {
+          "name": "summary",
+          "line": 20,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/tools/__init__.py",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "lines": 1,
+      "symbols": []
+    },
+    {
+      "path": "src/financial_filing_agent/tools/calculator.py",
+      "sha256": "8379530285c72b059ce0d9b1e20f2524cd4d4ac035f5d41d91c4bba8e09c7c3e",
+      "lines": 52,
+      "symbols": [
+        {
+          "name": "calculate",
+          "line": 7,
+          "kind": "function"
+        },
+        {
+          "name": "calculate.divide",
+          "line": 19,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/tools/concept_validation.py",
+      "sha256": "68c2be39a9a50fd7272a30e092ba5281ef688bb64ac8da6fe80e7a51c75de2d3",
+      "lines": 46,
+      "symbols": [
+        {
+          "name": "assess_concept",
+          "line": 8,
+          "kind": "function"
+        },
+        {
+          "name": "gross_profit_identity",
+          "line": 23,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/tools/evidence_builder.py",
+      "sha256": "ebf8b68125bce91fb0523bc5bdf400cdec059718fccbc1e45e38780425afaa9a",
+      "lines": 19,
+      "symbols": [
+        {
+          "name": "retrieval_text",
+          "line": 5,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/tools/filing_loader.py",
+      "sha256": "907bdd499b6bc1ae97d53d6ae72f7bf509595e7bf03a6961a292c562e07f2552",
+      "lines": 58,
+      "symbols": [
+        {
+          "name": "load_filing",
+          "line": 8,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/tools/filing_parser.py",
+      "sha256": "d4176df1a1b8d1f8e9f2e1cca015bdc1fb8fabfd16181eb3b67b4d9b316e3221",
+      "lines": 137,
+      "symbols": [
+        {
+          "name": "statement_type",
+          "line": 11,
+          "kind": "function"
+        },
+        {
+          "name": "grid",
+          "line": 28,
+          "kind": "function"
+        },
+        {
+          "name": "parse_filing",
+          "line": 50,
+          "kind": "function"
+        },
+        {
+          "name": "label_is_financial",
+          "line": 135,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/tools/html.py",
+      "sha256": "efcbdca2e13cb592becd8738ba1c1912dddf0460391feca9b2126d27087fdce9",
+      "lines": 10,
+      "symbols": [
+        {
+          "name": "parse_html",
+          "line": 5,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/tools/input_inventory.py",
+      "sha256": "05262ad9be84ab68660b550670fd04bd4fe0440b0d39c280b562a4bffc7315fb",
+      "lines": 21,
+      "symbols": [
+        {
+          "name": "inventory",
+          "line": 6,
+          "kind": "function"
+        },
+        {
+          "name": "missing_periods",
+          "line": 20,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/tools/numeric_parser.py",
+      "sha256": "e9c57fda7e705e3ef639695c6f12baf6c2a101e3378e5e28f852e54f7d2c8d4c",
+      "lines": 16,
+      "symbols": [
+        {
+          "name": "number",
+          "line": 4,
+          "kind": "function"
+        },
+        {
+          "name": "normalize",
+          "line": 15,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/tools/sec_client.py",
+      "sha256": "a510fbd43e1a9a19bed341f739136a36367e2ff7ae13227e8b71347e1f19544e",
+      "lines": 61,
+      "symbols": [
+        {
+          "name": "SECClient",
+          "line": 7,
+          "kind": "class"
+        },
+        {
+          "name": "SECClient.__init__",
+          "line": 8,
+          "kind": "function"
+        },
+        {
+          "name": "SECClient.get",
+          "line": 13,
+          "kind": "function"
+        },
+        {
+          "name": "SECClient.resolve",
+          "line": 33,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/tools/supporting_filing.py",
+      "sha256": "e1fd9e286cc6e7f5f94bf6bf001556f2737e2d3354167b509e70143e9db4b35e",
+      "lines": 44,
+      "symbols": [
+        {
+          "name": "same_entity",
+          "line": 9,
+          "kind": "function"
+        },
+        {
+          "name": "find_complete_filing",
+          "line": 15,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/tools/validation.py",
+      "sha256": "a89a28f02f17da772374487c76741617b5511c23362231bfd7c58ac9775f7994",
+      "lines": 58,
+      "symbols": [
+        {
+          "name": "EvidenceError",
+          "line": 6,
+          "kind": "class"
+        },
+        {
+          "name": "guard",
+          "line": 10,
+          "kind": "function"
+        },
+        {
+          "name": "compatible_inputs",
+          "line": 28,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/tools/xbrl.py",
+      "sha256": "9c8c924040de479b58b71e8e26b9d0a1c018ffdb5bfba2fc2525ae65748cdc40",
+      "lines": 45,
+      "symbols": [
+        {
+          "name": "local",
+          "line": 5,
+          "kind": "function"
+        },
+        {
+          "name": "extract_contexts",
+          "line": 9,
+          "kind": "function"
+        },
+        {
+          "name": "inline_fact",
+          "line": 25,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/ui/__init__.py",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "lines": 1,
+      "symbols": []
+    },
+    {
+      "path": "src/financial_filing_agent/ui/components.py",
+      "sha256": "18a003b66640d7fd4377af2eb4af27117f15935c17a343d946fcf6d800709d86",
+      "lines": 63,
+      "symbols": [
+        {
+          "name": "show_result",
+          "line": 5,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "src/financial_filing_agent/ui/streamlit_app.py",
+      "sha256": "1a39b2ca17873ca2e9a85e30e05ff867f3243ba7ab204755361822752f15402b",
+      "lines": 101,
+      "symbols": [
+        {
+          "name": "main",
+          "line": 12,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "app.py",
+      "sha256": "3a2f14071628aaad8241e4cc28972a1c37246c50b0d2c01fb928d73d62b802ca",
+      "lines": 3,
+      "symbols": []
+    },
+    {
+      "path": "evaluation/__init__.py",
+      "sha256": "02b7dde313dfa289b7d89374b96bcda5986a893734a96f1cf1aac6dd17387a7f",
+      "lines": 1,
+      "symbols": []
+    },
+    {
+      "path": "evaluation/doubles.py",
+      "sha256": "323e573c31d8db4f9c4cba0f08c102f94ce43afcdb30d9d68820b2bece57a69f",
+      "lines": 51,
+      "symbols": [
+        {
+          "name": "task",
+          "line": 8,
+          "kind": "function"
+        },
+        {
+          "name": "ScriptedDecoder",
+          "line": 16,
+          "kind": "class"
+        },
+        {
+          "name": "ScriptedDecoder.__init__",
+          "line": 18,
+          "kind": "function"
+        },
+        {
+          "name": "ScriptedDecoder.complete",
+          "line": 21,
+          "kind": "function"
+        },
+        {
+          "name": "DemoRetriever",
+          "line": 38,
+          "kind": "class"
+        },
+        {
+          "name": "DemoRetriever.__init__",
+          "line": 39,
+          "kind": "function"
+        },
+        {
+          "name": "DemoRetriever.rank",
+          "line": 42,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "evaluation/fixtures.py",
+      "sha256": "f98e20edcc692d6dfbab8326e68c76c8c1ab39c6cfe25180d0c6f6f35e5294dd",
+      "lines": 9,
+      "symbols": []
+    },
+    {
+      "path": "evaluation/live_demo.py",
+      "sha256": "893668f43ccb9dc17eae59685b3bc2005d5f898e2184a6fca96ff183966ff0de",
+      "lines": 44,
+      "symbols": [
+        {
+          "name": "NotebookStressRetriever",
+          "line": 12,
+          "kind": "class"
+        },
+        {
+          "name": "NotebookStressRetriever.__init__",
+          "line": 13,
+          "kind": "function"
+        },
+        {
+          "name": "NotebookStressRetriever.rank",
+          "line": 18,
+          "kind": "function"
+        },
+        {
+          "name": "main",
+          "line": 23,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "evaluation/metrics.py",
+      "sha256": "a84adb4fb14f4f147c2b2005b781312e895cb75e6a0dde8d7b3f529c9806aae7",
+      "lines": 9,
+      "symbols": [
+        {
+          "name": "evaluate",
+          "line": 1,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "evaluation/review_double.py",
+      "sha256": "b40a4f9a4ba4550575b0a01ccb28628f64cb28c37e263a419cc7cf27b89d5a56",
+      "lines": 21,
+      "symbols": [
+        {
+          "name": "review_checks",
+          "line": 5,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "evaluation/runner.py",
+      "sha256": "6a55408ab5356882196b21608f079fe62cc285f851e35787b00c8d301f31882b",
+      "lines": 24,
+      "symbols": [
+        {
+          "name": "main",
+          "line": 9,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "tests/__init__.py",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6",
+      "lines": 1,
+      "symbols": []
+    },
+    {
+      "path": "tests/test_application.py",
+      "sha256": "57861b1be80aba8e3f6af903dca9e2f38328004d44b55634fecdb865e4bb48eb",
+      "lines": 227,
+      "symbols": [
+        {
+          "name": "run",
+          "line": 28,
+          "kind": "function"
+        },
+        {
+          "name": "test_graph_demonstrations",
+          "line": 35,
+          "kind": "function"
+        },
+        {
+          "name": "test_no_gold_in_runtime",
+          "line": 56,
+          "kind": "function"
+        },
+        {
+          "name": "RefusesCorrection",
+          "line": 63,
+          "kind": "class"
+        },
+        {
+          "name": "RefusesCorrection.complete",
+          "line": 64,
+          "kind": "function"
+        },
+        {
+          "name": "test_rejected_baseline_never_restored",
+          "line": 71,
+          "kind": "function"
+        },
+        {
+          "name": "test_correction_budget_zero",
+          "line": 78,
+          "kind": "function"
+        },
+        {
+          "name": "test_guard_failure_blocks_calculation",
+          "line": 84,
+          "kind": "function"
+        },
+        {
+          "name": "test_missing_period_abstains",
+          "line": 94,
+          "kind": "function"
+        },
+        {
+          "name": "test_numeric_cells",
+          "line": 103,
+          "kind": "function"
+        },
+        {
+          "name": "test_parser_provenance_equal_values",
+          "line": 107,
+          "kind": "function"
+        },
+        {
+          "name": "apple_rows",
+          "line": 118,
+          "kind": "function"
+        },
+        {
+          "name": "test_apple_development_calculation_regression",
+          "line": 125,
+          "kind": "function"
+        },
+        {
+          "name": "test_registered_formulas",
+          "line": 138,
+          "kind": "function"
+        },
+        {
+          "name": "test_zero_denominator_and_mixed_units",
+          "line": 148,
+          "kind": "function"
+        },
+        {
+          "name": "test_planner_nonanswer",
+          "line": 162,
+          "kind": "function"
+        },
+        {
+          "name": "test_planner_nonanswer.Decoder",
+          "line": 163,
+          "kind": "class"
+        },
+        {
+          "name": "test_planner_nonanswer.Decoder.complete",
+          "line": 164,
+          "kind": "function"
+        },
+        {
+          "name": "test_planner_cannot_invent_periods",
+          "line": 171,
+          "kind": "function"
+        },
+        {
+          "name": "test_contract_rejects_unknown_formula",
+          "line": 176,
+          "kind": "function"
+        },
+        {
+          "name": "test_corrector_rejects_hallucinated_id",
+          "line": 183,
+          "kind": "function"
+        },
+        {
+          "name": "test_corrector_rejects_hallucinated_id.Decoder",
+          "line": 184,
+          "kind": "class"
+        },
+        {
+          "name": "test_corrector_rejects_hallucinated_id.Decoder.complete",
+          "line": 185,
+          "kind": "function"
+        },
+        {
+          "name": "test_ollama_unavailable_is_operational_error",
+          "line": 191,
+          "kind": "function"
+        },
+        {
+          "name": "test_ollama_unavailable_is_operational_error.fail",
+          "line": 193,
+          "kind": "function"
+        },
+        {
+          "name": "test_malformed_output_is_operational_error",
+          "line": 202,
+          "kind": "function"
+        },
+        {
+          "name": "test_malformed_output_is_operational_error.Response",
+          "line": 203,
+          "kind": "class"
+        },
+        {
+          "name": "test_malformed_output_is_operational_error.Response.raise_for_status",
+          "line": 204,
+          "kind": "function"
+        },
+        {
+          "name": "test_malformed_output_is_operational_error.Response.json",
+          "line": 206,
+          "kind": "function"
+        },
+        {
+          "name": "test_load_error_is_not_insufficient",
+          "line": 213,
+          "kind": "function"
+        },
+        {
+          "name": "test_fresh_process_cli",
+          "line": 218,
+          "kind": "function"
+        },
+        {
+          "name": "test_fresh_process_demo",
+          "line": 224,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_converted_filing.py",
+      "sha256": "8f9f3c035ba0bc6fd8044b020e74fdd1a7f6a7cde4bc7e8080dc4af1c2cab789",
+      "lines": 90,
+      "symbols": [
+        {
+          "name": "parsed",
+          "line": 18,
+          "kind": "function"
+        },
+        {
+          "name": "test_converted_revenue_has_supported_monetary_basis",
+          "line": 23,
+          "kind": "function"
+        },
+        {
+          "name": "test_user_question_succeeds_with_cold_and_warm_cache",
+          "line": 34,
+          "kind": "function"
+        },
+        {
+          "name": "test_unknown_currency_cannot_cross_source_bases",
+          "line": 46,
+          "kind": "function"
+        },
+        {
+          "name": "test_currency_cancellation_is_explicitly_limited_to_dimensionless_results",
+          "line": 56,
+          "kind": "function"
+        },
+        {
+          "name": "test_unknown_currency_cannot_mix_with_identified_currency",
+          "line": 64,
+          "kind": "function"
+        },
+        {
+          "name": "test_dollar_sign_does_not_mean_usd",
+          "line": 72,
+          "kind": "function"
+        },
+        {
+          "name": "test_guard_failures_do_not_reverify_same_unchanged_row",
+          "line": 83,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_finbert.py",
+      "sha256": "f3ec8b59eb1b8e2dec464afc49b952cf421826d4780ee4de0db8a96b836687fc",
+      "lines": 65,
+      "symbols": [
+        {
+          "name": "test_embedding_cache_reuses_rows",
+          "line": 9,
+          "kind": "function"
+        },
+        {
+          "name": "test_embedding_cache_reuses_rows.Encoder",
+          "line": 10,
+          "kind": "class"
+        },
+        {
+          "name": "test_embedding_cache_reuses_rows.Encoder.__init__",
+          "line": 12,
+          "kind": "function"
+        },
+        {
+          "name": "test_embedding_cache_reuses_rows.Encoder.encode",
+          "line": 14,
+          "kind": "function"
+        },
+        {
+          "name": "test_real_finbert_cpu_pooling_parity",
+          "line": 30,
+          "kind": "function"
+        },
+        {
+          "name": "test_cuda_when_available",
+          "line": 56,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_metric_workflow.py",
+      "sha256": "4ad6fac1b133c88bbe82bcb6dd791d2dfee3bb898afae07c0e4d5facd6d6b5a7",
+      "lines": 117,
+      "symbols": [
+        {
+          "name": "RoleDecoder",
+          "line": 12,
+          "kind": "class"
+        },
+        {
+          "name": "RoleDecoder.__init__",
+          "line": 14,
+          "kind": "function"
+        },
+        {
+          "name": "RoleDecoder.complete",
+          "line": 16,
+          "kind": "function"
+        },
+        {
+          "name": "ConceptRetriever",
+          "line": 29,
+          "kind": "class"
+        },
+        {
+          "name": "ConceptRetriever.rank",
+          "line": 30,
+          "kind": "function"
+        },
+        {
+          "name": "execute",
+          "line": 41,
+          "kind": "function"
+        },
+        {
+          "name": "test_all_components_verified_before_single_deterministic_calculation",
+          "line": 48,
+          "kind": "function"
+        },
+        {
+          "name": "test_2026_filing_missing_2024_balances_stops_before_models",
+          "line": 66,
+          "kind": "function"
+        },
+        {
+          "name": "test_explicit_supporting_filing_supplies_complete_inputs_with_provenance",
+          "line": 77,
+          "kind": "function"
+        },
+        {
+          "name": "test_menu_plan_has_fixed_formula_dependencies_and_tool",
+          "line": 87,
+          "kind": "function"
+        },
+        {
+          "name": "test_opted_in_cache_search_finds_complete_same_company_source",
+          "line": 96,
+          "kind": "function"
+        },
+        {
+          "name": "test_supporting_filing_from_another_company_is_not_used",
+          "line": 106,
+          "kind": "function"
+        },
+        {
+          "name": "test_sufficiency_cannot_borrow_periods_from_a_different_candidate",
+          "line": 114,
+          "kind": "function"
+        },
+        {
+          "name": "test_sufficiency_cannot_borrow_periods_from_a_different_candidate.row",
+          "line": 115,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_qwen_modes.py",
+      "sha256": "a7abf2749426031f4978b4a2e9e0d34071f29cd1e97729ce619982920ff969db",
+      "lines": 91,
+      "symbols": [
+        {
+          "name": "Decoder",
+          "line": 16,
+          "kind": "class"
+        },
+        {
+          "name": "Decoder.__init__",
+          "line": 18,
+          "kind": "function"
+        },
+        {
+          "name": "Decoder.complete",
+          "line": 21,
+          "kind": "function"
+        },
+        {
+          "name": "execute",
+          "line": 33,
+          "kind": "function"
+        },
+        {
+          "name": "test_monetary_gross_margin_is_gross_profit_in_both_modes",
+          "line": 41,
+          "kind": "function"
+        },
+        {
+          "name": "test_off_without_menu_does_not_call_planner",
+          "line": 57,
+          "kind": "function"
+        },
+        {
+          "name": "test_percentage_row_cannot_be_used_as_gross_profit",
+          "line": 65,
+          "kind": "function"
+        },
+        {
+          "name": "test_mismatch_cannot_be_certified",
+          "line": 77,
+          "kind": "function"
+        },
+        {
+          "name": "test_off_still_requires_missing_periods_and_all_components",
+          "line": 85,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_runtime_reliability.py",
+      "sha256": "0bb215b9f4aa6b99790f0a37afa65c525ee85b24cb57adc4aacfae44f46b009d",
+      "lines": 136,
+      "symbols": [
+        {
+          "name": "pipeline",
+          "line": 12,
+          "kind": "function"
+        },
+        {
+          "name": "test_transient_windows_replace_error_retries_and_preserves_utf8",
+          "line": 16,
+          "kind": "function"
+        },
+        {
+          "name": "test_transient_windows_replace_error_retries_and_preserves_utf8.replace",
+          "line": 20,
+          "kind": "function"
+        },
+        {
+          "name": "test_locked_canonical_audit_uses_full_recovery_snapshot",
+          "line": 34,
+          "kind": "function"
+        },
+        {
+          "name": "test_locked_canonical_audit_uses_full_recovery_snapshot.replace",
+          "line": 37,
+          "kind": "function"
+        },
+        {
+          "name": "test_all_audit_paths_denied_returns_error_without_masking",
+          "line": 55,
+          "kind": "function"
+        },
+        {
+          "name": "test_all_audit_paths_denied_returns_error_without_masking.denied",
+          "line": 57,
+          "kind": "function"
+        },
+        {
+          "name": "test_graph_failure_uses_memory_and_never_decodes_audit_with_locale",
+          "line": 69,
+          "kind": "function"
+        },
+        {
+          "name": "test_graph_failure_uses_memory_and_never_decodes_audit_with_locale.BrokenGraph",
+          "line": 72,
+          "kind": "class"
+        },
+        {
+          "name": "test_graph_failure_uses_memory_and_never_decodes_audit_with_locale.BrokenGraph.invoke",
+          "line": 73,
+          "kind": "function"
+        },
+        {
+          "name": "test_graph_failure_uses_memory_and_never_decodes_audit_with_locale.read",
+          "line": 78,
+          "kind": "function"
+        },
+        {
+          "name": "test_audit_directory_denied_is_typed_error",
+          "line": 88,
+          "kind": "function"
+        },
+        {
+          "name": "test_audit_directory_denied_is_typed_error.denied",
+          "line": 90,
+          "kind": "function"
+        },
+        {
+          "name": "test_progress_start_precedes_work_and_completion_contains_observable_results",
+          "line": 98,
+          "kind": "function"
+        },
+        {
+          "name": "test_actual_windows_read_handle_blocks_replace_but_run_saves_recovery",
+          "line": 111,
+          "kind": "function"
+        },
+        {
+          "name": "test_actual_windows_read_handle_blocks_replace_but_run_saves_recovery.lock",
+          "line": 122,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_sources.py",
+      "sha256": "c12a90865ef18fb3963abab9ba10f5a252828d0f4e77b00bc58be3891aa6c7f0",
+      "lines": 81,
+      "symbols": [
+        {
+          "name": "test_sec_identity_and_retry_budget",
+          "line": 11,
+          "kind": "function"
+        },
+        {
+          "name": "test_sec_identity_and_retry_budget.fail",
+          "line": 16,
+          "kind": "function"
+        },
+        {
+          "name": "test_ticker_accession_lookup_and_content_cache",
+          "line": 27,
+          "kind": "function"
+        },
+        {
+          "name": "test_ticker_accession_lookup_and_content_cache.get",
+          "line": 30,
+          "kind": "function"
+        },
+        {
+          "name": "test_non_sec_host_is_rejected",
+          "line": 48,
+          "kind": "function"
+        },
+        {
+          "name": "test_single_period_header_and_reordered_columns",
+          "line": 54,
+          "kind": "function"
+        },
+        {
+          "name": "test_inline_xbrl_contexts_scale_and_dimensions",
+          "line": 67,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_ui.py",
+      "sha256": "b66f194cd918c6570530bb3bf836134edb6200ab7018dadbf097928515fb3599",
+      "lines": 94,
+      "symbols": [
+        {
+          "name": "test_streamlit_form_and_answer",
+          "line": 10,
+          "kind": "function"
+        },
+        {
+          "name": "test_streamlit_form_and_answer.run",
+          "line": 12,
+          "kind": "function"
+        },
+        {
+          "name": "test_streamlit_audit_failure_displays_error_without_traceback",
+          "line": 30,
+          "kind": "function"
+        },
+        {
+          "name": "test_streamlit_audit_failure_displays_error_without_traceback.run",
+          "line": 33,
+          "kind": "function"
+        },
+        {
+          "name": "test_streamlit_audit_failure_displays_error_without_traceback.denied",
+          "line": 36,
+          "kind": "function"
+        },
+        {
+          "name": "test_metric_menu_runs_both_ratio_components_without_planner",
+          "line": 49,
+          "kind": "function"
+        },
+        {
+          "name": "test_metric_menu_runs_both_ratio_components_without_planner.run",
+          "line": 54,
+          "kind": "function"
+        },
+        {
+          "name": "test_qwen_toggle_off_uses_rules_and_no_ollama_calls",
+          "line": 72,
+          "kind": "function"
+        },
+        {
+          "name": "test_qwen_toggle_off_uses_rules_and_no_ollama_calls.run",
+          "line": 77,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_verifier_contract.py",
+      "sha256": "49427f2b381c25bb93d8e5e64d794fdb80acf1f4a3ecfcbcc295fdc7076523f1",
+      "lines": 186,
+      "symbols": [
+        {
+          "name": "payload",
+          "line": 13,
+          "kind": "function"
+        },
+        {
+          "name": "good",
+          "line": 23,
+          "kind": "function"
+        },
+        {
+          "name": "invented_requirement",
+          "line": 28,
+          "kind": "function"
+        },
+        {
+          "name": "ConfusedDecoder",
+          "line": 37,
+          "kind": "class"
+        },
+        {
+          "name": "ConfusedDecoder.__init__",
+          "line": 39,
+          "kind": "function"
+        },
+        {
+          "name": "ConfusedDecoder.complete",
+          "line": 41,
+          "kind": "function"
+        },
+        {
+          "name": "test_contract_is_explicit_and_does_not_require_other_formula_components",
+          "line": 49,
+          "kind": "function"
+        },
+        {
+          "name": "test_unavailable_optional_certificate_is_omitted_and_one_repair_is_bounded",
+          "line": 56,
+          "kind": "function"
+        },
+        {
+          "name": "test_persistent_invented_requirement_is_contract_error_not_missing_evidence",
+          "line": 69,
+          "kind": "function"
+        },
+        {
+          "name": "test_invented_verifier_requirements_cannot_trigger_retrieval_expansion",
+          "line": 76,
+          "kind": "function"
+        },
+        {
+          "name": "test_repaired_rd_review_completes_without_recovery",
+          "line": 86,
+          "kind": "function"
+        },
+        {
+          "name": "test_no_source_grounded_finding_is_not_a_valid_negative_verdict",
+          "line": 95,
+          "kind": "function"
+        },
+        {
+          "name": "test_resolved_alias_cannot_be_rejected_by_literal_name",
+          "line": 100,
+          "kind": "function"
+        },
+        {
+          "name": "test_resolved_alias_cannot_be_rejected_by_literal_name.Decoder",
+          "line": 101,
+          "kind": "class"
+        },
+        {
+          "name": "test_resolved_alias_cannot_be_rejected_by_literal_name.Decoder.complete",
+          "line": 103,
+          "kind": "function"
+        },
+        {
+          "name": "test_quote_must_come_from_proposed_source_not_an_alternative",
+          "line": 112,
+          "kind": "function"
+        },
+        {
+          "name": "test_quote_must_come_from_proposed_source_not_an_alternative.Decoder",
+          "line": 113,
+          "kind": "class"
+        },
+        {
+          "name": "test_quote_must_come_from_proposed_source_not_an_alternative.Decoder.complete",
+          "line": 115,
+          "kind": "function"
+        },
+        {
+          "name": "test_recovery_must_respect_expansion_flag",
+          "line": 124,
+          "kind": "function"
+        },
+        {
+          "name": "test_recovery_must_respect_expansion_flag.Decoder",
+          "line": 125,
+          "kind": "class"
+        },
+        {
+          "name": "test_recovery_must_respect_expansion_flag.Decoder.complete",
+          "line": 126,
+          "kind": "function"
+        },
+        {
+          "name": "test_actual_missing_context_can_be_uncertain_without_inventing_requirements",
+          "line": 132,
+          "kind": "function"
+        },
+        {
+          "name": "test_actual_missing_context_can_be_uncertain_without_inventing_requirements.Decoder",
+          "line": 133,
+          "kind": "class"
+        },
+        {
+          "name": "test_actual_missing_context_can_be_uncertain_without_inventing_requirements.Decoder.complete",
+          "line": 135,
+          "kind": "function"
+        },
+        {
+          "name": "test_pass_requires_per_check_evidence_not_only_a_reason",
+          "line": 147,
+          "kind": "function"
+        },
+        {
+          "name": "test_pass_requires_per_check_evidence_not_only_a_reason.Decoder",
+          "line": 150,
+          "kind": "class"
+        },
+        {
+          "name": "test_pass_requires_per_check_evidence_not_only_a_reason.Decoder.complete",
+          "line": 152,
+          "kind": "function"
+        },
+        {
+          "name": "test_scope_pass_requires_an_explicit_consolidated_source_observation",
+          "line": 159,
+          "kind": "function"
+        },
+        {
+          "name": "test_scope_pass_requires_an_explicit_consolidated_source_observation.Decoder",
+          "line": 160,
+          "kind": "class"
+        },
+        {
+          "name": "test_scope_pass_requires_an_explicit_consolidated_source_observation.Decoder.complete",
+          "line": 162,
+          "kind": "function"
+        },
+        {
+          "name": "test_recovery_cannot_expand_for_an_invented_certificate_even_with_budget",
+          "line": 170,
+          "kind": "function"
+        },
+        {
+          "name": "test_recovery_cannot_expand_for_an_invented_certificate_even_with_budget.Decoder",
+          "line": 171,
+          "kind": "class"
+        },
+        {
+          "name": "test_recovery_cannot_expand_for_an_invented_certificate_even_with_budget.Decoder.complete",
+          "line": 172,
+          "kind": "function"
+        },
+        {
+          "name": "test_python_aggregates_findings_and_verdict_from_grounded_check_observations",
+          "line": 178,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "scripts/freeze_development.py",
+      "sha256": "d3a1b8890a28dbae6743859f19f0ae508399b3ec890d07890232cb3da51ef4be",
+      "lines": 23,
+      "symbols": []
+    }
+  ]
+}

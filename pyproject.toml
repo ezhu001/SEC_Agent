@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "financial-filing-agent"
+version = "0.1.0"
+description = "Auditable local agent workflow for SEC financial statement evidence"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "pydantic>=2.10,<3", "pydantic-settings>=2.7,<3", "langgraph>=1,<2",
+  "streamlit>=1.40,<2", "requests>=2.32,<3", "beautifulsoup4>=4.12,<5",
+  "lxml>=5,<7", "numpy>=1.26,<3", "torch>=2.2,<3", "transformers>=4.46,<5",
+  "pandas>=2.2,<4", "python-dateutil>=2.9,<5"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+
+[project.scripts]
+filing-agent = "financial_filing_agent.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
+testpaths = ["tests"]
+markers = ["live: requires downloaded FinBERT and/or running Ollama"]

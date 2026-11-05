@@ -1,0 +1,212 @@
+{
+  "root": "C:\\Users\\13466\\SEC_Agent",
+  "total_bytes": 10034459967,
+  "total_files": 118615,
+  "top_level": [
+    {
+      "path": ".uv_cache",
+      "bytes": 6739843133,
+      "files": 37192
+    },
+    {
+      "path": ".venv-check",
+      "bytes": 1203429341,
+      "files": 38419
+    },
+    {
+      "path": ".venv",
+      "bytes": 1203395895,
+      "files": 38407
+    },
+    {
+      "path": "artifacts",
+      "bytes": 883127156,
+      "files": 4426
+    },
+    {
+      "path": "evaluation",
+      "bytes": 3464634,
+      "files": 18
+    },
+    {
+      "path": "reports",
+      "bytes": 431397,
+      "files": 6
+    },
+    {
+      "path": "src",
+      "bytes": 366553,
+      "files": 105
+    },
+    {
+      "path": "tests",
+      "bytes": 307952,
+      "files": 20
+    },
+    {
+      "path": "[root files]",
+      "bytes": 80946,
+      "files": 14
+    },
+    {
+      "path": ".pytest_cache",
+      "bytes": 8516,
+      "files": 5
+    },
+    {
+      "path": "scripts",
+      "bytes": 3520,
+      "files": 2
+    },
+    {
+      "path": "config",
+      "bytes": 924,
+      "files": 1
+    }
+  ],
+  "largest_files": [
+    {
+      "bytes": 1311574016,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\torch_cuda.dll"
+    },
+    {
+      "bytes": 708668648,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\dnnl.lib"
+    },
+    {
+      "bytes": 692441600,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\cublasLt64_12.dll"
+    },
+    {
+      "bytes": 528766000,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\cudnn_engines_precompiled64_9.dll"
+    },
+    {
+      "bytes": 385082880,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\cusparse64_12.dll"
+    },
+    {
+      "bytes": 326072352,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\cudnn_adv64_9.dll"
+    },
+    {
+      "bytes": 309509120,
+      "path": ".venv\\Lib\\site-packages\\torch\\lib\\torch_cpu.dll"
+    },
+    {
+      "bytes": 309509120,
+      "path": ".venv-check\\Lib\\site-packages\\torch\\lib\\torch_cpu.dll"
+    },
+    {
+      "bytes": 309509120,
+      "path": ".uv_cache\\archive-v0\\aQHPErCV22m_xGMA\\torch\\lib\\torch_cpu.dll"
+    },
+    {
+      "bytes": 276121088,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\cufft64_11.dll"
+    },
+    {
+      "bytes": 252323840,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\torch_cpu.dll"
+    },
+    {
+      "bytes": 220286976,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\cusolver64_11.dll"
+    },
+    {
+      "bytes": 151604736,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\cusolverMg64_11.dll"
+    },
+    {
+      "bytes": 116958752,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\cudnn_ops64_9.dll"
+    },
+    {
+      "bytes": 113712640,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\cublas64_12.dll"
+    },
+    {
+      "bytes": 86768640,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\nvrtc64_120_0.alt.dll"
+    },
+    {
+      "bytes": 86702592,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\nvrtc64_120_0.dll"
+    },
+    {
+      "bytes": 77834752,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\nvJitLink_120_0.dll"
+    },
+    {
+      "bytes": 71955456,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\curand64_10.dll"
+    },
+    {
+      "bytes": 60222000,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\cudnn_heuristic64_9.dll"
+    },
+    {
+      "bytes": 39641000,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\libprotoc.lib"
+    },
+    {
+      "bytes": 37792598,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\libprotobuf.lib"
+    },
+    {
+      "bytes": 36119848,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\kineto.lib"
+    },
+    {
+      "bytes": 29194968,
+      "path": ".venv\\Lib\\site-packages\\torch\\lib\\torch_cpu.lib"
+    },
+    {
+      "bytes": 29194968,
+      "path": ".venv-check\\Lib\\site-packages\\torch\\lib\\torch_cpu.lib"
+    },
+    {
+      "bytes": 29194968,
+      "path": ".uv_cache\\archive-v0\\aQHPErCV22m_xGMA\\torch\\lib\\torch_cpu.lib"
+    },
+    {
+      "bytes": 28818206,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\torch_cpu.lib"
+    },
+    {
+      "bytes": 24718368,
+      "path": ".uv_cache\\archive-v0\\BoOFwxQwSa56YugB\\torch\\lib\\cudnn_engines_runtime_compiled64_9.dll"
+    },
+    {
+      "bytes": 20415488,
+      "path": ".venv\\Lib\\site-packages\\numpy.libs\\libscipy_openblas64_-63c857e738469261263c764a36be9436.dll"
+    },
+    {
+      "bytes": 20415488,
+      "path": ".venv-check\\Lib\\site-packages\\numpy.libs\\libscipy_openblas64_-63c857e738469261263c764a36be9436.dll"
+    },
+    {
+      "bytes": 20415488,
+      "path": ".uv_cache\\archive-v0\\CibRstEaRc5T9KGy\\numpy.libs\\libscipy_openblas64_-63c857e738469261263c764a36be9436.dll"
+    },
+    {
+      "bytes": 20233216,
+      "path": ".venv\\Lib\\site-packages\\torch\\lib\\torch_python.dll"
+    },
+    {
+      "bytes": 20233216,
+      "path": ".venv-check\\Lib\\site-packages\\torch\\lib\\torch_python.dll"
+    },
+    {
+      "bytes": 20233216,
+      "path": ".uv_cache\\archive-v0\\aQHPErCV22m_xGMA\\torch\\lib\\torch_python.dll"
+    },
+    {
+      "bytes": 19408921,
+      "path": ".venv\\share\\jupyter\\nbextensions\\pydeck\\index.js.map"
+    }
+  ],
+  "skipped_links_or_junctions": [],
+  "errors": [],
+  "seconds": 42.35594034194946
+}
