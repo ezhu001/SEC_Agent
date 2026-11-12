@@ -32,8 +32,8 @@ class Settings(BaseSettings):
     transport_retries: int = Field(default=1, ge=0, le=3)
     sec_user_agent: str = ""
     artifact_dir: Path = Path("artifacts")
-    parser_version: str = "ixbrl-table-v5"
-    prompt_version: str = "3"
+    parser_version: str = "ixbrl-table-v9"
+    prompt_version: str = "4"
     formula_version: str = "1"
     decoder_context: int = Field(default=16384, ge=4096, le=131072)
     decoder_output_tokens: int = Field(default=1200, ge=128, le=4096)

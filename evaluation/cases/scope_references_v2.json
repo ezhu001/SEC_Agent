@@ -1,0 +1,1124 @@
+{
+  "review_method": "Independently read the consolidated balance sheets and income statements in the linked SEC FY2025 filings, then compared local HTML rows. Values below are reported USD millions, newest year first. These labels were frozen before batch execution; they are not pipeline-selected answers.",
+  "periods": [
+    "FY2025",
+    "FY2024"
+  ],
+  "references": {
+    "AAPL": {
+      "revenue": [
+        416161,
+        391035
+      ],
+      "operating_income": [
+        133050,
+        123216
+      ],
+      "current_assets": [
+        147957,
+        152987
+      ],
+      "current_liabilities": [
+        165631,
+        176392
+      ],
+      "ends": [
+        "2025-09-27",
+        "2024-09-28"
+      ],
+      "labels": {
+        "revenue": [
+          "Total net sales"
+        ],
+        "operating_income": [
+          "Operating income"
+        ],
+        "current_assets": [
+          "Total current assets"
+        ],
+        "current_liabilities": [
+          "Total current liabilities"
+        ]
+      },
+      "primary_rows": {
+        "revenue": [
+          22,
+          6
+        ],
+        "operating_income": [
+          22,
+          19
+        ],
+        "current_assets": [
+          24,
+          10
+        ],
+        "current_liabilities": [
+          24,
+          26
+        ]
+      },
+      "fact_identities": {
+        "revenue": {
+          "FY2025": {
+            "start": "2024-09-29",
+            "end": "2025-09-27",
+            "instant": false,
+            "entity_identifier": "0000320193",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+            "context_id": "c-1",
+            "value": 416161000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": "2023-10-01",
+            "end": "2024-09-28",
+            "instant": false,
+            "entity_identifier": "0000320193",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+            "context_id": "c-18",
+            "value": 391035000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        },
+        "operating_income": {
+          "FY2025": {
+            "start": "2024-09-29",
+            "end": "2025-09-27",
+            "instant": false,
+            "entity_identifier": "0000320193",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:OperatingIncomeLoss",
+            "context_id": "c-1",
+            "value": 133050000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": "2023-10-01",
+            "end": "2024-09-28",
+            "instant": false,
+            "entity_identifier": "0000320193",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:OperatingIncomeLoss",
+            "context_id": "c-18",
+            "value": 123216000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        },
+        "current_assets": {
+          "FY2025": {
+            "start": null,
+            "end": "2025-09-27",
+            "instant": true,
+            "entity_identifier": "0000320193",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:AssetsCurrent",
+            "context_id": "c-20",
+            "value": 147957000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": null,
+            "end": "2024-09-28",
+            "instant": true,
+            "entity_identifier": "0000320193",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:AssetsCurrent",
+            "context_id": "c-21",
+            "value": 152987000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        },
+        "current_liabilities": {
+          "FY2025": {
+            "start": null,
+            "end": "2025-09-27",
+            "instant": true,
+            "entity_identifier": "0000320193",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:LiabilitiesCurrent",
+            "context_id": "c-20",
+            "value": 165631000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": null,
+            "end": "2024-09-28",
+            "instant": true,
+            "entity_identifier": "0000320193",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:LiabilitiesCurrent",
+            "context_id": "c-21",
+            "value": 176392000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        }
+      },
+      "identity_source_sha256": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61"
+    },
+    "TSLA": {
+      "revenue": [
+        94827,
+        97690
+      ],
+      "operating_income": [
+        4355,
+        7076
+      ],
+      "current_assets": [
+        68642,
+        58360
+      ],
+      "current_liabilities": [
+        31714,
+        28821
+      ],
+      "ends": [
+        "2025-12-31",
+        "2024-12-31"
+      ],
+      "labels": {
+        "revenue": [
+          "Total revenues"
+        ],
+        "operating_income": [
+          "Income from operations"
+        ],
+        "current_assets": [
+          "Total current assets"
+        ],
+        "current_liabilities": [
+          "Total current liabilities"
+        ]
+      },
+      "primary_rows": {
+        "revenue": [
+          22,
+          10
+        ],
+        "operating_income": [
+          22,
+          24
+        ],
+        "current_assets": [
+          21,
+          9
+        ],
+        "current_liabilities": [
+          21,
+          26
+        ]
+      },
+      "fact_identities": {
+        "revenue": {
+          "FY2025": {
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "instant": false,
+            "entity_identifier": "0001318605",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+            "context_id": "c-1",
+            "value": 94827000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": "2024-01-01",
+            "end": "2024-12-31",
+            "instant": false,
+            "entity_identifier": "0001318605",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+            "context_id": "c-28",
+            "value": 97690000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        },
+        "operating_income": {
+          "FY2025": {
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "instant": false,
+            "entity_identifier": "0001318605",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:OperatingIncomeLoss",
+            "context_id": "c-1",
+            "value": 4355000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": "2024-01-01",
+            "end": "2024-12-31",
+            "instant": false,
+            "entity_identifier": "0001318605",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:OperatingIncomeLoss",
+            "context_id": "c-28",
+            "value": 7076000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        },
+        "current_assets": {
+          "FY2025": {
+            "start": null,
+            "end": "2025-12-31",
+            "instant": true,
+            "entity_identifier": "0001318605",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:AssetsCurrent",
+            "context_id": "c-4",
+            "value": 68642000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": null,
+            "end": "2024-12-31",
+            "instant": true,
+            "entity_identifier": "0001318605",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:AssetsCurrent",
+            "context_id": "c-5",
+            "value": 58360000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        },
+        "current_liabilities": {
+          "FY2025": {
+            "start": null,
+            "end": "2025-12-31",
+            "instant": true,
+            "entity_identifier": "0001318605",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:LiabilitiesCurrent",
+            "context_id": "c-4",
+            "value": 31714000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": null,
+            "end": "2024-12-31",
+            "instant": true,
+            "entity_identifier": "0001318605",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:LiabilitiesCurrent",
+            "context_id": "c-5",
+            "value": 28821000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        }
+      },
+      "identity_source_sha256": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc"
+    },
+    "MSFT": {
+      "revenue": [
+        281724,
+        245122
+      ],
+      "operating_income": [
+        128528,
+        109433
+      ],
+      "current_assets": [
+        191131,
+        159734
+      ],
+      "current_liabilities": [
+        141218,
+        125286
+      ],
+      "ends": [
+        "2025-06-30",
+        "2024-06-30"
+      ],
+      "labels": {
+        "revenue": [
+          "Total revenue"
+        ],
+        "operating_income": [
+          "Operating income"
+        ],
+        "current_assets": [
+          "Total current assets"
+        ],
+        "current_liabilities": [
+          "Total current liabilities"
+        ]
+      },
+      "primary_rows": {
+        "revenue": [
+          23,
+          11
+        ],
+        "operating_income": [
+          23,
+          28
+        ],
+        "current_assets": [
+          25,
+          18
+        ],
+        "current_liabilities": [
+          25,
+          41
+        ]
+      },
+      "fact_identities": {
+        "revenue": {
+          "FY2025": {
+            "start": "2024-07-01",
+            "end": "2025-06-30",
+            "instant": false,
+            "entity_identifier": "0000789019",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+            "context_id": "C_7102029d-8d6c-44c5-b166-04cf41443b1e",
+            "value": 281724000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": "2023-07-01",
+            "end": "2024-06-30",
+            "instant": false,
+            "entity_identifier": "0000789019",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+            "context_id": "C_c19fe6c0-0e87-44b0-aa2a-d9c6e40a5862",
+            "value": 245122000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        },
+        "operating_income": {
+          "FY2025": {
+            "start": "2024-07-01",
+            "end": "2025-06-30",
+            "instant": false,
+            "entity_identifier": "0000789019",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:OperatingIncomeLoss",
+            "context_id": "C_7102029d-8d6c-44c5-b166-04cf41443b1e",
+            "value": 128528000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": "2023-07-01",
+            "end": "2024-06-30",
+            "instant": false,
+            "entity_identifier": "0000789019",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:OperatingIncomeLoss",
+            "context_id": "C_c19fe6c0-0e87-44b0-aa2a-d9c6e40a5862",
+            "value": 109433000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        },
+        "current_assets": {
+          "FY2025": {
+            "start": null,
+            "end": "2025-06-30",
+            "instant": true,
+            "entity_identifier": "0000789019",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:AssetsCurrent",
+            "context_id": "C_f6acec30-41ed-4918-bef7-c8a710bf3a7a",
+            "value": 191131000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": null,
+            "end": "2024-06-30",
+            "instant": true,
+            "entity_identifier": "0000789019",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:AssetsCurrent",
+            "context_id": "C_670413aa-499b-43fb-803c-735d0fc51f59",
+            "value": 159734000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        },
+        "current_liabilities": {
+          "FY2025": {
+            "start": null,
+            "end": "2025-06-30",
+            "instant": true,
+            "entity_identifier": "0000789019",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:LiabilitiesCurrent",
+            "context_id": "C_f6acec30-41ed-4918-bef7-c8a710bf3a7a",
+            "value": 141218000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": null,
+            "end": "2024-06-30",
+            "instant": true,
+            "entity_identifier": "0000789019",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:LiabilitiesCurrent",
+            "context_id": "C_670413aa-499b-43fb-803c-735d0fc51f59",
+            "value": 125286000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        }
+      },
+      "identity_source_sha256": "b93568009fa3133f03338945dc28ecfb0613a5132167bfdec3dc3d1ff6ee602b"
+    },
+    "AMZN": {
+      "revenue": [
+        716924,
+        637959
+      ],
+      "operating_income": [
+        79975,
+        68593
+      ],
+      "current_assets": [
+        229083,
+        190867
+      ],
+      "current_liabilities": [
+        218005,
+        179431
+      ],
+      "ends": [
+        "2025-12-31",
+        "2024-12-31"
+      ],
+      "labels": {
+        "revenue": [
+          "Total net sales",
+          "Net sales"
+        ],
+        "operating_income": [
+          "Operating income"
+        ],
+        "current_assets": [
+          "Total current assets"
+        ],
+        "current_liabilities": [
+          "Total current liabilities"
+        ]
+      },
+      "primary_rows": {
+        "revenue": [
+          35,
+          5
+        ],
+        "operating_income": [
+          35,
+          14
+        ],
+        "current_assets": [
+          37,
+          9
+        ],
+        "current_liabilities": [
+          37,
+          20
+        ]
+      },
+      "fact_identities": {
+        "revenue": {
+          "FY2024": {
+            "start": "2024-01-01",
+            "end": "2024-12-31",
+            "instant": false,
+            "entity_identifier": "0001018724",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+            "context_id": "c-4",
+            "value": 637959000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2025": {
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "instant": false,
+            "entity_identifier": "0001018724",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+            "context_id": "c-1",
+            "value": 716924000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        },
+        "operating_income": {
+          "FY2024": {
+            "start": "2024-01-01",
+            "end": "2024-12-31",
+            "instant": false,
+            "entity_identifier": "0001018724",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:OperatingIncomeLoss",
+            "context_id": "c-4",
+            "value": 68593000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2025": {
+            "start": "2025-01-01",
+            "end": "2025-12-31",
+            "instant": false,
+            "entity_identifier": "0001018724",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:OperatingIncomeLoss",
+            "context_id": "c-1",
+            "value": 79975000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        },
+        "current_assets": {
+          "FY2024": {
+            "start": null,
+            "end": "2024-12-31",
+            "instant": true,
+            "entity_identifier": "0001018724",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:AssetsCurrent",
+            "context_id": "c-7",
+            "value": 190867000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2025": {
+            "start": null,
+            "end": "2025-12-31",
+            "instant": true,
+            "entity_identifier": "0001018724",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:AssetsCurrent",
+            "context_id": "c-9",
+            "value": 229083000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        },
+        "current_liabilities": {
+          "FY2024": {
+            "start": null,
+            "end": "2024-12-31",
+            "instant": true,
+            "entity_identifier": "0001018724",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:LiabilitiesCurrent",
+            "context_id": "c-7",
+            "value": 179431000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2025": {
+            "start": null,
+            "end": "2025-12-31",
+            "instant": true,
+            "entity_identifier": "0001018724",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:LiabilitiesCurrent",
+            "context_id": "c-9",
+            "value": 218005000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        }
+      },
+      "identity_source_sha256": "cd076433bee2c6ea5751bc7a0e6f6a8a4a0d8763f06881034299409fbc591578"
+    },
+    "WMT": {
+      "revenue": [
+        680985,
+        648125
+      ],
+      "operating_income": [
+        29348,
+        27012
+      ],
+      "current_assets": [
+        79458,
+        76877
+      ],
+      "current_liabilities": [
+        96584,
+        92415
+      ],
+      "ends": [
+        "2025-01-31",
+        "2024-01-31"
+      ],
+      "labels": {
+        "revenue": [
+          "Total revenues"
+        ],
+        "operating_income": [
+          "Operating income"
+        ],
+        "current_assets": [
+          "Total current assets"
+        ],
+        "current_liabilities": [
+          "Total current liabilities"
+        ]
+      },
+      "primary_rows": {
+        "revenue": [
+          49,
+          6
+        ],
+        "operating_income": [
+          49,
+          10
+        ],
+        "current_assets": [
+          51,
+          9
+        ],
+        "current_liabilities": [
+          51,
+          31
+        ]
+      },
+      "revenue_policy": "Use reported consolidated Total revenues, including membership and other income; Net sales alone is not this benchmark's revenue total.",
+      "fact_identities": {
+        "revenue": {
+          "FY2025": {
+            "start": "2024-02-01",
+            "end": "2025-01-31",
+            "instant": false,
+            "entity_identifier": "0000104169",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:Revenues",
+            "context_id": "c-1",
+            "value": 680985000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": "2023-02-01",
+            "end": "2024-01-31",
+            "instant": false,
+            "entity_identifier": "0000104169",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:Revenues",
+            "context_id": "c-14",
+            "value": 648125000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        },
+        "operating_income": {
+          "FY2025": {
+            "start": "2024-02-01",
+            "end": "2025-01-31",
+            "instant": false,
+            "entity_identifier": "0000104169",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:OperatingIncomeLoss",
+            "context_id": "c-1",
+            "value": 29348000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": "2023-02-01",
+            "end": "2024-01-31",
+            "instant": false,
+            "entity_identifier": "0000104169",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:OperatingIncomeLoss",
+            "context_id": "c-14",
+            "value": 27012000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        },
+        "current_assets": {
+          "FY2025": {
+            "start": null,
+            "end": "2025-01-31",
+            "instant": true,
+            "entity_identifier": "0000104169",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:AssetsCurrent",
+            "context_id": "c-16",
+            "value": 79458000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": null,
+            "end": "2024-01-31",
+            "instant": true,
+            "entity_identifier": "0000104169",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:AssetsCurrent",
+            "context_id": "c-17",
+            "value": 76877000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        },
+        "current_liabilities": {
+          "FY2025": {
+            "start": null,
+            "end": "2025-01-31",
+            "instant": true,
+            "entity_identifier": "0000104169",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:LiabilitiesCurrent",
+            "context_id": "c-16",
+            "value": 96584000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": null,
+            "end": "2024-01-31",
+            "instant": true,
+            "entity_identifier": "0000104169",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:LiabilitiesCurrent",
+            "context_id": "c-17",
+            "value": 92415000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        }
+      },
+      "identity_source_sha256": "952b568ceb36e5844700c3a48f855aee855a655ba17ccfe7bffa2362f8c5b2d2"
+    },
+    "NVDA": {
+      "revenue": [
+        130497,
+        60922
+      ],
+      "operating_income": [
+        81453,
+        32972
+      ],
+      "current_assets": [
+        80126,
+        44345
+      ],
+      "current_liabilities": [
+        18047,
+        10631
+      ],
+      "ends": [
+        "2025-01-26",
+        "2024-01-28"
+      ],
+      "labels": {
+        "revenue": [
+          "Revenue",
+          "Total revenue"
+        ],
+        "operating_income": [
+          "Operating income"
+        ],
+        "current_assets": [
+          "Total current assets"
+        ],
+        "current_liabilities": [
+          "Total current liabilities"
+        ]
+      },
+      "primary_rows": {
+        "revenue": [
+          21,
+          3
+        ],
+        "operating_income": [
+          21,
+          11
+        ],
+        "current_assets": [
+          23,
+          9
+        ],
+        "current_liabilities": [
+          23,
+          23
+        ]
+      },
+      "fact_identities": {
+        "revenue": {
+          "FY2025": {
+            "start": "2024-01-29",
+            "end": "2025-01-26",
+            "instant": false,
+            "entity_identifier": "0001045810",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:Revenues",
+            "context_id": "c-1",
+            "value": 130497000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": "2023-01-30",
+            "end": "2024-01-28",
+            "instant": false,
+            "entity_identifier": "0001045810",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:Revenues",
+            "context_id": "c-11",
+            "value": 60922000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        },
+        "operating_income": {
+          "FY2025": {
+            "start": "2024-01-29",
+            "end": "2025-01-26",
+            "instant": false,
+            "entity_identifier": "0001045810",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:OperatingIncomeLoss",
+            "context_id": "c-1",
+            "value": 81453000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": "2023-01-30",
+            "end": "2024-01-28",
+            "instant": false,
+            "entity_identifier": "0001045810",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:OperatingIncomeLoss",
+            "context_id": "c-11",
+            "value": 32972000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        },
+        "current_assets": {
+          "FY2025": {
+            "start": null,
+            "end": "2025-01-26",
+            "instant": true,
+            "entity_identifier": "0001045810",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:AssetsCurrent",
+            "context_id": "c-13",
+            "value": 80126000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": null,
+            "end": "2024-01-28",
+            "instant": true,
+            "entity_identifier": "0001045810",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:AssetsCurrent",
+            "context_id": "c-14",
+            "value": 44345000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        },
+        "current_liabilities": {
+          "FY2025": {
+            "start": null,
+            "end": "2025-01-26",
+            "instant": true,
+            "entity_identifier": "0001045810",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2025",
+            "concept": "us-gaap:LiabilitiesCurrent",
+            "context_id": "c-13",
+            "value": 18047000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          },
+          "FY2024": {
+            "start": null,
+            "end": "2024-01-28",
+            "instant": true,
+            "entity_identifier": "0001045810",
+            "entity_scheme": "http://www.sec.gov/CIK",
+            "dimensions": {},
+            "period": "FY2024",
+            "concept": "us-gaap:LiabilitiesCurrent",
+            "context_id": "c-14",
+            "value": 10631000000.0,
+            "scale": 6,
+            "unit": "currency",
+            "currency": "USD"
+          }
+        }
+      },
+      "identity_source_sha256": "0c791dfb4bcf8ebf826a7e37a23f75b53530e06f88bc41a6fed2d4e00f8bbbd9"
+    }
+  },
+  "scoring_version": "2",
+  "identity_review": "Raw inline facts at the previously SEC-reviewed primary table/row positions; amounts, fiscal ends, issuer, currency and dimensions checked independently of the runtime parser."
+}

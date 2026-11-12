@@ -14,7 +14,10 @@ def extract_contexts(soup):
             return n.get_text(strip=True) if n else None
         dimensions = {t.get("dimension", "unknown"): t.get_text(strip=True)
                       for t in node.find_all(lambda t: local(t) in {"explicitmember", "typedmember"})}
-        contexts[node.get("id")] = dict(start=value("startdate"), end=value("enddate") or value("instant"),
+        identifier = node.find(lambda t: local(t) == "identifier")
+        contexts[node.get("id")] = dict(entity_identifier=identifier.get_text(strip=True) if identifier else None,
+                                          entity_scheme=identifier.get("scheme") if identifier else None,
+                                          start=value("startdate"), end=value("enddate") or value("instant"),
                                           instant=value("instant") is not None, dimensions=dimensions)
     for node in soup.find_all(lambda t: local(t) == "unit"):
         measures = node.find_all(lambda t: local(t) == "measure")

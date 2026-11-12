@@ -6,7 +6,7 @@ from typing import Literal, Union
 from pydantic import create_model, Field
 from ..models.local_decoder import DecoderError
 from ..config.formulas import FORMULAS
-from ..schemas.results import Verification, VerificationFinding, VerificationCheck
+from ..schemas.results import Verification, AgentReview, AgentCheck
 
 
 class VerifierContractError(DecoderError):
@@ -52,76 +52,111 @@ def build_contract(payload):
         frozen["required_periods"] = "Each requested period has exactly one source fact"
     if facts and all(f.get("unit") == "currency" and (f.get("currency") or f.get("unit_basis")) for f in facts):
         frozen["monetary_unit"] = "Explicit compatible monetary dimension; unspecified currency may cancel under Python's policy"
-    return {"version": "1", "task": "audit this one supplied row for this one component",
+    if payload.get("scope_assessment", {}).get("status") == "ESTABLISHED":
+        frozen["reporting_scope"] = payload["scope_assessment"]["reason"]
+    return {"version": "2", "task": "audit this one supplied row for this one component",
             "allowed_checks": [c for c in CHECK_FIELDS if c not in frozen], "resolved_by_python": frozen,
             "open_checks": [c for c in CHECK_FIELDS if c not in frozen],
             "check_definitions": {c: CHECK_DEFINITIONS[c] for c in CHECK_FIELDS if c not in frozen},
             "required_check_results": len(CHECK_FIELDS) - len(frozen),
             "certificate_requirement": "NONE: accounting identities are optional Python-only checks, not prerequisites",
             "error_type_checks": {name: sorted(checks & (set(CHECK_FIELDS) - set(frozen))) for name, checks in ERROR_CHECKS.items() if checks - set(frozen)},
-            "permitted_outcomes": "PASS, or FAIL/UNCERTAIN with a verbatim source quote for an open allowed check",
+            "permitted_outcomes": "PASS, FAIL or UNCERTAIN with source evidence IDs for each open check",
             "forbidden_actions": ["calculate", "demand an accounting identity", "invent required evidence", "select a replacement", "expand search"]}
 
 
+def evidence_catalogue(payload):
+    row = payload["proposed_evidence"]
+    if row.get("filing_hash", payload.get("filing_hash")) != payload.get("filing_hash"):
+        raise VerifierContractError("Proposed source belongs to a different filing")
+    ident = row["evidence_id"]
+    catalogue = []
+    def add(suffix, field, text, checks, scope="UNRESOLVED", locator=None):
+        if text:
+            catalogue.append({"id": ident + ":" + suffix, "row_id": ident,
+                "filing_hash": payload.get("filing_hash"), "field": field, "text": text,
+                "locator": locator or f"table:{row.get('table')}:row:{row.get('row')}:{suffix}",
+                "checks": checks, "scope": scope})
+    add("label", "label", row["label"], ["concept_match", "formula_role"])
+    add("statement", "statement", row["statement"], ["statement_match"])
+    for i, fact in enumerate(row.get("facts", [])):
+        add(f"fact:{i}", "facts", json.dumps(fact, ensure_ascii=False, sort_keys=True),
+            ["concept_match", "required_periods", "monetary_unit", "formula_role"])
+    context = row.get("nearby_context", "")
+    heading = row.get("statement_heading")
+    heading_text = heading.get("text", "") if heading else ""
+    # A literal statement heading can support the agent's scope interpretation.
+    # Bare 'consolidated' elsewhere in prose cannot do so.
+    explicit = re.search(r"consolidated\s+(balance\s+sheets?|statements?\s+of\s+(?:operations|income|earnings))", heading_text if "statement_heading" in row else context, re.I)
+    matches_statement = explicit and (("balance" in explicit.group().lower()) == (row["statement"] == "balance"))
+    support = "ESTABLISHED" if matches_statement else "UNRESOLVED"
+    quoted_heading = explicit and explicit.group() in context
+    add("context", "nearby_context", context, ["reporting_scope"], support if quoted_heading else "UNRESOLVED")
+    if heading:
+        if heading["filing_hash"] != payload.get("filing_hash"):
+            raise VerifierContractError("Statement heading belongs to a different filing")
+        add("heading", "scope_evidence", heading_text, ["reporting_scope"], support, heading["locator"])
+    for i, source in enumerate(payload.get("scope_assessment", {}).get("sources", [])):
+        if source["filing_hash"] != payload.get("filing_hash"):
+            raise VerifierContractError("Scope source belongs to a different filing")
+        add(f"scope:{i}", "scope_evidence", source["text"], ["reporting_scope"],
+            payload["scope_assessment"]["status"], source["locator"])
+    open_checks = set(payload["verification_contract"]["open_checks"])
+    return [{**item, "checks": [c for c in item["checks"] if c in open_checks]}
+            for item in catalogue if open_checks.intersection(item["checks"])]
+
+
 @lru_cache(maxsize=64)
-def review_schema(open_checks, source_json="{}"):
-    """Bind JSON grammar to this request, including nonempty exact check count."""
-    source = json.loads(source_json)
-    finding_types, check_types = [], []
+def review_schema(open_checks, catalogue_json="[]"):
+    catalogue = json.loads(catalogue_json)
+    types = []
     for name in open_checks:
-        fields = ("nearby_context",) if name == "reporting_scope" else tuple(sorted(CHECK_FIELDS[name]))
-        overrides = {"check": (Literal.__getitem__((name,)), ...),
-                     "evidence_field": (Literal.__getitem__(fields), ...)}
-        if name == "reporting_scope":
-            context = source.get("nearby_context", "")
-            quotes = [context[:300], context[-300:]]
-            for match in re.finditer(r"consolidated", context, re.I):
-                quotes.append(context[match.start():match.start() + 80])
-                heading = re.match(r"consolidated\s+(?:statements?\s+of\s+[A-Za-z '’]+|balance\s+sheets?)", context[match.start():], re.I)
-                if heading:
-                    quotes.append(heading.group().rstrip())
-            overrides["evidence_quote"] = (Literal.__getitem__(tuple(dict.fromkeys(quotes))), ...)
-            observation = "quote" if context else "missing_field"
-            overrides["observation"] = (Literal.__getitem__((observation,)), Field(default=observation))
-        finding_types.append(create_model(name + "Finding", __base__=VerificationFinding, **overrides))
-        check_types.append(create_model(name + "Check", __base__=VerificationCheck, **overrides))
-    finding = finding_types[0] if len(finding_types) == 1 else Union.__getitem__(tuple(finding_types))
-    check = check_types[0] if len(check_types) == 1 else Union.__getitem__(tuple(check_types))
-    return create_model("BoundedVerification", __base__=Verification,
-        error_type=(Literal.__getitem__(tuple(["none"] + [name for name, checks in ERROR_CHECKS.items() if checks & set(open_checks)])), ...),
-        findings=(list[finding], Field(default_factory=list, max_length=len(open_checks))),
+        ids = tuple(item["id"] for item in catalogue if name in item["checks"])
+        fields = {"check": (Literal.__getitem__((name,)), ...)}
+        fields["evidence_ids"] = ((list[Literal.__getitem__(ids)] if ids else list[str]), Field(max_length=min(6, len(ids))))
+        types.append(create_model(name + "AgentCheck", __base__=AgentCheck, **fields))
+    check = types[0] if len(types) == 1 else Union.__getitem__(tuple(types))
+    return create_model("BoundedAgentReview", __base__=AgentReview,
         checks=(list[check], Field(min_length=len(open_checks), max_length=len(open_checks))))
 
 
-def validate_review(result, payload):
+def resolve_review(result, payload):
     contract = payload["verification_contract"]
-    if result.verdict != "PASS" and re.search(r"accounting[ _-]*identity|certificate|reconcil", result.reason + " " + " ".join(f.reason for f in result.findings), re.I):
-        raise VerifierContractError("Optional Python accounting certificates cannot become required decoder evidence")
-    if result.findings and not any(f.check in ERROR_CHECKS.get(result.error_type, set()) for f in result.findings):
-        raise VerifierContractError("error_type does not match any cited blocking check")
-    for finding in result.findings:
-        if finding.check in contract["resolved_by_python"]:
-            raise VerifierContractError(f"Cannot reopen Python-resolved {finding.check}; quote an actual open source-context contradiction instead")
+    catalogue = {item["id"]: item for item in payload["evidence_catalogue"]}
     reviewed = [c.check for c in result.checks]
     if len(reviewed) != len(set(reviewed)) or set(reviewed) != set(contract["open_checks"]):
-        raise VerifierContractError("Return exactly one structured check result with source evidence for every open check, and none for resolved checks")
-    negative = {c.check for c in result.checks if c.status != "PASS"}
-    expected_verdict = "FAIL" if any(c.status == "FAIL" for c in result.checks) else "UNCERTAIN" if negative else "PASS"
-    if result.verdict != expected_verdict or negative != {f.check for f in result.findings}:
-        raise VerifierContractError("Overall verdict, per-check statuses and blocking findings disagree")
-    for finding in list(result.findings) + list(result.checks):
-        if finding.evidence_field not in CHECK_FIELDS[finding.check]:
-            raise VerifierContractError("Evidence field does not support the claimed check")
-        value = payload["proposed_evidence"].get(finding.evidence_field, "")
-        if finding.observation == "missing_field":
-            if value:
-                raise VerifierContractError("Claimed missing field is actually present in the proposed source row")
-            if getattr(finding, "status", None) == "PASS":
-                raise VerifierContractError("A missing source field cannot certify a PASS")
-            continue
-        source = value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)
-        if finding.evidence_quote not in source:
-            raise VerifierContractError("Finding quote is absent from the cited field of the proposed source row")
-        if finding.check == "reporting_scope" and getattr(finding, "status", None) == "PASS":
-            if finding.evidence_field != "nearby_context" or not re.search(r"\bconsolidated\b", finding.evidence_quote, re.I):
-                raise VerifierContractError("A consolidated-scope PASS must cite the actual consolidated statement heading/context")
+        raise VerifierContractError("Return one observation for each open check and none for Python-resolved checks")
+    resolved = []
+    for check in result.checks:
+        if check.status != "PASS" and re.search(r"accounting[ _-]*identity|certificate|reconcil", check.reason, re.I):
+            raise VerifierContractError("Optional Python accounting certificates cannot become required decoder evidence")
+        code = {"PASS": "supported", "FAIL": "contradiction", "UNCERTAIN": "insufficient_evidence"}[check.status]
+        if check.reason_code != code:
+            raise VerifierContractError("Status and reason_code disagree")
+        if len(check.evidence_ids) != len(set(check.evidence_ids)):
+            raise VerifierContractError("Duplicate evidence reference")
+        items = []
+        for ident in check.evidence_ids:
+            item = catalogue.get(ident)
+            if not item or item["row_id"] != payload["proposed_evidence"]["evidence_id"] or item["filing_hash"] != payload.get("filing_hash"):
+                raise VerifierContractError("Unknown or foreign evidence reference")
+            if check.check not in item["checks"]:
+                raise VerifierContractError("Evidence type does not support the claimed check")
+            items.append(item)
+        if not items and check.status != "UNCERTAIN":
+            raise VerifierContractError("PASS and FAIL require actual source evidence")
+        if check.check == "reporting_scope" and check.status != "UNCERTAIN":
+            required = "ESTABLISHED" if check.status == "PASS" else "RESTRICTED"
+            if not any(item["scope"] == required for item in items):
+                raise VerifierContractError("Source evidence does not establish the claimed scope; use UNCERTAIN")
+        resolved.append({"check": check.check, "status": check.status, "evidence_ids": check.evidence_ids,
+            "evidence_field": items[0]["field"] if items else "scope_evidence",
+            "observation": "quote" if items else "missing_field",
+            "evidence_quote": " | ".join(item["text"] for item in items)[:300], "reason": check.reason})
+    return Verification.model_validate({"verdict": "PASS", "error_type": "none", "confidence": result.confidence,
+        "reason": result.reason, "checks": resolved})
+
+
+def validate_review(result, payload):
+    # Kept as the public validation entry point; the returned audit has resolved source excerpts.
+    return resolve_review(result, payload)

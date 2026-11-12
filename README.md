@@ -17,9 +17,33 @@ Copy-Item .env.example .env
 .venv/Scripts/python.exe -m streamlit run app.py
 ```
 
-The existing workspace `.venv` is already installed. To launch it now, only the last command is needed. The default artifact root is `artifacts/`, with separate filing, parsed-evidence, embedding and per-run audit directories. A local HTML file does not require an SEC contact setting.
+The default artifact root is `artifacts/`, with separate filing, parsed-evidence, embedding and per-run audit directories. A local HTML file does not require an SEC contact setting.
 
-The lockfile records the tested Windows CPU dependency environment. On another platform, resolve the compatible ranges in `pyproject.toml` with `uv pip install --python .venv/Scripts/python.exe -e '.[dev]'` and save that platform's resolved versions. The lockfile pins dependencies but is not a cryptographic supply-chain lock. No dependency downloads or model loads occur at module import.
+The lockfile records the tested Windows CPU dependency environment. The lockfile pins dependencies but is not a cryptographic supply-chain lock. No dependency downloads or model loads occur at module import.
+
+### macOS (Apple Silicon)
+
+From the repository root, use Python 3.11 and resolve the dependencies from `pyproject.toml` for macOS.
+
+```bash
+uv venv --python 3.11 .venv
+uv pip install --python .venv/bin/python -e '.[dev]'
+.venv/bin/python -m pytest -q
+```
+
+FinBERT uses CPU with the default `auto` device setting on macOS. For an 8 GB Mac, set `FFA_DECODER_MODEL=qwen2.5:3b` in the repository's `.env` or export it in your shell. This selects the smaller Qwen model for local development. `config/research.json` continues to use its pinned research configuration.
+
+Start `ollama serve` in a separate terminal if Ollama is stopped. Run `ollama pull qwen2.5:3b` if that model is absent from `ollama list`. FinBERT downloads its pinned weights on first use if they are absent from the Hugging Face cache. Set `HF_HUB_OFFLINE=1` when the weights are already cached and you want to use them offline.
+
+```bash
+.venv/bin/python -m financial_filing_agent.cli --status
+.venv/bin/python -m financial_filing_agent.cli \
+  --source evaluation/fixtures/apple_2025_10k.html \
+  --question 'How did total net sales change from FY2024 to FY2025?'
+.venv/bin/python -m streamlit run app.py --server.address 127.0.0.1 --browser.gatherUsageStats false
+```
+
+Open [Streamlit on localhost](http://127.0.0.1:8501). In the source field, enter `evaluation/fixtures/apple_2025_10k.html`. You can also switch off **Enable Qwen agents**, select **Revenue Growth**, and enter `FY2025 FY2024` to run the metric with deterministic evidence checks. For SEC network acquisition, set `FFA_SEC_USER_AGENT` in your environment before launching the app.
 
 ## Ollama setup
 
@@ -80,7 +104,7 @@ The metric menu constructs a deterministic formula/dependency plan and bypasses 
 
 **Qwen can be switched off** using **Enable Qwen agents** in the sidebar, `FFA_QWEN_ENABLED=false`, or CLI `--no-qwen`. This disables decoder planning, verification and correction calls. Select a registered metric and explicit years in this mode; free-text planning returns `NEEDS_INPUT`. FinBERT retrieval stays enabled. Evidence must satisfy deterministic registered concept, unit, statement, period and provenance checks; ambiguous evidence still abstains. The saved result records its mode and decoder-call count. Mode changes apply to subsequent runs.
 
-Qwen review is now bounded by a per-request executable contract: only unresolved checks may be returned, each needs a source observation, and optional accounting certificates cannot become requirements. Invalid reviews get one contract-repair attempt and then an operational contract error, without triggering evidence expansion. The UI exposes the actual system prompts and run-specific contract/checks. See [Qwen responsibilities and verifier contract](QWEN_VERIFIER_CONTRACT.md).
+Verifier contract v2 accepts one source-ID observation per unresolved check. The JSON grammar restricts allowed IDs separately for each check; Python resolves each ID to its original text/fact and checks its filing, row binding and evidence type again. An unsupported scope claim must be UNCERTAIN; the literal word “consolidated” is not required in every nearby excerpt. Invalid reviews get one bounded contract-repair attempt, then an operational error without evidence expansion. Optional accounting certificates cannot become model prerequisites. The UI exposes the actual system prompts and run-specific contract/checks. See [Qwen responsibilities and verifier contract](QWEN_VERIFIER_CONTRACT.md).
 
 Reported labels are interpreted with their value dimension. A monetary **Gross margin** subtotal may be the reported gross-profit amount; a percentage row cannot fill that component. Python additionally checks the same-table accounting identity `gross_profit = revenue - cost_of_sales` when unique compatible source rows exist. An exact certificate is recorded with all source IDs and period checks and directly validates the concept, even with Qwen enabled. This prevents a model's label-only reinterpretation from vetoing independently reconciled source evidence. Where no certificate is available, enabled Qwen receives the canonical definition, accepted reported labels and unit/context information. No derived replacement amount is invented by this certificate.
 
@@ -100,61 +124,72 @@ Without complete source periods, the pipeline identifies the missing component/y
 
 | Component | Responsibility |
 |---|---|
-| Task Planner agent | Qwen maps the question to an allowlisted formula, component queries, statements and explicit periods. |
-| Evidence Verification agent | Qwen checks exact accounting meaning, source context, periods, units and formula role; returns PASS/FAIL/UNCERTAIN. |
-| Correction/Recovery agent | Qwen selects an existing supplied evidence ID, requests the one allowed expansion, or reports no valid evidence. |
-| FinBERT retrieval model | Encodes and ranks source rows; it is not an autonomous agent. |
+| Task Planner agent | An explicit metric uses a registered Python plan; free-text questions use Qwen to select an allowlisted formula and explicit periods. Free-text planning with Qwen disabled returns `NEEDS_INPUT`. |
+| Evidence Verification agent | Python checks eligibility, registered concepts and source-backed issuer scope; Qwen reviews remaining questions through evidence IDs. A source accounting identity can certify a monetary gross-profit subtotal without Qwen. |
+| Correction/Recovery agent | Filters ineligible/rejected rows, then uses Qwen or deterministic rules to select an existing evidence ID, request bounded expansion, or report no valid evidence. |
+| FinBERT retrieval model | Encodes and ranks structurally eligible source rows; it is not an autonomous agent. |
 | Tools | SEC/local loading, structured table/XBRL parsing, lexical signals, caches, guards, calculation and audit writes. |
 | Shared state | A serializable typed record of task, source/hash, artifact references, candidates, decisions, accepted IDs, errors, budgets and timings. Models/tensors/sessions stay outside it. |
 | LangGraph orchestrator | Explicit nodes/conditional edges enforce component iteration, retries, recovery, re-verification, acceptance and terminal outcomes. |
 | UI and CLI | Collect requests and display the same pipeline result. Neither contains agent routing logic. |
 
+The graph has 14 application nodes. Early eligibility is implemented inside existing nodes; it did not add a new LangGraph node. This overview labels those nodes and omits repetitive terminal exits for readability. See the [system structure and node map](reports/CURRENT_SYSTEM_STRUCTURE.md) and the [complete Mermaid export from LangGraph](reports/current_langgraph.mmd).
+
+Three of those nodes host the three agent roles: **Planner Agent** in `plan_task`, **Verifier Agent** in `verify`, and **Corrector Agent** in `correct`. Each agent has its own instructions, inputs and validated output schema. They share the local model service, while LangGraph decides which role runs next. Explicit metric selection bypasses the Planner Agent; successful verification and guards bypass the Corrector Agent. With agents disabled, the corresponding stages use registered Python rules or request more input.
+
 ```mermaid
 flowchart TD
-  A[Validate request] --> B[Load filing]
-  B --> P[Planner agent]
-  P -->|ready| E[Build structured evidence]
-  P -->|needs input or unsupported| F[Finish]
-  E --> J[Check component by fiscal year inputs]
-  J -->|complete| R[Retrieve component]
-  J -->|missing years| H[Check allowed same-company supporting sources]
-  H -->|complete supporting filing| R
-  H -->|still missing| I
-  R --> S[Sufficiency gate]
-  S -->|supported| V[Verifier agent]
-  S -->|unresolved and budget| X[Broader search once]
-  X --> S
-  S -->|ambiguous after expansion| V
-  S -->|still insufficient| I[INSUFFICIENT_EVIDENCE]
-  V -->|PASS| G[Deterministic guard]
-  V -->|FAIL or UNCERTAIN| C[Bounded correction agent]
-  C -->|existing replacement| V
-  C -->|allowed expansion| X
-  C -->|no evidence or exhausted| I
-  G -->|failed and budget| C
-  G -->|failed and exhausted| I
-  G -->|accepted| N{More components?}
-  N -->|yes| R
-  N -->|no| K[Validate all inputs and calculate]
-  K -->|valid| O[SUCCESS]
-  K -->|incompatible inputs| C
-  O --> F
-  I --> F
+  startNode([START]) --> validateRequest["validate_request: validate inputs"]
+  validateRequest --> loadFiling["load_filing: local or SEC HTML"]
+  loadFiling --> planTask["plan_task: Planner Agent or registered metric plan"]
+  planTask --> buildEvidence["build_evidence: parse tables and XBRL"]
+  buildEvidence --> checkInputs["check_inputs: years and allowed supporting sources"]
+  checkInputs --> retrieveComponent["retrieve_component: eligibility then FinBERT ranking"]
+  retrieveComponent --> assessSufficiency{"assess_sufficiency"}
+  assessSufficiency -->|"Supported or unresolved after expansion"| verifyEvidence["verify: eligibility recheck then Verifier Agent or rules"]
+  assessSufficiency -->|"Unresolved and budget remains"| expandSearch["expand_search: eligibility then full ranking"]
+  expandSearch --> assessSufficiency
+  verifyEvidence -->|PASS| guardEvidence["guard: verified selection and nonzero denominator"]
+  verifyEvidence -->|"Rejected and budget remains"| correctEvidence["correct: filter then Corrector Agent or rules"]
+  guardEvidence -->|"Failed and budget remains"| correctEvidence
+  correctEvidence -->|Replacement| verifyEvidence
+  correctEvidence -->|"Allowed expansion"| expandSearch
+  correctEvidence -->|"Bounded retry"| correctEvidence
+  guardEvidence -->|Accepted| nextComponent{"next_component"}
+  nextComponent -->|"More components"| retrieveComponent
+  nextComponent -->|"All accepted"| calculateResult["calculate: cross-input checks and Python arithmetic"]
+  calculateResult -->|"Recoverable incompatibility and budget"| correctEvidence
+  calculateResult -->|SUCCESS| finishRun["finish: final response"]
+  finishRun --> endNode([END])
+  classDef early fill:#E6F3FF,stroke:#2878B5
+  classDef agent fill:#EEE5FF,stroke:#7952B3
+  class retrieveComponent,expandSearch early
+  class planTask,verifyEvidence,correctEvidence agent
 ```
+
+Purple nodes host the three agent roles; their model calls depend on the selected mode and request. Blue retrieval nodes apply early structural eligibility, and the verification/correction stages recheck eligibility too. Invalid units, restricted XBRL dimensions, incompatible periods and other failed source constraints are excluded before encoding/ranking or model review. If no eligible/ranked rows remain, retrieval ends with `INSUFFICIENT_EVIDENCE`. After verification, the guard checks only that the exact selected ID has the latest PASS and that required denominators are present and nonzero. It relies on the eligibility checks before verification. The calculator retains its input contract, including verified IDs and compatibility across accepted components.
+
+Every node before `finish` can terminate through `finish` when a final status is set; these repeated arrows are omitted above. `NEEDS_INPUT`, `UNSUPPORTED_TASK`, `INSUFFICIENT_EVIDENCE` and `ERROR` are statuses, not separate graph nodes. Missing years can trigger same-company supporting-source selection inside `check_inputs`; only explicitly supplied sources or an opted-in cache search are used. Audit snapshots and progress events are produced around node execution, with a final audit save after the graph returns.
 
 Operational failures at any stage route to `ERROR`. No unconstrained ReAct loop is used. A maximum of two correction rounds and one expansion applies per component by default; correction candidate chunks and HTTP retries also have explicit limits. Every replacement is reverified and guarded. A rejected row is never restored as accepted evidence merely because recovery failed.
 
 ## Evidence and sufficiency policy
 
+Source-backed scope assessment uses preserved statement headings, row-group headings, issuer/context IDs, dimensions and associated consolidation declarations. A primary statement with issuer-matching XBRL contexts and a consolidation declaration or explicit consolidated heading can establish scope. A repeated note row can inherit that scope only through exact same-filing XBRL fact identities. Empty dimensions alone are insufficient. Explicitly restricted scope is rejected; unresolved scope remains open. With agents enabled, an all-resolved review records `deterministic_source_scope` without a model call. Unchanged UNCERTAIN evidence is not retried; new supporting evidence can make it eligible for another bounded review.
+
 The parser preserves real statement rows and source/table/row/cell positions rather than flattening the entire filing into prose. Inline XBRL facts retain concepts, contexts, periods, scales, currency, dimensions, raw values and normalized values. Plain HTML uses explicit year/date header columns and currency/scale context. Converted HTML with dollar symbols can establish a monetary table basis without establishing an ISO currency code. For the registered dimensionless percentages/ratios, an unspecified currency can cancel only when all relevant facts share that table basis; no USD denomination is inferred from `$`. Mixed identified/unidentified currencies, conflicting currencies, unrelated source bases, genuinely missing units and ambiguous duplicate facts still fail validation. Equal values across years remain distinct. DOM table indices differ from the notebook's pandas table indices; source IDs include the filing hash.
+
+Parser `ixbrl-table-v9` safely rejects incomplete numeric fragments such as `(4,901` without crashing retrieval-text construction. Inline XBRL signs and scales remain authoritative. Plain HTML can reconstruct split parentheses only within one row and one explicitly mapped fiscal-year column group with one numeric payload; original cells and the numeric cell position remain recorded. Incomplete groups, multiple payloads, cells spanning different years and unsupported cross-row joins remain unresolved. Explicit ISO or English month/day/four-digit-year filing dates are parsed without supplying a year from today's date; comma spacing does not change the year. The parser version invalidates older evidence/embedding caches, and filing metadata is reread from cached source HTML.
 
 Hybrid retrieval exposes FinBERT cosine, lexical similarity, exact normalized-label support, expected statement, XBRL concept support, period availability and numeric availability. Default fusion is `1.0*cosine + 0.25*lexical + 0.25*xbrl`. All signals and weights are recorded. These defaults are transparent heuristics, not calibrated confidence. Diagnostics include top scores, margin, method agreement and candidate availability.
 
-The sufficiency gate returns `SUFFICIENT`, `UNCERTAIN` or `INSUFFICIENT`. Strong structural and concept support permits verification; it never directly authorizes arithmetic. Missing values/periods trigger broader search once and then abstention. Ambiguous concepts after expansion are assessed by the verifier. Only a validated PASS plus mechanical source, statement, period, unit, finite-value, context and denominator checks can accept a row. Final calculation rechecks complete accepted coverage, matching periods and currencies.
+Registered revenue metrics use the reported consolidated revenue total. The labels in `config/financial_concepts.py` distinguish reported revenue totals from net sales. When a structurally supported revenue total is separately reported for any requested year, net sales cannot replace it, even if net sales has a supported XBRL tag. Missing years or conflicting reported totals cause abstention instead of a switch in basis. Net sales remains supported when no separate revenue total is found for the requested periods. This semantic policy filters retrieval/expansion and correction candidates and is enforced before agent verification; it is separate from structural eligibility. Decisions and excluded IDs are recorded under `revenue_basis` in retrieval diagnostics and concept assessments, and the selected basis is included in the final response. No values are synthesized or chosen by size. A separate net-sales metric is not currently exposed.
+
+The input inventory checks missing statement-period coverage before retrieval. Structural eligibility then removes incompatible rows before FinBERT encoding; per-row failures and counts are retained in retrieval diagnostics while original rows remain in the evidence artifact. The sufficiency gate returns `SUFFICIENT`, `UNCERTAIN` or `INSUFFICIENT` for the remaining candidates. Strong structural and concept support permits verification; it never directly authorizes arithmetic. Unresolved retrieval may trigger broader search once, with the same eligibility constraints. Ambiguous concepts after expansion are assessed by the verifier; exhausted insufficient evidence produces abstention. Acceptance requires prior structural eligibility, a validated PASS for the selected row and any required nonzero denominator. The guard does not repeat structural eligibility or maintain a separate validation certificate. Final calculation checks complete accepted coverage, verified IDs, matching periods and currencies, and defined arithmetic.
 
 Output status is `SUCCESS`, `INSUFFICIENT_EVIDENCE`, `NEEDS_INPUT`, `UNSUPPORTED_TASK` or `ERROR`. Abstention means support was not established in the searched scopes; it does not prove that the entire filing lacks the evidence. Missing any required component suppresses the final derived number. No raw cosine score is interpreted as a probability.
 
-Evidence embeddings are cached by filing hash, parser version, actual encoder revision, tokenizer/preprocessing, token limit and evidence-text hash. Subsequent questions reuse parsed evidence and cached row vectors, encoding only the query for unchanged rows. Broader search can introduce additional rows that have not yet been encoded.
+Evidence embeddings are cached by filing hash, parser version, actual encoder revision, tokenizer/preprocessing, token limit and evidence-text hash. Subsequent questions reuse parsed evidence and cached row vectors, encoding only the query for unchanged rows. Expansion exposes the full eligible ranking beyond the initial top-k, rechecking eligibility and reusing cached row vectors.
 
 ## Audit and evaluation
 

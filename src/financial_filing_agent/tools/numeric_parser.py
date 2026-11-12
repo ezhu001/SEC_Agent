@@ -1,3 +1,4 @@
+import math
 import re
 
 
@@ -7,9 +8,15 @@ def number(text: str) -> float | None:
     if s in {"—", "–", "-"}:
         return 0.0
     s = re.sub(r"[$,\s]", "", s)
-    if not re.fullmatch(r"\(?-?\d+(?:\.\d+)?\)?", s):
+    negative = s.startswith("(") and s.endswith(")")
+    if negative:
+        s = s[1:-1]
+    if not re.fullmatch(r"-?\d+(?:\.\d+)?", s):
         return None
-    return -float(s[1:-1]) if s.startswith("(") and s.endswith(")") else float(s)
+    value = float(s)
+    if not math.isfinite(value):
+        return None
+    return -abs(value) if negative else value
 
 
 def normalize(text):

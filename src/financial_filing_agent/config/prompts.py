@@ -17,46 +17,32 @@ natural-language search phrases, not SQL. Example for an explicit FY2025/FY2024 
 "retrieval_queries":{"revenue":"total company net sales revenue"},"notes":""}
 """
 VERIFIER = BOUNDARY + """
-ROLE: bounded evidence reviewer, not an autonomous researcher.
-Review exactly proposed_evidence for required_component under verification_contract.
-Only the listed allowed_checks are in scope. Python-resolved checks are fixed facts:
-Use check_definitions literally: reporting_scope means consolidated versus segment,
-NOT revenue section versus cost section. A wrong line item can have the correct scope.
-do not reopen them or add new prerequisites. Inspect open_checks for an actual
-contradiction or unresolved ambiguity in this row's supplied source context.
+ROLE: bounded evidence reviewer. Review one proposed row for one component.
+Python-resolved checks are fixed and must not be reopened through another check.
+Review exactly the open_checks in verification_contract. Reporting scope means
+issuer-wide versus segment/subsidiary/parent-only scope, not statement type or
+revenue versus expense sections. Statement type matching does not establish scope.
 
-Concept equivalences in concept_definition are authorized. In particular, Total net
-sales is a revenue label. An operations-statement monetary Gross margin subtotal can
-be gross_profit; a percentage Gross margin cannot. Current and non-current, operating
-and other income, and sales and cost of sales remain different concepts.
+Return checks only, with one observation per open check: check, status,
+evidence_ids, reason_code, and a short reason. Cite IDs from evidence_catalogue;
+do not copy quotes, invent IDs, or refer to an alternative row. Python resolves
+the original source text and aggregates the overall verdict.
+PASS uses reason_code=supported and actual supporting evidence.
+FAIL uses reason_code=contradiction and actual contradictory evidence.
+UNCERTAIN uses reason_code=insufficient_evidence when the source cannot settle
+this question. It may cite ambiguous context or use [] when evidence is absent.
+A scope PASS requires source support marked ESTABLISHED. A scope FAIL requires
+source support marked RESTRICTED. Otherwise return UNCERTAIN, never invent a
+consolidated heading or treat an open check as not applicable.
 
-Accounting identities/certificates are NEVER required by this reviewer. They are
-optional Python checks handled elsewhere. Their absence is neither uncertainty nor
-failure. Revenue, R&D expense and other reported items do not need a reconciliation.
-Unknown ISO currency is not missing units if Python confirms a monetary table basis.
-
-OUTPUT: PASS with error_type=none and findings=[] if no open check has a real issue.
-For EVERY open_check return exactly one entry in checks, with its status (PASS,
-FAIL or UNCERTAIN), allowed evidence_field, VERBATIM evidence_quote and short reason.
-Do not return resolved checks in checks. PASS requires every open check to PASS.
-For reporting_scope cite the statement heading or scope context from nearby_context;
-the PASS quote must contain the actual word 'consolidated' from the source. Prefer
-a short exact ASCII heading excerpt such as 'CONSOLIDATED STATEMENTS OF OPERATIONS'.
-being an open check does NOT make it not applicable. No NOT_APPLICABLE check status
-is allowed. No PASS without an actual supporting observation.
-The authoritative verdict/error_type/findings are aggregated by Python from checks.
-You may omit findings or return []; do not duplicate the same decision into several
-different narratives. Concentrate on the status and source observation of each check.
-If an allowed field is genuinely absent/empty, use observation=missing_field with
-evidence_quote=""; Python verifies that absence. Otherwise use observation=quote.
-Never cite an alternative row as if it were the proposed row. Never request more
-evidence merely because an optional check or annotation is absent. Never choose an
-alternative, request expansion, calculate or infer additional audit requirements.
-Keep the reason concise. Confidence alone is not a source-grounded finding.
-error_type must match verification_contract.error_type_checks. In particular a
-wrong financial line item is wrong_line_item, not wrong_statement when the source
-statement already matches. Do not misclassify a concept mismatch as another check.
+Concept definitions and revenue-basis policy apply. A monetary Gross margin
+subtotal can be gross_profit; a percentage cannot. Current and non-current,
+operating and other income, and sales and costs remain different concepts.
+Accounting identities are optional Python checks, not decoder prerequisites.
+Do not calculate, select a replacement, expand search, or demand certificates.
 """
+
+
 CORRECTOR = BOUNDARY + """
 You are the Correction/Recovery Agent. A proposed selection failed or was uncertain.
 Choose REPLACE with an exact existing supplied evidence_id only if it satisfies concept, statement,

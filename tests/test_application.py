@@ -13,7 +13,7 @@ from financial_filing_agent.services.pipeline import Pipeline
 from financial_filing_agent.tools.filing_loader import load_filing
 from financial_filing_agent.tools.filing_parser import parse_filing
 from financial_filing_agent.tools.numeric_parser import number
-from financial_filing_agent.tools.validation import guard, EvidenceError
+from financial_filing_agent.tools.validation import eligibility, EvidenceError
 from financial_filing_agent.tools.calculator import calculate
 from financial_filing_agent.agents.corrector import correct
 from financial_filing_agent.agents.planner import plan_task
@@ -88,7 +88,10 @@ def test_guard_failure_blocks_calculation(tmp_path):
     result = run(tmp_path / "artifacts", source=path)
     assert result["final_status"] == "INSUFFICIENT_EVIDENCE"
     assert result["calculation_result"] is None
-    assert not result["guard_results"]["revenue"][0]["passed"]
+    assert not result["guard_results"]
+    assert not result["verification_results"]
+    rejected = result["retrieval_diagnostics"]["revenue"][0]["eligibility"]["rejected"]
+    assert rejected and all(not r["checks"]["known_units"] for r in rejected)
 
 
 def test_missing_period_abstains(tmp_path):
@@ -128,7 +131,7 @@ def test_apple_development_calculation_regression(apple_rows, formula):
     labels = {"revenue": "Total net sales", "operating_income": "Operating income", "current_assets": "Total current assets", "current_liabilities": "Total current liabilities"}
     accepted = {c: next(r for r in rows if r.label == labels[c]) for c in plan.required_components}
     for c, row in accepted.items():
-        assert guard(row, c, plan.required_periods, filing.content_hash, row.evidence_id, {r.evidence_id for r in rows})["passed"]
+        assert eligibility(row, c, plan.required_periods, filing.content_hash, {r.evidence_id for r in rows})["passed"]
     result = calculate(plan, accepted, {c: r.evidence_id for c, r in accepted.items()})
     expected, _ = DEVELOPMENT_REFERENCES[formula]
     assert result.value == pytest.approx(expected, abs=1e-12)

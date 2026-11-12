@@ -5,7 +5,8 @@ from .evidence import Record
 
 class VerificationFinding(Record):
     check: Literal["concept_match", "statement_match", "required_periods", "monetary_unit", "reporting_scope", "formula_role"]
-    evidence_field: Literal["label", "statement", "facts", "nearby_context"]
+    evidence_field: Literal["label", "statement", "facts", "nearby_context", "scope_evidence"]
+    evidence_ids: list[str] = Field(default_factory=list)
     observation: Literal["quote", "missing_field"] = "quote"
     evidence_quote: str = Field(max_length=300)
     reason: str = Field(min_length=1, max_length=500)
@@ -21,6 +22,20 @@ class VerificationFinding(Record):
 
 class VerificationCheck(VerificationFinding):
     status: Literal["PASS", "FAIL", "UNCERTAIN"]
+
+
+class AgentCheck(Record):
+    check: Literal["concept_match", "statement_match", "required_periods", "monetary_unit", "reporting_scope", "formula_role"]
+    status: Literal["PASS", "FAIL", "UNCERTAIN"]
+    evidence_ids: list[str] = Field(max_length=6)
+    reason_code: Literal["supported", "contradiction", "insufficient_evidence"]
+    reason: str = Field(min_length=1, max_length=300)
+
+
+class AgentReview(Record):
+    checks: list[AgentCheck] = Field(max_length=6)
+    reason: str = Field(default="Source evidence review", max_length=700)
+    confidence: float = Field(default=1.0, ge=0, le=1)
 
 
 class Verification(Record):

@@ -1,5 +1,6 @@
 import math
 from datetime import date
+from typing import TypedDict
 from ..config.financial_concepts import CONCEPTS
 
 
@@ -7,13 +8,19 @@ class EvidenceError(ValueError):
     pass
 
 
-def guard(row, component, periods, filing_hash, verified_id, known_ids):
+class CheckResult(TypedDict):
+    passed: bool
+    checks: dict[str, bool]
+    evidence_id: str
+
+
+def eligibility(row, component, periods, filing_hash, known_ids) -> CheckResult:
+    """Check immutable source constraints without claiming model verification."""
     facts = [f for f in row.facts if f.period in periods]
     checks = {
         "source_membership": row.evidence_id in known_ids and row.filing_hash == filing_hash,
         "label_present": bool(row.label.strip()),
         "statement": row.statement == CONCEPTS[component][0],
-        "reverified_selection": verified_id == row.evidence_id,
         "unique_requested_periods": all(sum(f.period == p for f in facts) == 1 for p in periods),
         "finite_values": bool(facts) and all(math.isfinite(f.value) for f in facts),
         "known_units": bool(facts) and all(f.unit == "currency" and (f.currency is not None or f.unit_basis is not None) for f in facts),
@@ -22,6 +29,18 @@ def guard(row, component, periods, filing_hash, verified_id, known_ids):
         "period_kind": all(f.instant == (row.statement == "balance") for f in facts),
         "annual_duration": all(f.instant or not f.start or (f.end and 330 <= (date.fromisoformat(f.end) - date.fromisoformat(f.start)).days <= 380) for f in facts),
     }
+    return {"passed": all(checks.values()), "checks": checks, "evidence_id": row.evidence_id}
+
+
+def guard(row, verified_id, denominator_periods=()) -> CheckResult:
+    """Accept an eligible row only for its verified ID and defined denominator."""
+    checks = {"reverified_selection": verified_id is not None and verified_id == row.evidence_id}
+    if denominator_periods:
+        facts = [f for f in row.facts if f.period in denominator_periods]
+        checks["nonzero_denominator"] = (
+            set(denominator_periods).issubset({f.period for f in facts})
+            and all(f.value != 0 for f in facts)
+        )
     return {"passed": all(checks.values()), "checks": checks, "evidence_id": row.evidence_id}
 
 

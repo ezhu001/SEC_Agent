@@ -25,11 +25,12 @@ from ..schemas.evidence import Filing, EvidenceRow
 from ..schemas.task import TaskPlan
 from ..tools.filing_loader import load_filing
 from ..tools.filing_parser import parse_filing
-from ..tools.validation import guard, EvidenceError
+from ..tools.validation import eligibility, guard, EvidenceError
 from ..tools.calculator import calculate
 from ..tools.input_inventory import inventory, missing_periods
 from ..tools.supporting_filing import find_complete_filing
-from ..tools.concept_validation import assess_concept, gross_profit_identity
+from ..tools.concept_validation import assess_concept, gross_profit_identity, revenue_policy, assess_revenue_basis
+from ..tools.scope_validation import assess_scope, scope_fingerprint
 from .audit import Audit
 from .cache import atomic_json
 from .progress import LABELS, summary
@@ -141,23 +142,57 @@ class Pipeline:
                 "warnings": s["warnings"] + ["Missing required statement-period inputs: " + details +
                     ". Supply a same-company filing covering these years, or select the years actually reported. No model verification or calculation can supply missing balances."]}
 
+    def rank_eligible(self, s, component, rows):
+        known_ids = {row.evidence_id for row in rows}
+        eligible, rejected = [], []
+        for row in rows:
+            result = eligibility(row, component, s["required_periods"], s["filing_hash"], known_ids)
+            if result["passed"]:
+                eligible.append(row)
+            else:
+                rejected.append(result)
+        ranking_rows, basis_diagnostics = eligible, {}
+        if component == "revenue":
+            policy = revenue_policy(rows, s["required_periods"], s["filing_hash"])
+            assessments = {r.evidence_id: assess_revenue_basis(r, policy) for r in eligible}
+            ranking_rows = [r for r in eligible if assessments[r.evidence_id]["status"] == "PASS"]
+            basis_diagnostics = {"revenue_basis": {**policy,
+                "rejected": [{"evidence_id": r.evidence_id, **assessments[r.evidence_id]}
+                             for r in eligible if assessments[r.evidence_id]["status"] != "PASS"]}}
+        if ranking_rows:
+            ranked, diagnostics = self.retriever.rank(ranking_rows, component, s["required_periods"],
+                                                      s["task_plan"]["retrieval_queries"][component])
+        else:
+            ranked, diagnostics = [], {"candidate_count": 0}
+        return ranked, {**diagnostics, **basis_diagnostics, "eligibility": {"examined_count": len(rows),
+                       "eligible_count": len(eligible), "rejected": rejected}}
+
     def retrieve(self, s):
         component = s["required_components"][s["component_index"]]
-        rows = [r for r in self.rows(s) if r.statement == CONCEPTS[component][0]]
-        ranked, diagnostics = self.retriever.rank(rows, component, s["required_periods"], s["task_plan"]["retrieval_queries"][component])
-        # Initial scope is top-k of the expected-statement pool; expansion opens all parsed statements.
+        ranked, diagnostics = self.rank_eligible(s, component, self.rows(s))
+        # Initial scope is top-k of eligible rows; expansion retains the same source constraints.
         top = ranked[:self.settings.top_k]
+        warnings = s["warnings"]
+        if not ranked:
+            failed = sorted({key for record in diagnostics["eligibility"]["rejected"]
+                             for key, passed in record["checks"].items() if not passed})
+            reason = (f"No structurally eligible evidence for {component}. Failed checks: " + ", ".join(failed)
+                      if not diagnostics["eligibility"]["eligible_count"] else f"No ranked evidence for {component} in the searched scope.")
+            if diagnostics.get("revenue_basis", {}).get("rejected"):
+                reason += " " + diagnostics["revenue_basis"]["rejected"][0]["reason"]
+            warnings = warnings + [reason]
         return {"active_component": component, "retrieval_results": {**s["retrieval_results"], component: ranked},
                 "top_k_candidates": {**s["top_k_candidates"], component: top},
                 "retrieval_diagnostics": {**s["retrieval_diagnostics"], component: [diagnostics]},
                 "candidate_scope": "TOP_K", "proposed_id": top[0]["evidence_id"] if top else None,
-                "correction_attempts": 0, "component_expansions": 0, "route": "assess_sufficiency"}
+                "correction_attempts": 0, "component_expansions": 0, "route": "assess_sufficiency",
+                "warnings": warnings, **({"final_status": "INSUFFICIENT_EVIDENCE"} if not ranked else {})}
 
     def sufficiency(self, s):
         c = s["active_component"]
         pool = s["top_k_candidates"][c] if s["candidate_scope"] == "TOP_K" else s["retrieval_results"][c]
         failed_ids = {r["evidence_id"] for r in s["guard_results"].get(c, []) if not r["passed"]}
-        failed_ids |= {r["evidence_id"] for r in s["verification_results"].get(c, []) if r["verdict"] != "PASS"}
+        failed_ids |= self.review_rejections(s, c)
         pool = [r for r in pool if r["evidence_id"] not in failed_ids]
         # Propose a structurally eligible row, never borrow period availability
         # from an unrelated row or financial statement in the expanded pool.
@@ -180,7 +215,7 @@ class Pipeline:
         if s["component_expansions"] >= self.settings.expansion_budget:
             return {"final_status": "INSUFFICIENT_EVIDENCE", "warnings": s["warnings"] + ["Search expansion exhausted"]}
         c = s["active_component"]
-        ranked, diag = self.retriever.rank(self.rows(s), c, s["required_periods"], s["task_plan"]["retrieval_queries"][c])
+        ranked, diag = self.rank_eligible(s, c, self.rows(s))
         return {"retrieval_results": {**s["retrieval_results"], c: ranked}, "candidate_scope": "ALL_PARSED_STATEMENTS",
                 "retrieval_diagnostics": {**s["retrieval_diagnostics"], c: s["retrieval_diagnostics"][c] + [diag]},
                 "proposed_id": ranked[0]["evidence_id"] if ranked else None,
@@ -190,7 +225,7 @@ class Pipeline:
     def model_payload(self, s):
         c = s["active_component"]
         components = FORMULAS[s["formula_id"]].components
-        return {"original_question": s["user_question"], "required_component": c,
+        return {"original_question": s["user_question"], "required_component": c, "filing_hash": s["filing_hash"],
             "formula_id": s["formula_id"],
             "component_formula_role": {"component": c,
                 "role": "growth_input" if len(components) == 1 else "numerator" if c == components[0] else "denominator",
@@ -205,10 +240,27 @@ class Pipeline:
         # Full source rows remain in the evidence artifact. Avoid repeating the
         # whole surrounding table for every alternative in the decoder context.
         record = {"evidence_id": row.evidence_id, "label": row.label, "statement": row.statement,
-                  "text": row.text, "nearby_context": row.nearby_context[-250:]}
-        record["facts"] = [f.model_dump(mode="json", exclude={"cell", "raw_value", "context_id", "scale"})
+                  "filing_hash": row.filing_hash, "table": row.table, "row": row.row,
+                  "text": row.text, "nearby_context": row.nearby_context[-600:],
+                  "statement_heading": row.statement_heading.model_dump() if row.statement_heading else None,
+                  "row_group_heading": row.row_group_heading.model_dump() if row.row_group_heading else None}
+        record["facts"] = [f.model_dump(mode="json", exclude={"raw_value"})
                            for f in row.facts if f.period in periods]
         return record
+
+    def review_rejections(self, s, component):
+        rows = {r.evidence_id: r for r in self.rows(s)}
+        rejected = set()
+        for review in s["verification_results"].get(component, []):
+            if review["verdict"] == "FAIL":
+                rejected.add(review["evidence_id"])
+            elif review["verdict"] == "UNCERTAIN":
+                row = rows.get(review["evidence_id"])
+                metadata = s.get("filing_metadata", {})
+                current = assess_scope(row, list(rows.values()), s["required_periods"], metadata) if row else {}
+                if not row or not review.get("scope_fingerprint") or review["scope_fingerprint"] == scope_fingerprint(row, current, metadata):
+                    rejected.add(review["evidence_id"])
+        return rejected
 
     def verification(self, s):
         rows = {r.evidence_id: r for r in self.rows(s)}
@@ -216,32 +268,54 @@ class Pipeline:
         if proposed is None:
             return {"final_status": "INSUFFICIENT_EVIDENCE", "warnings": s["warnings"] + ["No source proposal to verify"]}
         c = s["active_component"]
-        concept = assess_concept(proposed, c, s["required_periods"], s["filing_hash"], set(rows))
+        mechanical = eligibility(proposed, c, s["required_periods"], s["filing_hash"], set(rows))
+        if not mechanical["passed"]:
+            failed = ", ".join(key for key, passed in mechanical["checks"].items() if not passed)
+            recovery = self.recover_route(s)
+            warnings = recovery.pop("warnings", s["warnings"])
+            return {**recovery, "guard_results": {**s["guard_results"],
+                    c: s["guard_results"].get(c, []) + [mechanical]},
+                    "warnings": warnings + [f"Evidence {proposed.evidence_id} failed before verification: {failed}."]}
+        policy = revenue_policy(list(rows.values()), s["required_periods"], s["filing_hash"]) if c == "revenue" else None
+        concept = assess_concept(proposed, c, s["required_periods"], s["filing_hash"], set(rows), revenue_basis_policy=policy)
+        scope = assess_scope(proposed, list(rows.values()), s["required_periods"], s.get("filing_metadata", {}))
         identity = (gross_profit_identity(proposed, list(rows.values()), s["required_periods"])
                     if c == "gross_profit" and concept["status"] == "PASS" else {"status": "NOT_APPLICABLE"})
         identity["required"] = False
         # A verified source accounting identity is a stronger concept certificate
         # than a decoder's label-only reinterpretation. Record this explicitly.
-        if identity["status"] in {"PASS", "MISMATCH"} or not self.settings.qwen_enabled:
-            passed = concept["status"] == "PASS" and identity["status"] != "MISMATCH"
-            record = {"evidence_id": proposed.evidence_id, "verdict": "PASS" if passed else "UNCERTAIN",
-                "error_type": "none" if passed else "insufficient_evidence", "confidence": None,
-                "reason": ("Python source accounting identity confirms a monetary gross-profit subtotal; no decoder arithmetic or label-only veto was used." if identity["status"] == "PASS"
-                           else "Python accounting identity mismatch: reported amount differs from same-table revenue minus cost of sales." if identity["status"] == "MISMATCH" else concept["reason"]),
-                "method": "deterministic_accounting_identity" if identity["status"] == "PASS" else "deterministic_concept_rules",
+        if concept["status"] == "FAIL" or scope["status"] == "RESTRICTED" or identity["status"] == "MISMATCH" or not self.settings.qwen_enabled or (identity["status"] == "PASS" and scope["status"] == "ESTABLISHED"):
+            passed = concept["status"] == "PASS" and scope["status"] == "ESTABLISHED" and identity["status"] != "MISMATCH"
+            if scope["status"] == "RESTRICTED":
+                reason = scope["reason"]
+            elif concept["status"] == "FAIL":
+                reason = concept["reason"]
+            elif identity["status"] == "PASS":
+                reason = "Python source accounting identity confirms a monetary gross-profit subtotal; no decoder arithmetic or label-only veto was used."
+            elif identity["status"] == "MISMATCH":
+                reason = "Python accounting identity mismatch: reported amount differs from same-table revenue minus cost of sales."
+            else:
+                reason = scope["reason"] if scope["status"] != "ESTABLISHED" else concept["reason"]
+            record = {"evidence_id": proposed.evidence_id, "verdict": "PASS" if passed else "FAIL" if concept["status"] == "FAIL" or scope["status"] == "RESTRICTED" else "UNCERTAIN",
+                "error_type": "none" if passed else "wrong_context" if scope["status"] == "RESTRICTED" else "wrong_line_item" if concept["status"] == "FAIL" else "insufficient_evidence", "confidence": None,
+                "reason": reason,
+                "method": "deterministic_scope_rules" if scope["status"] == "RESTRICTED" else "deterministic_accounting_identity" if identity["status"] == "PASS" else "deterministic_concept_rules",
                 "concept_assessment": concept, "accounting_identity": identity}
         else:
             payload = {**self.model_payload(s), "proposed_evidence": self.decoder_evidence(proposed, s["required_periods"]),
-                       "deterministic_concept_assessment": concept}
+                       "deterministic_concept_assessment": concept, "scope_assessment": scope}
             result = verify(self.decoder, payload)
             contract = build_contract(payload)
-            record = {"evidence_id": proposed.evidence_id, **result.model_dump(mode="json"), "method": "qwen",
+            record = {"evidence_id": proposed.evidence_id, **result.model_dump(mode="json"),
+                      "method": "qwen" if contract["open_checks"] else "deterministic_source_scope",
                       "concept_assessment": concept, "accounting_identity": identity,
                       "verification_contract": contract, "model_reason": result.reason}
             if result.verdict == "PASS":
                 # Keep the exact model prose for inspection, but present a
                 # stable description of what its validated output authorizes.
                 record["reason"] = "; ".join(f"{check.check}={check.status}: {check.evidence_quote[:100]}" for check in result.checks) + ". Python-resolved checks remain fixed."
+        record["scope_assessment"] = scope
+        record["scope_fingerprint"] = scope_fingerprint(proposed, scope, s.get("filing_metadata", {}))
         update = {"verification_results": {**s["verification_results"], c: s["verification_results"].get(c, []) + [record]}}
         return {**update, **({"route": "guard"} if record["verdict"] == "PASS" else self.recover_route(s))}
 
@@ -249,14 +323,11 @@ class Pipeline:
         c = s["active_component"]
         rows = {r.evidence_id: r for r in self.rows(s)}
         latest = s["verification_results"][c][-1]
-        result = guard(rows[s["proposed_id"]], c, s["required_periods"], s["filing_hash"],
-                       latest["evidence_id"] if latest["verdict"] == "PASS" else None, set(rows))
         formula = FORMULAS[s["formula_id"]]
         denominator_periods = (s["required_periods"][-1:] if s["formula_id"].endswith("growth") else s["required_periods"])
         denominator_component = formula.components[0] if len(formula.components) == 1 else formula.components[1]
-        if c == denominator_component:
-            result["checks"]["nonzero_denominator"] = all(f.value != 0 for f in rows[s["proposed_id"]].facts if f.period in denominator_periods)
-            result["passed"] = all(result["checks"].values())
+        result = guard(rows[s["proposed_id"]], latest["evidence_id"] if latest["verdict"] == "PASS" else None,
+                       denominator_periods if c == denominator_component else ())
         update = {"guard_results": {**s["guard_results"], c: s["guard_results"].get(c, []) + [result]}}
         if result["passed"]:
             return {**update, "accepted_evidence": {**s["accepted_evidence"], c: s["proposed_id"]}, "route": "next_component"}
@@ -279,10 +350,17 @@ class Pipeline:
         # returning the exact same source row again.
         failed_ids = {r["evidence_id"] for r in s["guard_results"].get(c, []) if not r["passed"]}
         ranked = [r for r in ranked if r["evidence_id"] not in failed_ids]
-        rejected_ids = {r["evidence_id"] for r in s["verification_results"].get(c, []) if r["verdict"] != "PASS"}
+        rejected_ids = self.review_rejections(s, c)
         ranked = [r for r in ranked if r["evidence_id"] not in rejected_ids]
+        ranked = [r for r in ranked if eligibility(rows[r["evidence_id"]], c, s["required_periods"],
+                  s["filing_hash"], set(rows))["passed"]]
+        ranked = [r for r in ranked if assess_scope(rows[r["evidence_id"]], list(rows.values()),
+                  s["required_periods"], s.get("filing_metadata", {}))["status"] != "RESTRICTED"]
+        policy = revenue_policy(list(rows.values()), s["required_periods"], s["filing_hash"]) if c == "revenue" else None
+        if policy is not None:
+            ranked = [r for r in ranked if assess_revenue_basis(rows[r["evidence_id"]], policy)["status"] == "PASS"]
         if not self.settings.qwen_enabled:
-            choices = [r for r in ranked if assess_concept(rows[r["evidence_id"]], c, s["required_periods"], s["filing_hash"], set(rows))["status"] == "PASS"]
+            choices = [r for r in ranked if assess_concept(rows[r["evidence_id"]], c, s["required_periods"], s["filing_hash"], set(rows), revenue_basis_policy=policy)["status"] == "PASS"]
             decision = {"decision": "REPLACE" if len(choices) == 1 else "NO_VALID_EVIDENCE",
                         "evidence_id": choices[0]["evidence_id"] if len(choices) == 1 else None,
                         "reason": "Unique existing row satisfies registered concept rules" if len(choices) == 1 else "No unique rule-supported replacement; no model decision was requested",
@@ -309,7 +387,7 @@ class Pipeline:
         for chunk in chunks[:self.settings.max_correction_chunks]:
             payload = {**self.model_payload(s), "available_candidates": [self.decoder_evidence(rows[r["evidence_id"]], s["required_periods"]) for r in chunk],
                 "rejected_selection": s["proposed_id"],
-                "verification": [{k: record[k] for k in ("evidence_id", "verdict", "error_type", "findings", "checks") if k in record}
+                "verification": [{k: record[k] for k in ("evidence_id", "verdict", "error_type", "findings", "checks", "scope_assessment") if k in record}
                                  for record in s["verification_results"].get(c, [])[-1:]],
                 "guard": s["guard_results"].get(c, [])[-1:], "search_scope": s["candidate_scope"],
                 "previous_corrections": s["correction_results"].get(c, [])[-1:],
@@ -340,10 +418,6 @@ class Pipeline:
         rows = {r.evidence_id: r for r in self.rows(s)}
         accepted = {c: rows[ident] for c, ident in s["accepted_evidence"].items()}
         verified = {c: records[-1]["evidence_id"] for c, records in s["verification_results"].items() if records[-1]["verdict"] == "PASS"}
-        for c, row in accepted.items():
-            check = guard(row, c, plan.required_periods, s["filing_hash"], verified.get(c), set(rows))
-            if not check["passed"]:
-                raise EvidenceError("Final input guard failed for " + c)
         try:
             result = calculate(plan, accepted, verified)
         except EvidenceError as exc:
@@ -357,9 +431,12 @@ class Pipeline:
 
     def finish(self, s):
         rows = {r.evidence_id: r for r in self.rows(s)} if s.get("evidence_artifact_reference") else {}
+        revenue_review = s["verification_results"].get("revenue", [])[-1:]
+        basis = (revenue_review[0].get("concept_assessment", {}).get("revenue_basis")
+                 if revenue_review and revenue_review[0]["evidence_id"] == s["accepted_evidence"].get("revenue") else None)
         return {"final_response": {"status": s["final_status"], "calculation": s.get("calculation_result"),
             "evidence": {c: rows[ident].model_dump(mode="json") for c, ident in s["accepted_evidence"].items()},
-            "filing_metadata": s["filing_metadata"], "warnings": s["warnings"], "errors": s["errors"]}}
+            "revenue_basis": basis, "filing_metadata": s["filing_metadata"], "warnings": s["warnings"], "errors": s["errors"]}}
 
     def wrapped(self, name, function):
         def invoke(state):

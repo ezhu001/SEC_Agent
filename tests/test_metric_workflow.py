@@ -21,8 +21,8 @@ class RoleDecoder:
         answer = {"verdict": "PASS" if good else "FAIL", "error_type": "none" if good else "wrong_line_item",
                                       "confidence": 0.9, "reason": "Test-only accounting concept decision", "findings": [] if good else
                                       [{"check": "concept_match", "evidence_field": "label", "evidence_quote": payload["proposed_evidence"]["label"], "reason": "Different accounting concept"}]}
-        from evaluation.review_double import review_checks
-        answer["checks"] = review_checks(payload, answer["findings"])
+        from evaluation.review_double import review_response
+        answer = review_response(payload, answer)
         return schema.model_validate(answer)
 
 
@@ -48,7 +48,12 @@ def execute(tmp_path, source, **options):
 def test_all_components_verified_before_single_deterministic_calculation(tmp_path):
     result, decoder = execute(tmp_path, APPLE_HTML)
     assert result["final_status"] == "SUCCESS", result["warnings"]
-    assert [c["payload"]["required_component"] for c in decoder.calls] == ["current_assets", "current_liabilities"]
+    assert not decoder.calls
+    for component in ("current_assets", "current_liabilities"):
+        review = result["verification_results"][component][-1]
+        assert review["method"] == "deterministic_source_scope"
+        assert review["scope_assessment"]["status"] == "ESTABLISHED"
+        assert review["scope_assessment"]["sources"]
     assert len(result["input_inventory"]) == 4
     assert all(c["status"] == "FOUND" for c in result["input_inventory"])
     nodes = [e["node"] for e in result["audit_events"]]

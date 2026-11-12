@@ -5,7 +5,8 @@ from .html import parse_html
 from .evidence_builder import retrieval_text
 from .xbrl import extract_contexts, inline_fact, local
 from .numeric_parser import number
-from ..schemas.evidence import EvidenceRow, Fact
+from .scope_validation import scope_sources, table_heading
+from ..schemas.evidence import EvidenceRow, Fact, SourceText
 
 
 def statement_type(text, nearby=""):
@@ -47,9 +48,36 @@ def grid(table):
     return rows
 
 
+def plain_amounts(unique, cells, headers):
+    """Join display fragments only within one row and one explicit period group."""
+    groups = []
+    for col, cell in unique[1:]:
+        periods = {headers.get(k) for k, value in cells.items() if value is cell}
+        period = next(iter(periods)) if len(periods) == 1 else None
+        if not groups or not period or period != groups[-1][0]:
+            groups.append((period, []))
+        groups[-1][1].append((col, cell.get_text(" ", strip=True)))
+    for period, parts in groups:
+        if not period:
+            continue
+        fragments = any(("(" in raw or ")" in raw) and number(raw) is None for _, raw in parts)
+        if fragments:
+            payloads = [(col, raw) for col, raw in parts if re.search(r"\d", raw)]
+            raw = " ".join(text for _, text in parts)
+            value = number(raw)
+            if len(payloads) == 1 and value is not None:
+                yield payloads[0][0], period, raw, value
+        else:
+            for col, raw in parts:
+                value = number(raw)
+                if value is not None:
+                    yield col, period, raw, value
+
+
 def parse_filing(html, filing):
     soup = parse_html(html)
     contexts, units = extract_contexts(soup)
+    headings, declarations = scope_sources(soup, filing)
     evidence, statements = [], []
     for ti, table in enumerate(soup.find_all("table")):
         text = table.get_text(" ", strip=True)
@@ -65,6 +93,7 @@ def parse_filing(html, filing):
         kind = statement_type(text, nearby)
         if kind == "other":
             continue
+        heading = table_heading(table, nearby, headings)
         # Inline facts carry authoritative units. Plain HTML needs explicit units.
         unit_context = nearby + " " + text[:600]
         # A dollar sign or unqualified "dollars" establishes a monetary unit,
@@ -76,7 +105,7 @@ def parse_filing(html, filing):
         monetary = bool(codes or "$" in text or re.search(r"\bdollars\b", unit_context, re.I))
         unit_basis = f"{filing.content_hash}:table:{ti}:monetary" if monetary and len(codes) <= 1 else None
         scale = 6 if re.search(r"in millions", unit_context, re.I) else 3 if re.search(r"in thousands", unit_context, re.I) else 0
-        headers, parent = {}, ""
+        headers, parent, row_group = {}, "", None
         for ri, cells in enumerate(grid(table)):
             distinct = list(dict.fromkeys(id(c) for c in cells.values()))
             unique = []
@@ -89,7 +118,7 @@ def parse_filing(html, filing):
             # Header dates must be in their own cells and precede values.
             inline = [(col, n) for col, c in unique for n in c.find_all(lambda t: local(t) == "nonfraction")]
             header_years = [(col, re.fullmatch(r"(?:FY\s*)?(20\d{2})", s)) for (col, _), s in zip(unique, strings)]
-            dated = [(col, re.search(r"(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},?\s+(20\d{2})", s, re.I)) for (col, _), s in zip(unique, strings)]
+            dated = [(col, re.search(r"(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2}(?:,\s*|\s+)(20\d{2})\b", s, re.I)) for (col, _), s in zip(unique, strings)]
             years = [(col, m.group(1)) for col, m in header_years + dated if m]
             is_header = any(c.name == "th" for _, c in unique) or not label_is_financial(strings[0])
             if years and not inline and is_header:
@@ -110,24 +139,24 @@ def parse_filing(html, filing):
                         fact.period = "FY" + str(int(focus) - (int(period_end[:4]) - int(fact.end[:4])))
                     facts.append(fact)
             if not inline:
-                for col, cell in unique[1:]:
-                    val = number(cell.get_text(" ", strip=True))
-                    period = headers.get(col)
-                    if val is not None and period:
-                        facts.append(Fact(period=period, value=val * 10 ** scale,
-                                          raw_value=cell.get_text(" ", strip=True), cell=col,
-                                          currency=currency, unit="currency" if unit_basis else None,
-                                          unit_basis=unit_basis,
-                                          scale=scale, instant=kind == "balance"))
+                for col, period, raw, value in plain_amounts(unique, cells, headers):
+                    facts.append(Fact(period=period, value=value * 10 ** scale,
+                                      raw_value=raw, cell=col,
+                                      currency=currency, unit="currency" if unit_basis else None,
+                                      unit_basis=unit_basis,
+                                      scale=scale, instant=kind == "balance"))
             if not facts:
                 if label.endswith(":"):
                     parent = label
+                if len(label) < 150 and not any(re.search(r"\d", s) for s in strings[1:]):
+                    row_group = SourceText(text=label, locator=f"table:{ti}:row:{ri}", filing_hash=filing.content_hash)
                 continue
             # Retain ambiguity: validation rejects duplicate facts for a period.
             evidence.append(EvidenceRow(evidence_id=f"{filing.content_hash[:16]}:t{ti:02d}_r{ri:03d}",
                 filing_hash=filing.content_hash, source=filing.source, statement=kind,
                 table=ti, row=ri, label=label, text=retrieval_text(strings), raw_cells=strings,
-                nearby_context=(nearby + " " + parent)[-1800:], facts=facts))
+                nearby_context=(nearby + " " + parent)[-1800:], statement_heading=heading,
+                row_group_heading=row_group, scope_declarations=declarations, facts=facts))
         statements.append({"table": ti, "type": kind, "context": nearby})
     return evidence, statements
 

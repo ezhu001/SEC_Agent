@@ -29,8 +29,8 @@ class ScriptedDecoder:
             candidate = next((r for r in payload["available_candidates"] if r["label"] == "Total net sales"), None)
             answer = {"decision": "REPLACE" if candidate else "NO_VALID_EVIDENCE", "evidence_id": candidate["evidence_id"] if candidate else None, "confidence": 0.9, "reason": "Scripted recovery"}
         if role == "verifier":
-            from evaluation.review_double import review_checks
-            answer["checks"] = review_checks(payload, answer["findings"])
+            from evaluation.review_double import review_response
+            answer = review_response(payload, answer)
         self.calls.append({"role": role, "request": payload, "output": answer, "seconds": 0})
         return schema.model_validate(answer)
 

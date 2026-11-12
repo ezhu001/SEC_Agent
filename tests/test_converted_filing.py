@@ -7,7 +7,7 @@ from financial_filing_agent.config.settings import Settings
 from financial_filing_agent.services.pipeline import Pipeline
 from financial_filing_agent.tools.filing_loader import load_filing
 from financial_filing_agent.tools.filing_parser import parse_filing
-from financial_filing_agent.tools.validation import compatible_inputs, guard, EvidenceError
+from financial_filing_agent.tools.validation import compatible_inputs, eligibility, EvidenceError
 from evaluation.doubles import ScriptedDecoder, DemoRetriever
 
 SOURCE = Path("evaluation/fixtures/converted_apple_2026_10k.html")
@@ -28,7 +28,7 @@ def test_converted_revenue_has_supported_monetary_basis(parsed):
     assert [f.period for f in row.facts] == ["FY2026", "FY2025", "FY2024"]
     assert [f.value for f in row.facts] == [478834e6, 416161e6, 391035e6]
     assert all(f.unit == "currency" and f.currency is None and f.unit_basis for f in row.facts)
-    assert guard(row, "revenue", ["FY2025", "FY2024"], filing.content_hash, row.evidence_id, {r.evidence_id for r in rows})["passed"]
+    assert eligibility(row, "revenue", ["FY2025", "FY2024"], filing.content_hash, {r.evidence_id for r in rows})["passed"]
 
 
 def test_user_question_succeeds_with_cold_and_warm_cache(tmp_path):
@@ -40,7 +40,7 @@ def test_user_question_succeeds_with_cold_and_warm_cache(tmp_path):
         assert result["correction_count"] == 0
         assert len(result["verification_results"]["revenue"]) == 1
         assert "No USD denomination was assumed" in result["warnings"][-1]
-        assert result["config"]["parser_version"] == "ixbrl-table-v5"
+        assert result["config"]["parser_version"] == "ixbrl-table-v9"
 
 
 def test_unknown_currency_cannot_cross_source_bases(parsed):
@@ -85,6 +85,8 @@ def test_guard_failures_do_not_reverify_same_unchanged_row(tmp_path):
     source.write_text(Path("evaluation/fixtures/demo.html").read_text().replace("in USD", ""))
     result = Pipeline(Settings(artifact_dir=tmp_path / "runs"), ScriptedDecoder(), DemoRetriever()).run(QUESTION, str(source))
     assert result["final_status"] == "INSUFFICIENT_EVIDENCE"
-    guarded = [r["evidence_id"] for r in result["guard_results"]["revenue"]]
-    assert len(guarded) == len(set(guarded))
+    assert not result["guard_results"]
+    assert not result["verification_results"]
+    assert result["decoder_call_count"] == 1  # Free-text planning still runs before evidence is available.
+    assert result["correction_count"] == result["expanded_search_count"] == 0
     assert any("known_units" in w for w in result["warnings"])

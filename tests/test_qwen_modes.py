@@ -24,10 +24,10 @@ class Decoder:
         # Reproduce the original model misconception if it is asked to judge
         # gross_profit. A source identity certificate should prevent that call.
         gross = payload.get("required_component") == "gross_profit"
-        from evaluation.review_double import review_checks
-        return schema.model_validate({"verdict": "FAIL" if gross else "PASS", "checks": review_checks(payload),
+        from evaluation.review_double import review_response
+        return schema.model_validate(review_response(payload, {"verdict": "FAIL" if gross else "PASS",
             "error_type": "wrong_line_item" if gross else "none", "confidence": 0.9,
-            "reason": "Gross margin is a percentage, not gross profit" if gross else "Revenue concept matches"})
+            "reason": "Gross margin is a percentage, not gross profit" if gross else "Revenue concept matches"}))
 
 
 def execute(tmp_path, enabled):
@@ -50,8 +50,9 @@ def test_monetary_gross_margin_is_gross_profit_in_both_modes(tmp_path, enabled):
     expected = (195201 / 416161 - 180683 / 391035) * 100
     assert result["calculation_result"]["value"] == pytest.approx(expected, abs=1e-12)
     assert result["calculation_result"]["unit"] == "percentage points"
-    assert [c["payload"]["required_component"] for c in decoder.calls] == (["revenue"] if enabled else [])
-    assert result["decoder_call_count"] == (1 if enabled else 0)
+    assert not decoder.calls
+    assert result["decoder_call_count"] == 0
+    assert result["verification_results"]["revenue"][-1]["scope_assessment"]["status"] == "ESTABLISHED"
 
 
 def test_off_without_menu_does_not_call_planner(tmp_path):

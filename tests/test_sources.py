@@ -4,7 +4,7 @@ from financial_filing_agent.config.settings import Settings
 from financial_filing_agent.tools.sec_client import SECClient
 from financial_filing_agent.tools.filing_loader import load_filing
 from financial_filing_agent.tools.filing_parser import parse_filing
-from financial_filing_agent.tools.validation import guard
+from financial_filing_agent.tools.validation import eligibility
 from financial_filing_agent.schemas.evidence import Filing
 
 
@@ -77,5 +77,5 @@ def test_inline_xbrl_contexts_scale_and_dimensions():
     assert fact.value == -2_000_000
     assert fact.currency == "USD"
     assert fact.context_id == "ctx" and fact.dimensions == {"Segment": "Product"}
-    result = guard(rows[0], "revenue", ["FY2024"], "hash", rows[0].evidence_id, {rows[0].evidence_id})
+    result = eligibility(rows[0], "revenue", ["FY2024"], "hash", {rows[0].evidence_id})
     assert not result["passed"] and not result["checks"]["consolidated"]

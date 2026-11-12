@@ -9,7 +9,7 @@ LABELS = {
     "assess_sufficiency": "Assess evidence sufficiency",
     "expand_search": "Expand evidence search",
     "verify": "Verify evidence: source rules / optional Qwen",
-    "guard": "Check source, periods, units and values",
+    "guard": "Accept verified selection and check denominator",
     "correct": "Recover evidence within configured mode",
     "next_component": "Advance accepted evidence",
     "calculate": "Calculate with validated evidence",

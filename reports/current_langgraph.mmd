@@ -1,0 +1,59 @@
+---
+config:
+  flowchart:
+    curve: linear
+---
+graph TD;
+	__start__([<p>__start__</p>]):::first
+	validate_request(validate_request)
+	load_filing(load_filing)
+	plan_task(plan_task)
+	build_evidence(build_evidence)
+	check_inputs(check_inputs)
+	retrieve_component(retrieve_component)
+	assess_sufficiency(assess_sufficiency)
+	expand_search(expand_search)
+	verify(verify)
+	guard(guard)
+	correct(correct)
+	next_component(next_component)
+	calculate(calculate)
+	finish(finish)
+	__end__([<p>__end__</p>]):::last
+	__start__ --> validate_request;
+	assess_sufficiency -.-> expand_search;
+	assess_sufficiency -.-> finish;
+	assess_sufficiency -.-> verify;
+	build_evidence -.-> check_inputs;
+	build_evidence -.-> finish;
+	calculate -.-> correct;
+	calculate -.-> finish;
+	check_inputs -.-> finish;
+	check_inputs -.-> retrieve_component;
+	correct -.-> expand_search;
+	correct -.-> finish;
+	correct -.-> verify;
+	expand_search -.-> assess_sufficiency;
+	expand_search -.-> finish;
+	guard -.-> correct;
+	guard -.-> finish;
+	guard -.-> next_component;
+	load_filing -.-> finish;
+	load_filing -.-> plan_task;
+	next_component -.-> calculate;
+	next_component -.-> finish;
+	next_component -.-> retrieve_component;
+	plan_task -.-> build_evidence;
+	plan_task -.-> finish;
+	retrieve_component -.-> assess_sufficiency;
+	retrieve_component -.-> finish;
+	validate_request -.-> finish;
+	validate_request -.-> load_filing;
+	verify -.-> correct;
+	verify -.-> finish;
+	verify -.-> guard;
+	finish --> __end__;
+	correct -.-> correct;
+	classDef default fill:#f2f0ff,line-height:1.2
+	classDef first fill-opacity:0
+	classDef last fill:#bfb6fc

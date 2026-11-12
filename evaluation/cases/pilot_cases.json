@@ -1,0 +1,6864 @@
+{
+  "schema_version": 1,
+  "reference_review": "Independently read the consolidated balance sheets and income statements in the linked SEC FY2025 filings, then compared local HTML rows. Values below are reported USD millions, newest year first. These labels were frozen before batch execution; they are not pipeline-selected answers.",
+  "cases": [
+    {
+      "case_id": "AAPL-current_ratio_change-agents",
+      "ticker": "AAPL",
+      "group": "formula",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "TSLA-current_ratio_change-agents",
+      "ticker": "TSLA",
+      "group": "formula",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "MSFT-current_ratio_change-agents",
+      "ticker": "MSFT",
+      "group": "formula",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/MSFT_FY2025.html",
+      "source_hash": "b93568009fa3133f03338945dc28ecfb0613a5132167bfdec3dc3d1ff6ee602b",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          281724,
+          245122
+        ],
+        "operating_income": [
+          128528,
+          109433
+        ],
+        "current_assets": [
+          191131,
+          159734
+        ],
+        "current_liabilities": [
+          141218,
+          125286
+        ],
+        "ends": [
+          "2025-06-30",
+          "2024-06-30"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            23,
+            11
+          ],
+          "operating_income": [
+            23,
+            28
+          ],
+          "current_assets": [
+            25,
+            18
+          ],
+          "current_liabilities": [
+            25,
+            41
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "AAPL-controlled-recovery",
+      "ticker": "AAPL",
+      "group": "recovery",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": true,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "AAPL-current_ratio_change-deterministic",
+      "ticker": "AAPL",
+      "group": "formula",
+      "mode": "deterministic",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "AAPL-missing-agents",
+      "ticker": "AAPL",
+      "group": "missing_periods",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "AAPL-missing-deterministic",
+      "ticker": "AAPL",
+      "group": "missing_periods",
+      "mode": "deterministic",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "AAPL-operating_margin_change-agents",
+      "ticker": "AAPL",
+      "group": "formula",
+      "mode": "agents",
+      "formula": "operating_margin_change",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "AAPL-operating_margin_change-deterministic",
+      "ticker": "AAPL",
+      "group": "formula",
+      "mode": "deterministic",
+      "formula": "operating_margin_change",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "AAPL-planner",
+      "ticker": "AAPL",
+      "group": "planner",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "How did the current ratio change from FY2024 to FY2025?",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "AAPL-revenue_growth-agents",
+      "ticker": "AAPL",
+      "group": "formula",
+      "mode": "agents",
+      "formula": "revenue_growth",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "AAPL-revenue_growth-deterministic",
+      "ticker": "AAPL",
+      "group": "formula",
+      "mode": "deterministic",
+      "formula": "revenue_growth",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "AMZN-current_ratio_change-agents",
+      "ticker": "AMZN",
+      "group": "formula",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AMZN_FY2025.html",
+      "source_hash": "cd076433bee2c6ea5751bc7a0e6f6a8a4a0d8763f06881034299409fbc591578",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          716924,
+          637959
+        ],
+        "operating_income": [
+          79975,
+          68593
+        ],
+        "current_assets": [
+          229083,
+          190867
+        ],
+        "current_liabilities": [
+          218005,
+          179431
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales",
+            "Net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            35,
+            5
+          ],
+          "operating_income": [
+            35,
+            14
+          ],
+          "current_assets": [
+            37,
+            9
+          ],
+          "current_liabilities": [
+            37,
+            20
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "AMZN-current_ratio_change-deterministic",
+      "ticker": "AMZN",
+      "group": "formula",
+      "mode": "deterministic",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AMZN_FY2025.html",
+      "source_hash": "cd076433bee2c6ea5751bc7a0e6f6a8a4a0d8763f06881034299409fbc591578",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          716924,
+          637959
+        ],
+        "operating_income": [
+          79975,
+          68593
+        ],
+        "current_assets": [
+          229083,
+          190867
+        ],
+        "current_liabilities": [
+          218005,
+          179431
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales",
+            "Net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            35,
+            5
+          ],
+          "operating_income": [
+            35,
+            14
+          ],
+          "current_assets": [
+            37,
+            9
+          ],
+          "current_liabilities": [
+            37,
+            20
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "AMZN-missing-agents",
+      "ticker": "AMZN",
+      "group": "missing_periods",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AMZN_FY2025.html",
+      "source_hash": "cd076433bee2c6ea5751bc7a0e6f6a8a4a0d8763f06881034299409fbc591578",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          716924,
+          637959
+        ],
+        "operating_income": [
+          79975,
+          68593
+        ],
+        "current_assets": [
+          229083,
+          190867
+        ],
+        "current_liabilities": [
+          218005,
+          179431
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales",
+            "Net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            35,
+            5
+          ],
+          "operating_income": [
+            35,
+            14
+          ],
+          "current_assets": [
+            37,
+            9
+          ],
+          "current_liabilities": [
+            37,
+            20
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "AMZN-missing-deterministic",
+      "ticker": "AMZN",
+      "group": "missing_periods",
+      "mode": "deterministic",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AMZN_FY2025.html",
+      "source_hash": "cd076433bee2c6ea5751bc7a0e6f6a8a4a0d8763f06881034299409fbc591578",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          716924,
+          637959
+        ],
+        "operating_income": [
+          79975,
+          68593
+        ],
+        "current_assets": [
+          229083,
+          190867
+        ],
+        "current_liabilities": [
+          218005,
+          179431
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales",
+            "Net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            35,
+            5
+          ],
+          "operating_income": [
+            35,
+            14
+          ],
+          "current_assets": [
+            37,
+            9
+          ],
+          "current_liabilities": [
+            37,
+            20
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "AMZN-operating_margin_change-agents",
+      "ticker": "AMZN",
+      "group": "formula",
+      "mode": "agents",
+      "formula": "operating_margin_change",
+      "source": "artifacts/multi-company/corpus/AMZN_FY2025.html",
+      "source_hash": "cd076433bee2c6ea5751bc7a0e6f6a8a4a0d8763f06881034299409fbc591578",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          716924,
+          637959
+        ],
+        "operating_income": [
+          79975,
+          68593
+        ],
+        "current_assets": [
+          229083,
+          190867
+        ],
+        "current_liabilities": [
+          218005,
+          179431
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales",
+            "Net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            35,
+            5
+          ],
+          "operating_income": [
+            35,
+            14
+          ],
+          "current_assets": [
+            37,
+            9
+          ],
+          "current_liabilities": [
+            37,
+            20
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "AMZN-operating_margin_change-deterministic",
+      "ticker": "AMZN",
+      "group": "formula",
+      "mode": "deterministic",
+      "formula": "operating_margin_change",
+      "source": "artifacts/multi-company/corpus/AMZN_FY2025.html",
+      "source_hash": "cd076433bee2c6ea5751bc7a0e6f6a8a4a0d8763f06881034299409fbc591578",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          716924,
+          637959
+        ],
+        "operating_income": [
+          79975,
+          68593
+        ],
+        "current_assets": [
+          229083,
+          190867
+        ],
+        "current_liabilities": [
+          218005,
+          179431
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales",
+            "Net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            35,
+            5
+          ],
+          "operating_income": [
+            35,
+            14
+          ],
+          "current_assets": [
+            37,
+            9
+          ],
+          "current_liabilities": [
+            37,
+            20
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "AMZN-planner",
+      "ticker": "AMZN",
+      "group": "planner",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AMZN_FY2025.html",
+      "source_hash": "cd076433bee2c6ea5751bc7a0e6f6a8a4a0d8763f06881034299409fbc591578",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "How did the current ratio change from FY2024 to FY2025?",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          716924,
+          637959
+        ],
+        "operating_income": [
+          79975,
+          68593
+        ],
+        "current_assets": [
+          229083,
+          190867
+        ],
+        "current_liabilities": [
+          218005,
+          179431
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales",
+            "Net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            35,
+            5
+          ],
+          "operating_income": [
+            35,
+            14
+          ],
+          "current_assets": [
+            37,
+            9
+          ],
+          "current_liabilities": [
+            37,
+            20
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "AMZN-revenue_growth-agents",
+      "ticker": "AMZN",
+      "group": "formula",
+      "mode": "agents",
+      "formula": "revenue_growth",
+      "source": "artifacts/multi-company/corpus/AMZN_FY2025.html",
+      "source_hash": "cd076433bee2c6ea5751bc7a0e6f6a8a4a0d8763f06881034299409fbc591578",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          716924,
+          637959
+        ],
+        "operating_income": [
+          79975,
+          68593
+        ],
+        "current_assets": [
+          229083,
+          190867
+        ],
+        "current_liabilities": [
+          218005,
+          179431
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales",
+            "Net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            35,
+            5
+          ],
+          "operating_income": [
+            35,
+            14
+          ],
+          "current_assets": [
+            37,
+            9
+          ],
+          "current_liabilities": [
+            37,
+            20
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "AMZN-revenue_growth-deterministic",
+      "ticker": "AMZN",
+      "group": "formula",
+      "mode": "deterministic",
+      "formula": "revenue_growth",
+      "source": "artifacts/multi-company/corpus/AMZN_FY2025.html",
+      "source_hash": "cd076433bee2c6ea5751bc7a0e6f6a8a4a0d8763f06881034299409fbc591578",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          716924,
+          637959
+        ],
+        "operating_income": [
+          79975,
+          68593
+        ],
+        "current_assets": [
+          229083,
+          190867
+        ],
+        "current_liabilities": [
+          218005,
+          179431
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales",
+            "Net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            35,
+            5
+          ],
+          "operating_income": [
+            35,
+            14
+          ],
+          "current_assets": [
+            37,
+            9
+          ],
+          "current_liabilities": [
+            37,
+            20
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "MSFT-current_ratio_change-deterministic",
+      "ticker": "MSFT",
+      "group": "formula",
+      "mode": "deterministic",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/MSFT_FY2025.html",
+      "source_hash": "b93568009fa3133f03338945dc28ecfb0613a5132167bfdec3dc3d1ff6ee602b",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          281724,
+          245122
+        ],
+        "operating_income": [
+          128528,
+          109433
+        ],
+        "current_assets": [
+          191131,
+          159734
+        ],
+        "current_liabilities": [
+          141218,
+          125286
+        ],
+        "ends": [
+          "2025-06-30",
+          "2024-06-30"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            23,
+            11
+          ],
+          "operating_income": [
+            23,
+            28
+          ],
+          "current_assets": [
+            25,
+            18
+          ],
+          "current_liabilities": [
+            25,
+            41
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "MSFT-missing-agents",
+      "ticker": "MSFT",
+      "group": "missing_periods",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/MSFT_FY2025.html",
+      "source_hash": "b93568009fa3133f03338945dc28ecfb0613a5132167bfdec3dc3d1ff6ee602b",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          281724,
+          245122
+        ],
+        "operating_income": [
+          128528,
+          109433
+        ],
+        "current_assets": [
+          191131,
+          159734
+        ],
+        "current_liabilities": [
+          141218,
+          125286
+        ],
+        "ends": [
+          "2025-06-30",
+          "2024-06-30"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            23,
+            11
+          ],
+          "operating_income": [
+            23,
+            28
+          ],
+          "current_assets": [
+            25,
+            18
+          ],
+          "current_liabilities": [
+            25,
+            41
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "MSFT-missing-deterministic",
+      "ticker": "MSFT",
+      "group": "missing_periods",
+      "mode": "deterministic",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/MSFT_FY2025.html",
+      "source_hash": "b93568009fa3133f03338945dc28ecfb0613a5132167bfdec3dc3d1ff6ee602b",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          281724,
+          245122
+        ],
+        "operating_income": [
+          128528,
+          109433
+        ],
+        "current_assets": [
+          191131,
+          159734
+        ],
+        "current_liabilities": [
+          141218,
+          125286
+        ],
+        "ends": [
+          "2025-06-30",
+          "2024-06-30"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            23,
+            11
+          ],
+          "operating_income": [
+            23,
+            28
+          ],
+          "current_assets": [
+            25,
+            18
+          ],
+          "current_liabilities": [
+            25,
+            41
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "MSFT-operating_margin_change-agents",
+      "ticker": "MSFT",
+      "group": "formula",
+      "mode": "agents",
+      "formula": "operating_margin_change",
+      "source": "artifacts/multi-company/corpus/MSFT_FY2025.html",
+      "source_hash": "b93568009fa3133f03338945dc28ecfb0613a5132167bfdec3dc3d1ff6ee602b",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          281724,
+          245122
+        ],
+        "operating_income": [
+          128528,
+          109433
+        ],
+        "current_assets": [
+          191131,
+          159734
+        ],
+        "current_liabilities": [
+          141218,
+          125286
+        ],
+        "ends": [
+          "2025-06-30",
+          "2024-06-30"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            23,
+            11
+          ],
+          "operating_income": [
+            23,
+            28
+          ],
+          "current_assets": [
+            25,
+            18
+          ],
+          "current_liabilities": [
+            25,
+            41
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "MSFT-operating_margin_change-deterministic",
+      "ticker": "MSFT",
+      "group": "formula",
+      "mode": "deterministic",
+      "formula": "operating_margin_change",
+      "source": "artifacts/multi-company/corpus/MSFT_FY2025.html",
+      "source_hash": "b93568009fa3133f03338945dc28ecfb0613a5132167bfdec3dc3d1ff6ee602b",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          281724,
+          245122
+        ],
+        "operating_income": [
+          128528,
+          109433
+        ],
+        "current_assets": [
+          191131,
+          159734
+        ],
+        "current_liabilities": [
+          141218,
+          125286
+        ],
+        "ends": [
+          "2025-06-30",
+          "2024-06-30"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            23,
+            11
+          ],
+          "operating_income": [
+            23,
+            28
+          ],
+          "current_assets": [
+            25,
+            18
+          ],
+          "current_liabilities": [
+            25,
+            41
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "MSFT-planner",
+      "ticker": "MSFT",
+      "group": "planner",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/MSFT_FY2025.html",
+      "source_hash": "b93568009fa3133f03338945dc28ecfb0613a5132167bfdec3dc3d1ff6ee602b",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "How did the current ratio change from FY2024 to FY2025?",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          281724,
+          245122
+        ],
+        "operating_income": [
+          128528,
+          109433
+        ],
+        "current_assets": [
+          191131,
+          159734
+        ],
+        "current_liabilities": [
+          141218,
+          125286
+        ],
+        "ends": [
+          "2025-06-30",
+          "2024-06-30"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            23,
+            11
+          ],
+          "operating_income": [
+            23,
+            28
+          ],
+          "current_assets": [
+            25,
+            18
+          ],
+          "current_liabilities": [
+            25,
+            41
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "MSFT-revenue_growth-agents",
+      "ticker": "MSFT",
+      "group": "formula",
+      "mode": "agents",
+      "formula": "revenue_growth",
+      "source": "artifacts/multi-company/corpus/MSFT_FY2025.html",
+      "source_hash": "b93568009fa3133f03338945dc28ecfb0613a5132167bfdec3dc3d1ff6ee602b",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          281724,
+          245122
+        ],
+        "operating_income": [
+          128528,
+          109433
+        ],
+        "current_assets": [
+          191131,
+          159734
+        ],
+        "current_liabilities": [
+          141218,
+          125286
+        ],
+        "ends": [
+          "2025-06-30",
+          "2024-06-30"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            23,
+            11
+          ],
+          "operating_income": [
+            23,
+            28
+          ],
+          "current_assets": [
+            25,
+            18
+          ],
+          "current_liabilities": [
+            25,
+            41
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "MSFT-revenue_growth-deterministic",
+      "ticker": "MSFT",
+      "group": "formula",
+      "mode": "deterministic",
+      "formula": "revenue_growth",
+      "source": "artifacts/multi-company/corpus/MSFT_FY2025.html",
+      "source_hash": "b93568009fa3133f03338945dc28ecfb0613a5132167bfdec3dc3d1ff6ee602b",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          281724,
+          245122
+        ],
+        "operating_income": [
+          128528,
+          109433
+        ],
+        "current_assets": [
+          191131,
+          159734
+        ],
+        "current_liabilities": [
+          141218,
+          125286
+        ],
+        "ends": [
+          "2025-06-30",
+          "2024-06-30"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            23,
+            11
+          ],
+          "operating_income": [
+            23,
+            28
+          ],
+          "current_assets": [
+            25,
+            18
+          ],
+          "current_liabilities": [
+            25,
+            41
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "NVDA-current_ratio_change-agents",
+      "ticker": "NVDA",
+      "group": "formula",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/NVDA_FY2025.html",
+      "source_hash": "0c791dfb4bcf8ebf826a7e37a23f75b53530e06f88bc41a6fed2d4e00f8bbbd9",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          130497,
+          60922
+        ],
+        "operating_income": [
+          81453,
+          32972
+        ],
+        "current_assets": [
+          80126,
+          44345
+        ],
+        "current_liabilities": [
+          18047,
+          10631
+        ],
+        "ends": [
+          "2025-01-26",
+          "2024-01-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Revenue",
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            21,
+            3
+          ],
+          "operating_income": [
+            21,
+            11
+          ],
+          "current_assets": [
+            23,
+            9
+          ],
+          "current_liabilities": [
+            23,
+            23
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "NVDA-current_ratio_change-deterministic",
+      "ticker": "NVDA",
+      "group": "formula",
+      "mode": "deterministic",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/NVDA_FY2025.html",
+      "source_hash": "0c791dfb4bcf8ebf826a7e37a23f75b53530e06f88bc41a6fed2d4e00f8bbbd9",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          130497,
+          60922
+        ],
+        "operating_income": [
+          81453,
+          32972
+        ],
+        "current_assets": [
+          80126,
+          44345
+        ],
+        "current_liabilities": [
+          18047,
+          10631
+        ],
+        "ends": [
+          "2025-01-26",
+          "2024-01-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Revenue",
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            21,
+            3
+          ],
+          "operating_income": [
+            21,
+            11
+          ],
+          "current_assets": [
+            23,
+            9
+          ],
+          "current_liabilities": [
+            23,
+            23
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "NVDA-missing-agents",
+      "ticker": "NVDA",
+      "group": "missing_periods",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/NVDA_FY2025.html",
+      "source_hash": "0c791dfb4bcf8ebf826a7e37a23f75b53530e06f88bc41a6fed2d4e00f8bbbd9",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          130497,
+          60922
+        ],
+        "operating_income": [
+          81453,
+          32972
+        ],
+        "current_assets": [
+          80126,
+          44345
+        ],
+        "current_liabilities": [
+          18047,
+          10631
+        ],
+        "ends": [
+          "2025-01-26",
+          "2024-01-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Revenue",
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            21,
+            3
+          ],
+          "operating_income": [
+            21,
+            11
+          ],
+          "current_assets": [
+            23,
+            9
+          ],
+          "current_liabilities": [
+            23,
+            23
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "NVDA-missing-deterministic",
+      "ticker": "NVDA",
+      "group": "missing_periods",
+      "mode": "deterministic",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/NVDA_FY2025.html",
+      "source_hash": "0c791dfb4bcf8ebf826a7e37a23f75b53530e06f88bc41a6fed2d4e00f8bbbd9",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          130497,
+          60922
+        ],
+        "operating_income": [
+          81453,
+          32972
+        ],
+        "current_assets": [
+          80126,
+          44345
+        ],
+        "current_liabilities": [
+          18047,
+          10631
+        ],
+        "ends": [
+          "2025-01-26",
+          "2024-01-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Revenue",
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            21,
+            3
+          ],
+          "operating_income": [
+            21,
+            11
+          ],
+          "current_assets": [
+            23,
+            9
+          ],
+          "current_liabilities": [
+            23,
+            23
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "NVDA-operating_margin_change-agents",
+      "ticker": "NVDA",
+      "group": "formula",
+      "mode": "agents",
+      "formula": "operating_margin_change",
+      "source": "artifacts/multi-company/corpus/NVDA_FY2025.html",
+      "source_hash": "0c791dfb4bcf8ebf826a7e37a23f75b53530e06f88bc41a6fed2d4e00f8bbbd9",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          130497,
+          60922
+        ],
+        "operating_income": [
+          81453,
+          32972
+        ],
+        "current_assets": [
+          80126,
+          44345
+        ],
+        "current_liabilities": [
+          18047,
+          10631
+        ],
+        "ends": [
+          "2025-01-26",
+          "2024-01-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Revenue",
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            21,
+            3
+          ],
+          "operating_income": [
+            21,
+            11
+          ],
+          "current_assets": [
+            23,
+            9
+          ],
+          "current_liabilities": [
+            23,
+            23
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "NVDA-operating_margin_change-deterministic",
+      "ticker": "NVDA",
+      "group": "formula",
+      "mode": "deterministic",
+      "formula": "operating_margin_change",
+      "source": "artifacts/multi-company/corpus/NVDA_FY2025.html",
+      "source_hash": "0c791dfb4bcf8ebf826a7e37a23f75b53530e06f88bc41a6fed2d4e00f8bbbd9",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          130497,
+          60922
+        ],
+        "operating_income": [
+          81453,
+          32972
+        ],
+        "current_assets": [
+          80126,
+          44345
+        ],
+        "current_liabilities": [
+          18047,
+          10631
+        ],
+        "ends": [
+          "2025-01-26",
+          "2024-01-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Revenue",
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            21,
+            3
+          ],
+          "operating_income": [
+            21,
+            11
+          ],
+          "current_assets": [
+            23,
+            9
+          ],
+          "current_liabilities": [
+            23,
+            23
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "NVDA-planner",
+      "ticker": "NVDA",
+      "group": "planner",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/NVDA_FY2025.html",
+      "source_hash": "0c791dfb4bcf8ebf826a7e37a23f75b53530e06f88bc41a6fed2d4e00f8bbbd9",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "How did the current ratio change from FY2024 to FY2025?",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          130497,
+          60922
+        ],
+        "operating_income": [
+          81453,
+          32972
+        ],
+        "current_assets": [
+          80126,
+          44345
+        ],
+        "current_liabilities": [
+          18047,
+          10631
+        ],
+        "ends": [
+          "2025-01-26",
+          "2024-01-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Revenue",
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            21,
+            3
+          ],
+          "operating_income": [
+            21,
+            11
+          ],
+          "current_assets": [
+            23,
+            9
+          ],
+          "current_liabilities": [
+            23,
+            23
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "NVDA-revenue_growth-agents",
+      "ticker": "NVDA",
+      "group": "formula",
+      "mode": "agents",
+      "formula": "revenue_growth",
+      "source": "artifacts/multi-company/corpus/NVDA_FY2025.html",
+      "source_hash": "0c791dfb4bcf8ebf826a7e37a23f75b53530e06f88bc41a6fed2d4e00f8bbbd9",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          130497,
+          60922
+        ],
+        "operating_income": [
+          81453,
+          32972
+        ],
+        "current_assets": [
+          80126,
+          44345
+        ],
+        "current_liabilities": [
+          18047,
+          10631
+        ],
+        "ends": [
+          "2025-01-26",
+          "2024-01-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Revenue",
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            21,
+            3
+          ],
+          "operating_income": [
+            21,
+            11
+          ],
+          "current_assets": [
+            23,
+            9
+          ],
+          "current_liabilities": [
+            23,
+            23
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "NVDA-revenue_growth-deterministic",
+      "ticker": "NVDA",
+      "group": "formula",
+      "mode": "deterministic",
+      "formula": "revenue_growth",
+      "source": "artifacts/multi-company/corpus/NVDA_FY2025.html",
+      "source_hash": "0c791dfb4bcf8ebf826a7e37a23f75b53530e06f88bc41a6fed2d4e00f8bbbd9",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          130497,
+          60922
+        ],
+        "operating_income": [
+          81453,
+          32972
+        ],
+        "current_assets": [
+          80126,
+          44345
+        ],
+        "current_liabilities": [
+          18047,
+          10631
+        ],
+        "ends": [
+          "2025-01-26",
+          "2024-01-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Revenue",
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            21,
+            3
+          ],
+          "operating_income": [
+            21,
+            11
+          ],
+          "current_assets": [
+            23,
+            9
+          ],
+          "current_liabilities": [
+            23,
+            23
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "TSLA-controlled-recovery",
+      "ticker": "TSLA",
+      "group": "recovery",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": true,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "TSLA-current_ratio_change-deterministic",
+      "ticker": "TSLA",
+      "group": "formula",
+      "mode": "deterministic",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "TSLA-missing-agents",
+      "ticker": "TSLA",
+      "group": "missing_periods",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "TSLA-missing-deterministic",
+      "ticker": "TSLA",
+      "group": "missing_periods",
+      "mode": "deterministic",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "TSLA-operating_margin_change-agents",
+      "ticker": "TSLA",
+      "group": "formula",
+      "mode": "agents",
+      "formula": "operating_margin_change",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "TSLA-operating_margin_change-deterministic",
+      "ticker": "TSLA",
+      "group": "formula",
+      "mode": "deterministic",
+      "formula": "operating_margin_change",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "TSLA-planner",
+      "ticker": "TSLA",
+      "group": "planner",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "How did the current ratio change from FY2024 to FY2025?",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "TSLA-revenue_growth-agents",
+      "ticker": "TSLA",
+      "group": "formula",
+      "mode": "agents",
+      "formula": "revenue_growth",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "TSLA-revenue_growth-deterministic",
+      "ticker": "TSLA",
+      "group": "formula",
+      "mode": "deterministic",
+      "formula": "revenue_growth",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "WMT-current_ratio_change-agents",
+      "ticker": "WMT",
+      "group": "formula",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/WMT_FY2025.html",
+      "source_hash": "952b568ceb36e5844700c3a48f855aee855a655ba17ccfe7bffa2362f8c5b2d2",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          680985,
+          648125
+        ],
+        "operating_income": [
+          29348,
+          27012
+        ],
+        "current_assets": [
+          79458,
+          76877
+        ],
+        "current_liabilities": [
+          96584,
+          92415
+        ],
+        "ends": [
+          "2025-01-31",
+          "2024-01-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            49,
+            6
+          ],
+          "operating_income": [
+            49,
+            10
+          ],
+          "current_assets": [
+            51,
+            9
+          ],
+          "current_liabilities": [
+            51,
+            31
+          ]
+        },
+        "revenue_policy": "Use reported consolidated Total revenues, including membership and other income; Net sales alone is not this benchmark's revenue total."
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "WMT-current_ratio_change-deterministic",
+      "ticker": "WMT",
+      "group": "formula",
+      "mode": "deterministic",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/WMT_FY2025.html",
+      "source_hash": "952b568ceb36e5844700c3a48f855aee855a655ba17ccfe7bffa2362f8c5b2d2",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          680985,
+          648125
+        ],
+        "operating_income": [
+          29348,
+          27012
+        ],
+        "current_assets": [
+          79458,
+          76877
+        ],
+        "current_liabilities": [
+          96584,
+          92415
+        ],
+        "ends": [
+          "2025-01-31",
+          "2024-01-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            49,
+            6
+          ],
+          "operating_income": [
+            49,
+            10
+          ],
+          "current_assets": [
+            51,
+            9
+          ],
+          "current_liabilities": [
+            51,
+            31
+          ]
+        },
+        "revenue_policy": "Use reported consolidated Total revenues, including membership and other income; Net sales alone is not this benchmark's revenue total."
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "WMT-missing-agents",
+      "ticker": "WMT",
+      "group": "missing_periods",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/WMT_FY2025.html",
+      "source_hash": "952b568ceb36e5844700c3a48f855aee855a655ba17ccfe7bffa2362f8c5b2d2",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          680985,
+          648125
+        ],
+        "operating_income": [
+          29348,
+          27012
+        ],
+        "current_assets": [
+          79458,
+          76877
+        ],
+        "current_liabilities": [
+          96584,
+          92415
+        ],
+        "ends": [
+          "2025-01-31",
+          "2024-01-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            49,
+            6
+          ],
+          "operating_income": [
+            49,
+            10
+          ],
+          "current_assets": [
+            51,
+            9
+          ],
+          "current_liabilities": [
+            51,
+            31
+          ]
+        },
+        "revenue_policy": "Use reported consolidated Total revenues, including membership and other income; Net sales alone is not this benchmark's revenue total."
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "WMT-missing-deterministic",
+      "ticker": "WMT",
+      "group": "missing_periods",
+      "mode": "deterministic",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/WMT_FY2025.html",
+      "source_hash": "952b568ceb36e5844700c3a48f855aee855a655ba17ccfe7bffa2362f8c5b2d2",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          680985,
+          648125
+        ],
+        "operating_income": [
+          29348,
+          27012
+        ],
+        "current_assets": [
+          79458,
+          76877
+        ],
+        "current_liabilities": [
+          96584,
+          92415
+        ],
+        "ends": [
+          "2025-01-31",
+          "2024-01-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            49,
+            6
+          ],
+          "operating_income": [
+            49,
+            10
+          ],
+          "current_assets": [
+            51,
+            9
+          ],
+          "current_liabilities": [
+            51,
+            31
+          ]
+        },
+        "revenue_policy": "Use reported consolidated Total revenues, including membership and other income; Net sales alone is not this benchmark's revenue total."
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "WMT-operating_margin_change-agents",
+      "ticker": "WMT",
+      "group": "formula",
+      "mode": "agents",
+      "formula": "operating_margin_change",
+      "source": "artifacts/multi-company/corpus/WMT_FY2025.html",
+      "source_hash": "952b568ceb36e5844700c3a48f855aee855a655ba17ccfe7bffa2362f8c5b2d2",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          680985,
+          648125
+        ],
+        "operating_income": [
+          29348,
+          27012
+        ],
+        "current_assets": [
+          79458,
+          76877
+        ],
+        "current_liabilities": [
+          96584,
+          92415
+        ],
+        "ends": [
+          "2025-01-31",
+          "2024-01-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            49,
+            6
+          ],
+          "operating_income": [
+            49,
+            10
+          ],
+          "current_assets": [
+            51,
+            9
+          ],
+          "current_liabilities": [
+            51,
+            31
+          ]
+        },
+        "revenue_policy": "Use reported consolidated Total revenues, including membership and other income; Net sales alone is not this benchmark's revenue total."
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "WMT-operating_margin_change-deterministic",
+      "ticker": "WMT",
+      "group": "formula",
+      "mode": "deterministic",
+      "formula": "operating_margin_change",
+      "source": "artifacts/multi-company/corpus/WMT_FY2025.html",
+      "source_hash": "952b568ceb36e5844700c3a48f855aee855a655ba17ccfe7bffa2362f8c5b2d2",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          680985,
+          648125
+        ],
+        "operating_income": [
+          29348,
+          27012
+        ],
+        "current_assets": [
+          79458,
+          76877
+        ],
+        "current_liabilities": [
+          96584,
+          92415
+        ],
+        "ends": [
+          "2025-01-31",
+          "2024-01-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            49,
+            6
+          ],
+          "operating_income": [
+            49,
+            10
+          ],
+          "current_assets": [
+            51,
+            9
+          ],
+          "current_liabilities": [
+            51,
+            31
+          ]
+        },
+        "revenue_policy": "Use reported consolidated Total revenues, including membership and other income; Net sales alone is not this benchmark's revenue total."
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "WMT-planner",
+      "ticker": "WMT",
+      "group": "planner",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/WMT_FY2025.html",
+      "source_hash": "952b568ceb36e5844700c3a48f855aee855a655ba17ccfe7bffa2362f8c5b2d2",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "How did the current ratio change from FY2024 to FY2025?",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          680985,
+          648125
+        ],
+        "operating_income": [
+          29348,
+          27012
+        ],
+        "current_assets": [
+          79458,
+          76877
+        ],
+        "current_liabilities": [
+          96584,
+          92415
+        ],
+        "ends": [
+          "2025-01-31",
+          "2024-01-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            49,
+            6
+          ],
+          "operating_income": [
+            49,
+            10
+          ],
+          "current_assets": [
+            51,
+            9
+          ],
+          "current_liabilities": [
+            51,
+            31
+          ]
+        },
+        "revenue_policy": "Use reported consolidated Total revenues, including membership and other income; Net sales alone is not this benchmark's revenue total."
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "WMT-revenue_growth-agents",
+      "ticker": "WMT",
+      "group": "formula",
+      "mode": "agents",
+      "formula": "revenue_growth",
+      "source": "artifacts/multi-company/corpus/WMT_FY2025.html",
+      "source_hash": "952b568ceb36e5844700c3a48f855aee855a655ba17ccfe7bffa2362f8c5b2d2",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          680985,
+          648125
+        ],
+        "operating_income": [
+          29348,
+          27012
+        ],
+        "current_assets": [
+          79458,
+          76877
+        ],
+        "current_liabilities": [
+          96584,
+          92415
+        ],
+        "ends": [
+          "2025-01-31",
+          "2024-01-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            49,
+            6
+          ],
+          "operating_income": [
+            49,
+            10
+          ],
+          "current_assets": [
+            51,
+            9
+          ],
+          "current_liabilities": [
+            51,
+            31
+          ]
+        },
+        "revenue_policy": "Use reported consolidated Total revenues, including membership and other income; Net sales alone is not this benchmark's revenue total."
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "WMT-revenue_growth-deterministic",
+      "ticker": "WMT",
+      "group": "formula",
+      "mode": "deterministic",
+      "formula": "revenue_growth",
+      "source": "artifacts/multi-company/corpus/WMT_FY2025.html",
+      "source_hash": "952b568ceb36e5844700c3a48f855aee855a655ba17ccfe7bffa2362f8c5b2d2",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          680985,
+          648125
+        ],
+        "operating_income": [
+          29348,
+          27012
+        ],
+        "current_assets": [
+          79458,
+          76877
+        ],
+        "current_liabilities": [
+          96584,
+          92415
+        ],
+        "ends": [
+          "2025-01-31",
+          "2024-01-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            49,
+            6
+          ],
+          "operating_income": [
+            49,
+            10
+          ],
+          "current_assets": [
+            51,
+            9
+          ],
+          "current_liabilities": [
+            51,
+            31
+          ]
+        },
+        "revenue_policy": "Use reported consolidated Total revenues, including membership and other income; Net sales alone is not this benchmark's revenue total."
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "AAPL-missing-repeat-1",
+      "ticker": "AAPL",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "AAPL-missing-repeat-2",
+      "ticker": "AAPL",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "AAPL-missing-repeat-3",
+      "ticker": "AAPL",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "AAPL-missing-repeat-4",
+      "ticker": "AAPL",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "AAPL-missing-repeat-5",
+      "ticker": "AAPL",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "AAPL-ratio-repeat-1",
+      "ticker": "AAPL",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "AAPL-ratio-repeat-2",
+      "ticker": "AAPL",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "AAPL-ratio-repeat-3",
+      "ticker": "AAPL",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "AAPL-ratio-repeat-4",
+      "ticker": "AAPL",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "AAPL-ratio-repeat-5",
+      "ticker": "AAPL",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AAPL_FY2025.html",
+      "source_hash": "28898392f815b14fc8c35ecf8f8df64e56bab439965b4a8ab6a74c6422838e61",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          416161,
+          391035
+        ],
+        "operating_income": [
+          133050,
+          123216
+        ],
+        "current_assets": [
+          147957,
+          152987
+        ],
+        "current_liabilities": [
+          165631,
+          176392
+        ],
+        "ends": [
+          "2025-09-27",
+          "2024-09-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            6
+          ],
+          "operating_income": [
+            22,
+            19
+          ],
+          "current_assets": [
+            24,
+            10
+          ],
+          "current_liabilities": [
+            24,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "AMZN-ratio-repeat-1",
+      "ticker": "AMZN",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AMZN_FY2025.html",
+      "source_hash": "cd076433bee2c6ea5751bc7a0e6f6a8a4a0d8763f06881034299409fbc591578",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          716924,
+          637959
+        ],
+        "operating_income": [
+          79975,
+          68593
+        ],
+        "current_assets": [
+          229083,
+          190867
+        ],
+        "current_liabilities": [
+          218005,
+          179431
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales",
+            "Net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            35,
+            5
+          ],
+          "operating_income": [
+            35,
+            14
+          ],
+          "current_assets": [
+            37,
+            9
+          ],
+          "current_liabilities": [
+            37,
+            20
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "AMZN-ratio-repeat-2",
+      "ticker": "AMZN",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AMZN_FY2025.html",
+      "source_hash": "cd076433bee2c6ea5751bc7a0e6f6a8a4a0d8763f06881034299409fbc591578",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          716924,
+          637959
+        ],
+        "operating_income": [
+          79975,
+          68593
+        ],
+        "current_assets": [
+          229083,
+          190867
+        ],
+        "current_liabilities": [
+          218005,
+          179431
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales",
+            "Net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            35,
+            5
+          ],
+          "operating_income": [
+            35,
+            14
+          ],
+          "current_assets": [
+            37,
+            9
+          ],
+          "current_liabilities": [
+            37,
+            20
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "AMZN-ratio-repeat-3",
+      "ticker": "AMZN",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AMZN_FY2025.html",
+      "source_hash": "cd076433bee2c6ea5751bc7a0e6f6a8a4a0d8763f06881034299409fbc591578",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          716924,
+          637959
+        ],
+        "operating_income": [
+          79975,
+          68593
+        ],
+        "current_assets": [
+          229083,
+          190867
+        ],
+        "current_liabilities": [
+          218005,
+          179431
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales",
+            "Net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            35,
+            5
+          ],
+          "operating_income": [
+            35,
+            14
+          ],
+          "current_assets": [
+            37,
+            9
+          ],
+          "current_liabilities": [
+            37,
+            20
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "AMZN-ratio-repeat-4",
+      "ticker": "AMZN",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AMZN_FY2025.html",
+      "source_hash": "cd076433bee2c6ea5751bc7a0e6f6a8a4a0d8763f06881034299409fbc591578",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          716924,
+          637959
+        ],
+        "operating_income": [
+          79975,
+          68593
+        ],
+        "current_assets": [
+          229083,
+          190867
+        ],
+        "current_liabilities": [
+          218005,
+          179431
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales",
+            "Net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            35,
+            5
+          ],
+          "operating_income": [
+            35,
+            14
+          ],
+          "current_assets": [
+            37,
+            9
+          ],
+          "current_liabilities": [
+            37,
+            20
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "AMZN-ratio-repeat-5",
+      "ticker": "AMZN",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/AMZN_FY2025.html",
+      "source_hash": "cd076433bee2c6ea5751bc7a0e6f6a8a4a0d8763f06881034299409fbc591578",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          716924,
+          637959
+        ],
+        "operating_income": [
+          79975,
+          68593
+        ],
+        "current_assets": [
+          229083,
+          190867
+        ],
+        "current_liabilities": [
+          218005,
+          179431
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total net sales",
+            "Net sales"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            35,
+            5
+          ],
+          "operating_income": [
+            35,
+            14
+          ],
+          "current_assets": [
+            37,
+            9
+          ],
+          "current_liabilities": [
+            37,
+            20
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "MSFT-ratio-repeat-1",
+      "ticker": "MSFT",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/MSFT_FY2025.html",
+      "source_hash": "b93568009fa3133f03338945dc28ecfb0613a5132167bfdec3dc3d1ff6ee602b",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          281724,
+          245122
+        ],
+        "operating_income": [
+          128528,
+          109433
+        ],
+        "current_assets": [
+          191131,
+          159734
+        ],
+        "current_liabilities": [
+          141218,
+          125286
+        ],
+        "ends": [
+          "2025-06-30",
+          "2024-06-30"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            23,
+            11
+          ],
+          "operating_income": [
+            23,
+            28
+          ],
+          "current_assets": [
+            25,
+            18
+          ],
+          "current_liabilities": [
+            25,
+            41
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "MSFT-ratio-repeat-2",
+      "ticker": "MSFT",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/MSFT_FY2025.html",
+      "source_hash": "b93568009fa3133f03338945dc28ecfb0613a5132167bfdec3dc3d1ff6ee602b",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          281724,
+          245122
+        ],
+        "operating_income": [
+          128528,
+          109433
+        ],
+        "current_assets": [
+          191131,
+          159734
+        ],
+        "current_liabilities": [
+          141218,
+          125286
+        ],
+        "ends": [
+          "2025-06-30",
+          "2024-06-30"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            23,
+            11
+          ],
+          "operating_income": [
+            23,
+            28
+          ],
+          "current_assets": [
+            25,
+            18
+          ],
+          "current_liabilities": [
+            25,
+            41
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "MSFT-ratio-repeat-3",
+      "ticker": "MSFT",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/MSFT_FY2025.html",
+      "source_hash": "b93568009fa3133f03338945dc28ecfb0613a5132167bfdec3dc3d1ff6ee602b",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          281724,
+          245122
+        ],
+        "operating_income": [
+          128528,
+          109433
+        ],
+        "current_assets": [
+          191131,
+          159734
+        ],
+        "current_liabilities": [
+          141218,
+          125286
+        ],
+        "ends": [
+          "2025-06-30",
+          "2024-06-30"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            23,
+            11
+          ],
+          "operating_income": [
+            23,
+            28
+          ],
+          "current_assets": [
+            25,
+            18
+          ],
+          "current_liabilities": [
+            25,
+            41
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "MSFT-ratio-repeat-4",
+      "ticker": "MSFT",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/MSFT_FY2025.html",
+      "source_hash": "b93568009fa3133f03338945dc28ecfb0613a5132167bfdec3dc3d1ff6ee602b",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          281724,
+          245122
+        ],
+        "operating_income": [
+          128528,
+          109433
+        ],
+        "current_assets": [
+          191131,
+          159734
+        ],
+        "current_liabilities": [
+          141218,
+          125286
+        ],
+        "ends": [
+          "2025-06-30",
+          "2024-06-30"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            23,
+            11
+          ],
+          "operating_income": [
+            23,
+            28
+          ],
+          "current_assets": [
+            25,
+            18
+          ],
+          "current_liabilities": [
+            25,
+            41
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "MSFT-ratio-repeat-5",
+      "ticker": "MSFT",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/MSFT_FY2025.html",
+      "source_hash": "b93568009fa3133f03338945dc28ecfb0613a5132167bfdec3dc3d1ff6ee602b",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          281724,
+          245122
+        ],
+        "operating_income": [
+          128528,
+          109433
+        ],
+        "current_assets": [
+          191131,
+          159734
+        ],
+        "current_liabilities": [
+          141218,
+          125286
+        ],
+        "ends": [
+          "2025-06-30",
+          "2024-06-30"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            23,
+            11
+          ],
+          "operating_income": [
+            23,
+            28
+          ],
+          "current_assets": [
+            25,
+            18
+          ],
+          "current_liabilities": [
+            25,
+            41
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "NVDA-ratio-repeat-1",
+      "ticker": "NVDA",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/NVDA_FY2025.html",
+      "source_hash": "0c791dfb4bcf8ebf826a7e37a23f75b53530e06f88bc41a6fed2d4e00f8bbbd9",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          130497,
+          60922
+        ],
+        "operating_income": [
+          81453,
+          32972
+        ],
+        "current_assets": [
+          80126,
+          44345
+        ],
+        "current_liabilities": [
+          18047,
+          10631
+        ],
+        "ends": [
+          "2025-01-26",
+          "2024-01-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Revenue",
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            21,
+            3
+          ],
+          "operating_income": [
+            21,
+            11
+          ],
+          "current_assets": [
+            23,
+            9
+          ],
+          "current_liabilities": [
+            23,
+            23
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "NVDA-ratio-repeat-2",
+      "ticker": "NVDA",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/NVDA_FY2025.html",
+      "source_hash": "0c791dfb4bcf8ebf826a7e37a23f75b53530e06f88bc41a6fed2d4e00f8bbbd9",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          130497,
+          60922
+        ],
+        "operating_income": [
+          81453,
+          32972
+        ],
+        "current_assets": [
+          80126,
+          44345
+        ],
+        "current_liabilities": [
+          18047,
+          10631
+        ],
+        "ends": [
+          "2025-01-26",
+          "2024-01-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Revenue",
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            21,
+            3
+          ],
+          "operating_income": [
+            21,
+            11
+          ],
+          "current_assets": [
+            23,
+            9
+          ],
+          "current_liabilities": [
+            23,
+            23
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "NVDA-ratio-repeat-3",
+      "ticker": "NVDA",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/NVDA_FY2025.html",
+      "source_hash": "0c791dfb4bcf8ebf826a7e37a23f75b53530e06f88bc41a6fed2d4e00f8bbbd9",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          130497,
+          60922
+        ],
+        "operating_income": [
+          81453,
+          32972
+        ],
+        "current_assets": [
+          80126,
+          44345
+        ],
+        "current_liabilities": [
+          18047,
+          10631
+        ],
+        "ends": [
+          "2025-01-26",
+          "2024-01-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Revenue",
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            21,
+            3
+          ],
+          "operating_income": [
+            21,
+            11
+          ],
+          "current_assets": [
+            23,
+            9
+          ],
+          "current_liabilities": [
+            23,
+            23
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "NVDA-ratio-repeat-4",
+      "ticker": "NVDA",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/NVDA_FY2025.html",
+      "source_hash": "0c791dfb4bcf8ebf826a7e37a23f75b53530e06f88bc41a6fed2d4e00f8bbbd9",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          130497,
+          60922
+        ],
+        "operating_income": [
+          81453,
+          32972
+        ],
+        "current_assets": [
+          80126,
+          44345
+        ],
+        "current_liabilities": [
+          18047,
+          10631
+        ],
+        "ends": [
+          "2025-01-26",
+          "2024-01-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Revenue",
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            21,
+            3
+          ],
+          "operating_income": [
+            21,
+            11
+          ],
+          "current_assets": [
+            23,
+            9
+          ],
+          "current_liabilities": [
+            23,
+            23
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "NVDA-ratio-repeat-5",
+      "ticker": "NVDA",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/NVDA_FY2025.html",
+      "source_hash": "0c791dfb4bcf8ebf826a7e37a23f75b53530e06f88bc41a6fed2d4e00f8bbbd9",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          130497,
+          60922
+        ],
+        "operating_income": [
+          81453,
+          32972
+        ],
+        "current_assets": [
+          80126,
+          44345
+        ],
+        "current_liabilities": [
+          18047,
+          10631
+        ],
+        "ends": [
+          "2025-01-26",
+          "2024-01-28"
+        ],
+        "labels": {
+          "revenue": [
+            "Revenue",
+            "Total revenue"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            21,
+            3
+          ],
+          "operating_income": [
+            21,
+            11
+          ],
+          "current_assets": [
+            23,
+            9
+          ],
+          "current_liabilities": [
+            23,
+            23
+          ]
+        }
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "TSLA-missing-repeat-1",
+      "ticker": "TSLA",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "TSLA-missing-repeat-2",
+      "ticker": "TSLA",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "TSLA-missing-repeat-3",
+      "ticker": "TSLA",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "TSLA-missing-repeat-4",
+      "ticker": "TSLA",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "TSLA-missing-repeat-5",
+      "ticker": "TSLA",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2010",
+        "FY2009"
+      ],
+      "expected_status": "INSUFFICIENT_EVIDENCE",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "TSLA-ratio-repeat-1",
+      "ticker": "TSLA",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "TSLA-ratio-repeat-2",
+      "ticker": "TSLA",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "TSLA-ratio-repeat-3",
+      "ticker": "TSLA",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "TSLA-ratio-repeat-4",
+      "ticker": "TSLA",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "TSLA-ratio-repeat-5",
+      "ticker": "TSLA",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/TSLA_FY2025.html",
+      "source_hash": "5dcd318a450b73ec3da8ed3b891b58658a035e1f2388ea7820bc4d3692e143bc",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          94827,
+          97690
+        ],
+        "operating_income": [
+          4355,
+          7076
+        ],
+        "current_assets": [
+          68642,
+          58360
+        ],
+        "current_liabilities": [
+          31714,
+          28821
+        ],
+        "ends": [
+          "2025-12-31",
+          "2024-12-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Income from operations"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            22,
+            10
+          ],
+          "operating_income": [
+            22,
+            24
+          ],
+          "current_assets": [
+            21,
+            9
+          ],
+          "current_liabilities": [
+            21,
+            26
+          ]
+        }
+      },
+      "development_company": true
+    },
+    {
+      "case_id": "WMT-ratio-repeat-1",
+      "ticker": "WMT",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/WMT_FY2025.html",
+      "source_hash": "952b568ceb36e5844700c3a48f855aee855a655ba17ccfe7bffa2362f8c5b2d2",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          680985,
+          648125
+        ],
+        "operating_income": [
+          29348,
+          27012
+        ],
+        "current_assets": [
+          79458,
+          76877
+        ],
+        "current_liabilities": [
+          96584,
+          92415
+        ],
+        "ends": [
+          "2025-01-31",
+          "2024-01-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            49,
+            6
+          ],
+          "operating_income": [
+            49,
+            10
+          ],
+          "current_assets": [
+            51,
+            9
+          ],
+          "current_liabilities": [
+            51,
+            31
+          ]
+        },
+        "revenue_policy": "Use reported consolidated Total revenues, including membership and other income; Net sales alone is not this benchmark's revenue total."
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "WMT-ratio-repeat-2",
+      "ticker": "WMT",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/WMT_FY2025.html",
+      "source_hash": "952b568ceb36e5844700c3a48f855aee855a655ba17ccfe7bffa2362f8c5b2d2",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          680985,
+          648125
+        ],
+        "operating_income": [
+          29348,
+          27012
+        ],
+        "current_assets": [
+          79458,
+          76877
+        ],
+        "current_liabilities": [
+          96584,
+          92415
+        ],
+        "ends": [
+          "2025-01-31",
+          "2024-01-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            49,
+            6
+          ],
+          "operating_income": [
+            49,
+            10
+          ],
+          "current_assets": [
+            51,
+            9
+          ],
+          "current_liabilities": [
+            51,
+            31
+          ]
+        },
+        "revenue_policy": "Use reported consolidated Total revenues, including membership and other income; Net sales alone is not this benchmark's revenue total."
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "WMT-ratio-repeat-3",
+      "ticker": "WMT",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/WMT_FY2025.html",
+      "source_hash": "952b568ceb36e5844700c3a48f855aee855a655ba17ccfe7bffa2362f8c5b2d2",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          680985,
+          648125
+        ],
+        "operating_income": [
+          29348,
+          27012
+        ],
+        "current_assets": [
+          79458,
+          76877
+        ],
+        "current_liabilities": [
+          96584,
+          92415
+        ],
+        "ends": [
+          "2025-01-31",
+          "2024-01-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            49,
+            6
+          ],
+          "operating_income": [
+            49,
+            10
+          ],
+          "current_assets": [
+            51,
+            9
+          ],
+          "current_liabilities": [
+            51,
+            31
+          ]
+        },
+        "revenue_policy": "Use reported consolidated Total revenues, including membership and other income; Net sales alone is not this benchmark's revenue total."
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "WMT-ratio-repeat-4",
+      "ticker": "WMT",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/WMT_FY2025.html",
+      "source_hash": "952b568ceb36e5844700c3a48f855aee855a655ba17ccfe7bffa2362f8c5b2d2",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          680985,
+          648125
+        ],
+        "operating_income": [
+          29348,
+          27012
+        ],
+        "current_assets": [
+          79458,
+          76877
+        ],
+        "current_liabilities": [
+          96584,
+          92415
+        ],
+        "ends": [
+          "2025-01-31",
+          "2024-01-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            49,
+            6
+          ],
+          "operating_income": [
+            49,
+            10
+          ],
+          "current_assets": [
+            51,
+            9
+          ],
+          "current_liabilities": [
+            51,
+            31
+          ]
+        },
+        "revenue_policy": "Use reported consolidated Total revenues, including membership and other income; Net sales alone is not this benchmark's revenue total."
+      },
+      "development_company": false
+    },
+    {
+      "case_id": "WMT-ratio-repeat-5",
+      "ticker": "WMT",
+      "group": "repeat",
+      "mode": "agents",
+      "formula": "current_ratio_change",
+      "source": "artifacts/multi-company/corpus/WMT_FY2025.html",
+      "source_hash": "952b568ceb36e5844700c3a48f855aee855a655ba17ccfe7bffa2362f8c5b2d2",
+      "periods": [
+        "FY2025",
+        "FY2024"
+      ],
+      "expected_status": "SUCCESS",
+      "question": "",
+      "fault": false,
+      "reference": {
+        "revenue": [
+          680985,
+          648125
+        ],
+        "operating_income": [
+          29348,
+          27012
+        ],
+        "current_assets": [
+          79458,
+          76877
+        ],
+        "current_liabilities": [
+          96584,
+          92415
+        ],
+        "ends": [
+          "2025-01-31",
+          "2024-01-31"
+        ],
+        "labels": {
+          "revenue": [
+            "Total revenues"
+          ],
+          "operating_income": [
+            "Operating income"
+          ],
+          "current_assets": [
+            "Total current assets"
+          ],
+          "current_liabilities": [
+            "Total current liabilities"
+          ]
+        },
+        "primary_rows": {
+          "revenue": [
+            49,
+            6
+          ],
+          "operating_income": [
+            49,
+            10
+          ],
+          "current_assets": [
+            51,
+            9
+          ],
+          "current_liabilities": [
+            51,
+            31
+          ]
+        },
+        "revenue_policy": "Use reported consolidated Total revenues, including membership and other income; Net sales alone is not this benchmark's revenue total."
+      },
+      "development_company": false
+    }
+  ]
+}

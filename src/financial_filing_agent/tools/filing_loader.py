@@ -1,8 +1,28 @@
+from datetime import datetime
 from pathlib import Path
+import re
 from .html import parse_html
 from ..schemas.evidence import Filing
 from ..services.cache import digest, atomic_json
 from .sec_client import SECClient
+
+
+def explicit_period_end(text: str) -> str | None:
+    """Require a complete source date; never fill a missing year from today."""
+    text = " ".join(text.replace("\ufffd", " ").replace("\xa0", " ").split())
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", text):
+        formats = ("%Y-%m-%d",)
+    else:
+        text = " ".join(text.replace(",", " ").split())
+        if not re.fullmatch(r"[A-Za-z]+ \d{1,2} \d{4}", text):
+            return None
+        formats = ("%B %d %Y", "%b %d %Y")
+    for fmt in formats:
+        try:
+            return datetime.strptime(text, fmt).date().isoformat()
+        except ValueError:
+            continue
+    return None
 
 
 def load_filing(source, settings):
@@ -38,7 +58,6 @@ def load_filing(source, settings):
     # Converted HTML often retains a descriptive title but strips DEI tags.
     # Recover explicit source metadata without guessing an entity from prose.
     if soup.title:
-        import re
         title = soup.title.get_text(" ", strip=True)
         match = re.match(r"^(.*?)\s*\(Form:\s*([^,)]+)", title, re.I)
         if match:
@@ -49,10 +68,6 @@ def load_filing(source, settings):
         if tag:
             metadata[key] = tag.get_text(strip=True)
             if key == "period_end":
-                from dateutil.parser import parse
-                try:
-                    metadata[key] = parse(metadata[key].replace("\ufffd", " ").replace("\xa0", " ")).date().isoformat()
-                except ValueError:
-                    metadata[key] = None
+                metadata[key] = explicit_period_end(tag.get_text(" ", strip=True))
     atomic_json(cache / (digest(source) + ".json"), {"content_hash": content_hash, "metadata": metadata})
     return Filing(source=source, content_hash=content_hash, local_path=str(cached.resolve()), metadata=metadata), html
