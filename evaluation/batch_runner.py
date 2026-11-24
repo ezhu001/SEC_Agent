@@ -41,16 +41,23 @@ def worker(connection, overrides):
     from financial_filing_agent.services.pipeline import Pipeline
 
     class FaultRetriever:
-        def __init__(self, real):
+        def __init__(self, real, fault):
             self.real = real
+            self.fault = fault
 
         def rank(self, rows, component, periods, query):
             ranked, diagnostics = self.real.rank(rows, component, periods, query)
             if component == "current_assets":
+                withheld_ids = []
+                if self.fault == "withhold_current_assets":
+                    withheld_ids = [row.evidence_id for row in rows
+                                    if row.label.lower() in {"current assets", "total current assets"}
+                                    or any(f.concept == "us-gaap:AssetsCurrent" for f in row.facts)]
+                    ranked = [r for r in ranked if r["evidence_id"] not in withheld_ids]
                 wrong = next((r for r in ranked if r["label"].lower() == "total assets"), None)
                 if wrong:
                     ranked = [wrong] + [r for r in ranked if r is not wrong]
-                    diagnostics["controlled_fault"] = {"promoted_id": wrong["evidence_id"], "wrong_concept": "total assets instead of current assets"}
+                    diagnostics["controlled_fault"] = {"promoted_id": wrong["evidence_id"], "withheld_ids": withheld_ids, "wrong_concept": "total assets instead of current assets"}
             return ranked, diagnostics
 
     while True:
@@ -61,7 +68,7 @@ def worker(connection, overrides):
             settings = Settings(**{**overrides, "qwen_enabled": request["agents"], "sec_user_agent": ""})
             pipeline = Pipeline(settings)
             if request["fault"]:
-                pipeline.retriever = FaultRetriever(pipeline.retriever)
+                pipeline.retriever = FaultRetriever(pipeline.retriever, request["fault"])
 
             def progress(event):
                 connection.send({"kind": "progress", "event": event,

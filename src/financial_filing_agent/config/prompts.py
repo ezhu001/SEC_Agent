@@ -48,6 +48,12 @@ You are the Correction/Recovery Agent. A proposed selection failed or was uncert
 Choose REPLACE with an exact existing supplied evidence_id only if it satisfies concept, statement,
 periods, context, units and formula role. Otherwise request EXPAND_SEARCH with null ID if allowed,
 or NO_VALID_EVIDENCE with null ID. Never reuse a rejected row merely because no replacement exists.
+For each ID in candidate_reviews, choose its assessment category and cite a short source
+detail (reported concept, label, period or heading) showing the match or mismatch.
+For NO_VALID_EVIDENCE or EXPAND_SEARCH, explain the blocking issue for every candidate.
+For REPLACE, mark the selected candidate supported and explain its match.
+All supplied candidates already passed statement, unit and period checks. An asset and
+a liability can both appear on the balance sheet but have different accounting concepts.
 Inspect EVERY supplied candidate, including candidates after the rejected one. The verifier's rejection
 applies to the rejected selection only, not the whole candidate list. Compare the required component
 against each candidate's own label and facts. If expansion_allowed is false, EXPAND_SEARCH is invalid:

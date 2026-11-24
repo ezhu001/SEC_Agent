@@ -23,7 +23,7 @@ class Case(BaseModel):
     periods: list[str] = Field(default_factory=lambda: ["FY2025", "FY2024"])
     expected_status: Literal["SUCCESS", "INSUFFICIENT_EVIDENCE"] = "SUCCESS"
     question: str = ""
-    fault: bool = False
+    fault: bool | Literal["withhold_current_assets"] = False
     reference: dict
     development_company: bool
     scoring_version: Literal["1", "2"] = "1"
@@ -85,6 +85,15 @@ def score(case, result):
         errors = result.get("errors", [])
         return {"grade": "OPERATIONAL_ERROR", "reasons": [
             f"{e.get('node', '')}: {e.get('type', '')}: {e.get('message', '')[:240]}" for e in errors] or ["Pipeline returned ERROR"]}
+    if case.fault == "withhold_current_assets":
+        diagnostics = result.get("retrieval_diagnostics", {}).get("current_assets", [])
+        faults = [d.get("controlled_fault", {}) for d in diagnostics]
+        correct = (status == "INSUFFICIENT_EVIDENCE" and result.get("calculation_result") is None
+                   and not result.get("accepted_evidence", {}).get("current_assets")
+                   and result.get("correction_count", 0) > 0 and bool(faults)
+                   and all(f.get("promoted_id") and f.get("withheld_ids") for f in faults))
+        return {"grade": "CORRECT_ABSTENTION" if correct else "WRONG_ANSWER",
+                "reasons": [] if correct else ["Missing-replacement control must exercise recovery and abstain"]}
     if case.expected_status != "SUCCESS":
         correct = (status == case.expected_status and result.get("calculation_result") is None
                    and result.get("decoder_call_count", 0) == 0)

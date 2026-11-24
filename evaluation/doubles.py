@@ -28,6 +28,9 @@ class ScriptedDecoder:
         else:
             candidate = next((r for r in payload["available_candidates"] if r["label"] == "Total net sales"), None)
             answer = {"decision": "REPLACE" if candidate else "NO_VALID_EVIDENCE", "evidence_id": candidate["evidence_id"] if candidate else None, "confidence": 0.9, "reason": "Scripted recovery"}
+            answer["candidate_reviews"] = {r["evidence_id"]: {"assessment": "supported" if r is candidate else "different_concept",
+                                                          "source_detail": r["label"]}
+                                           for r in payload["available_candidates"]}
         if role == "verifier":
             from evaluation.review_double import review_response
             answer = review_response(payload, answer)

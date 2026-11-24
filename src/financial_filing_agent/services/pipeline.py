@@ -10,7 +10,7 @@ from pathlib import Path
 from ..agents.planner import plan_task
 from ..agents.verifier import verify
 from ..agents.verification_contract import build_contract
-from ..agents.corrector import correct
+from ..agents.corrector import correct, recovery_candidates
 from ..config.financial_concepts import CONCEPTS
 from ..config.financial_concepts import definition
 from ..config.formulas import FORMULAS
@@ -349,32 +349,32 @@ class Pipeline:
         # A model cannot repair immutable missing/invalid fact metadata by
         # returning the exact same source row again.
         failed_ids = {r["evidence_id"] for r in s["guard_results"].get(c, []) if not r["passed"]}
-        ranked = [r for r in ranked if r["evidence_id"] not in failed_ids]
-        rejected_ids = self.review_rejections(s, c)
-        ranked = [r for r in ranked if r["evidence_id"] not in rejected_ids]
-        ranked = [r for r in ranked if eligibility(rows[r["evidence_id"]], c, s["required_periods"],
-                  s["filing_hash"], set(rows))["passed"]]
-        ranked = [r for r in ranked if assess_scope(rows[r["evidence_id"]], list(rows.values()),
-                  s["required_periods"], s.get("filing_metadata", {}))["status"] != "RESTRICTED"]
-        policy = revenue_policy(list(rows.values()), s["required_periods"], s["filing_hash"]) if c == "revenue" else None
-        if policy is not None:
-            ranked = [r for r in ranked if assess_revenue_basis(rows[r["evidence_id"]], policy)["status"] == "PASS"]
-        if not self.settings.qwen_enabled:
-            choices = [r for r in ranked if assess_concept(rows[r["evidence_id"]], c, s["required_periods"], s["filing_hash"], set(rows), revenue_basis_policy=policy)["status"] == "PASS"]
-            decision = {"decision": "REPLACE" if len(choices) == 1 else "NO_VALID_EVIDENCE",
-                        "evidence_id": choices[0]["evidence_id"] if len(choices) == 1 else None,
-                        "reason": "Unique existing row satisfies registered concept rules" if len(choices) == 1 else "No unique rule-supported replacement; no model decision was requested",
-                        "method": "deterministic_concept_rules"}
+        failed_ids |= self.review_rejections(s, c)
+        ranked_ids = [r["evidence_id"] for r in ranked if r["evidence_id"] not in failed_ids]
+        candidates, excluded, unique = recovery_candidates(
+            list(rows.values()), ranked_ids, c, s["required_periods"], s["filing_hash"], s.get("filing_metadata", {}))
+        if unique or not self.settings.qwen_enabled or not candidates:
+            choices = [key for key, assessment in candidates.items() if assessment["concept_status"] == "PASS"]
+            selected = unique
+            if not selected and not self.settings.qwen_enabled and len(choices) == 1:
+                selected = choices[0]
+            decision = {"decision": "REPLACE" if selected else "NO_VALID_EVIDENCE", "evidence_id": selected,
+                        "method": "unique_scoped_xbrl_fact" if unique else "deterministic_concept_rules",
+                        "reason": ("One distinct issuer-wide fact matches the registered XBRL concept in every requested year" if unique
+                                   else "Unique existing row satisfies registered concept rules" if selected
+                                   else "No supported replacement established in this scope"),
+                        "candidate_assessments": candidates, "excluded_candidates": excluded}
             update = {"correction_attempts": s["correction_attempts"] + 1, "correction_count": s["correction_count"] + 1,
                       "correction_results": {**s["correction_results"], c: s["correction_results"].get(c, []) + [decision]}}
-            if len(choices) == 1:
+            if selected:
                 return {**update, "proposed_id": decision["evidence_id"], "route": "verify"}
             if s["component_expansions"] < self.settings.expansion_budget:
                 return {**update, "route": "expand_search"}
             return {**update, "final_status": "INSUFFICIENT_EVIDENCE", "warnings": s["warnings"] + [decision["reason"]]}
         chunks, chunk, size = [], [], 0
-        for candidate in ranked:
-            cost = len(json.dumps(self.decoder_evidence(rows[candidate["evidence_id"]], s["required_periods"])))
+        for evidence_id, assessment in candidates.items():
+            candidate = {**self.decoder_evidence(rows[evidence_id], s["required_periods"]), "assessment": assessment}
+            cost = len(json.dumps(candidate))
             if chunk and (len(chunk) >= self.settings.correction_chunk_size or size + cost > self.settings.decoder_context):
                 chunks.append(chunk)
                 chunk, size = [], 0
@@ -385,15 +385,16 @@ class Pipeline:
         decisions = []
         result = None
         for chunk in chunks[:self.settings.max_correction_chunks]:
-            payload = {**self.model_payload(s), "available_candidates": [self.decoder_evidence(rows[r["evidence_id"]], s["required_periods"]) for r in chunk],
+            payload = {**self.model_payload(s), "available_candidates": chunk,
                 "rejected_selection": s["proposed_id"],
                 "verification": [{k: record[k] for k in ("evidence_id", "verdict", "error_type", "findings", "checks", "scope_assessment") if k in record}
                                  for record in s["verification_results"].get(c, [])[-1:]],
                 "guard": s["guard_results"].get(c, [])[-1:], "search_scope": s["candidate_scope"],
-                "previous_corrections": s["correction_results"].get(c, [])[-1:],
+                "previous_corrections": [{k: d[k] for k in ("decision", "evidence_id", "reason")}
+                                         for d in s["correction_results"].get(c, [])[-1:]],
                 "expansion_allowed": s["component_expansions"] < self.settings.expansion_budget}
             result = correct(self.decoder, payload)
-            decisions.append(result.model_dump(mode="json"))
+            decisions.append({**result.model_dump(mode="json"), "method": "qwen", "excluded_candidates": excluded})
             if result.decision in {"REPLACE", "EXPAND_SEARCH"}:
                 break
         update = {"correction_attempts": s["correction_attempts"] + 1,

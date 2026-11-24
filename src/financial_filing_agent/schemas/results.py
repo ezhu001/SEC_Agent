@@ -75,6 +75,11 @@ class Verification(Record):
         return self
 
 
+class RecoveryObservation(Record):
+    assessment: Literal["supported", "different_concept", "unresolved_scope", "ambiguous_evidence"]
+    source_detail: str = Field(min_length=1, max_length=180)
+
+
 class Correction(Record):
     decision: Literal["REPLACE", "EXPAND_SEARCH", "NO_VALID_EVIDENCE"]
     evidence_id: str | None
